@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
 def create
-  redirect_to user_path
+  redirect_to "/users/show"
 end
 end
