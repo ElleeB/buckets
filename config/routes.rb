@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   # :user login => sessions#new | signup => users#new | or omniauth route
   get '/', to: "welcome#home"
+
   get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
 end

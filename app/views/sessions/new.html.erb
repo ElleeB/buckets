@@ -1,1 +1,7 @@
-LOGIN HERE!
+<h3>Login</h3>
+
+<%= form_tag '/login' do %>
+  <%= text_field_tag :password, '', :placeholder => "enter your password" %>
+  <%= text_field_tag :password, '', :placeholder => "enter your password" %>
+  <%= submit_tag 'Log In' %>
+<% end %>
