@@ -15,7 +15,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    if !@user = current_user
+      redirect_to '/'
+    end
   end
 
   private
