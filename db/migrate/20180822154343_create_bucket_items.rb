@@ -5,6 +5,7 @@ class CreateBucketItems < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :due_date
       t.string :location
+      t.integer :user_id
 
       t.timestamps
     end
