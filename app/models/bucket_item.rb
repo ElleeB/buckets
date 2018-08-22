@@ -1,0 +1,2 @@
+class BucketItem < ApplicationRecord
+end
