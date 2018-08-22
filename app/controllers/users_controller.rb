@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     # raise params.inspect
     if @user = User.create(user_params)
 
-      redirect_to user_path(@user)
+      render 'show'
     else
       redirect_to new_user_path
     end
