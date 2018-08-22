@@ -5,15 +5,17 @@ class UsersController < ApplicationController
 
   def create
     # raise params.inspect
-    if @user = User.create(user_params)
+    if user = User.create(user_params)
+      session[:user_id] = user.id
 
-      render 'show'
+      redirect_to user_path(user)
     else
       redirect_to new_user_path
     end
   end
 
   def show
+    @user = current_user
   end
 
   private
