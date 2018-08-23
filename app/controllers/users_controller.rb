@@ -17,8 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # clean this up
-    if current_user
+    if params[:id].to_i == session[:user_id]
       @user = current_user
     else
       redirect_to '/'
