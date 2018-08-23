@@ -15,7 +15,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    # clean this up
+    if @user = User.find_by(id: session[:id])
+      nil
+    else
+      redirect_to '/'
+    end
   end
 
   private
