@@ -1,4 +1,8 @@
-<h3>NEW USER FORM!</h3>
+<% if !flash[:notice].nil? %>
+  <h4><i><p><%= flash[:notice] %></p></i></h4>
+<% end %>
+
+<h3>New User Registration</h3>
 
 <%= form_for @user do |f| %>
   <p><%= f.label "Name" %></p>

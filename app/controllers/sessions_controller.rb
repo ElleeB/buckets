@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
     # if user has entered login info
     # if params[:email] && params[:password]
       # check the login info (name + password) against database
+
+      ##=> try using ar validations and callbacks here
     if user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
       # if match
         # create session and redirect_to user_path

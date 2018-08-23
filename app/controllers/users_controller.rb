@@ -6,10 +6,12 @@ class UsersController < ApplicationController
   def create
     # raise params.inspect
     if user = User.create(user_params)
+      #=> even with unacceptable info, a user is still being created
       session[:user_id] = user.id
 
       redirect_to user_path(user)
     else
+      flash[:notice] = "Please enter valid information in each of the fields below"
       redirect_to new_user_path
     end
   end
