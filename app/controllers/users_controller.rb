@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    # raise params.inspect
-    if user = User.create(user_params).valid?
-      #=> even with unacceptable info, a user is still being created
+    # figure out how to use validation error messages here
+    user = User.create(user_params)
+    if user.valid?
       session[:user_id] = user.id
 
       redirect_to user_path(user)
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
   def show
     # clean this up
-    if @user = User.find_by(id: session[:id])
-      nil
+    if current_user
+      @user = current_user
     else
       redirect_to '/'
     end
