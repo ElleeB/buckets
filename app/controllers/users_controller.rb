@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     # raise params.inspect
-    if user = User.create(user_params)
+    if user = User.create(user_params).valid?
       #=> even with unacceptable info, a user is still being created
       session[:user_id] = user.id
 
