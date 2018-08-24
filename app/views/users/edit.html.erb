@@ -1,8 +1,20 @@
-EDIT YOUR ACCOUNT Details HERE, <%= @user.name %>
+<h3><%= @user.name.titlecase %>, Edit your Account details here</h3>
 
-FORM
+<%= form_for @user do |f| %>
 <!-- name -->
+  <p><%= f.label 'Name' %></p>
+  <%= f.text_field :name %>
 <!-- username -->
+  <p><%= f.label 'Username' %></p>
+  <%= f.text_field :username %>
 <!-- email -->
+  <p><%= f.label 'Email' %></p>
+  <%= f.text_field :email %>
 <!-- image -->
+  <p><%= f.label 'Image' %></p>
+  <%= f.file_field :image %>
 <!-- about -->
+  <p><%= f.label 'About' %></p>
+  <%= f.text_area :about %>
+  <p><%= f.submit 'Update Account Details' %></p>
+<% end %>
