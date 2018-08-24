@@ -1,14 +1,12 @@
 <h3><%= "#{@user.name.titlecase}'s ACCOUNT!!!!" %></h3>
 
-<!-- name -->
 <p><b>Name:</b> <%= @user.name %></p>
-<!-- username -->
 <p><b>Username:</b> <%= @user.username %></p>
-<!-- email -->
 <p><b>Email:</b> <%= @user.email %></p>
-<!-- about -->
 <p><b>About:</b> <%= @user.about %></p>
 
-<!-- edit image -->
+<!-- add image <input> when account first created -->
 
-<%= link_to 'Edit Account Information', edit_user_path(@user) %>
+<!-- add about statement <input> when account first created -->
+
+<%= link_to 'Edit Account Details', edit_user_path(@user) %>
