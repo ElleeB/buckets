@@ -1,3 +1,7 @@
+<!-- <% @messages.each do |msg| %>
+  <p><%= msg.text %></p>
+<% end %> -->
+
 <h3><%= @user.name.titlecase %>, Edit your Account details here</h3>
 
 <%= form_for @user do |f| %>
@@ -16,5 +20,12 @@
 <!-- about -->
   <p><%= f.label 'About' %></p>
   <%= f.text_area :about %>
+<!-- password -->
+  <p><%= f.label 'Password' %></p>
+  <%= f.password_field :password, value: :password %>
+<!-- password_confirmation -->
+  <p><%= f.label 'Confirm Password' %></p>
+  <%= f.password_field :password_confirmation, value: :password %>
+
   <p><%= f.submit 'Update Account Details' %></p>
 <% end %>

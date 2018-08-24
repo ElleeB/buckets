@@ -33,11 +33,20 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
+    if @user.update!(user_params)
+
+      redirect_to user_path(@user)
+    else
+      raise @messages = @user.errors.full_messages.inspect
+
+      redirect_to edit_user_path(@user)
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :username, :email, :image, :about, :password, :password_confirmation)
   end
 end
