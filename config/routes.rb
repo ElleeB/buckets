@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   # :user login => sessions#new | signup => users#new | or omniauth route
   get '/', to: "welcome#home"
 
+  # get '/account', to: "users#edit"
+  get '/account' => 'users#account', :as => 'account'
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
-
   get '/logout', to: "sessions#destroy"
 end
