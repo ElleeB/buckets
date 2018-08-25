@@ -33,20 +33,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    # binding.pry
-    @user = current_user.update(user_params)
-
-    # @user.errors
-    # => @details={:password=>[{:error=>:too_short, :count=>6}]},
-    # => @messages={:password=>["is too short (minimum is 6 characters)"]}>
-
-    if @user.errors.any?
-
-      redirect_to edit_user_path(@user)
-    else
+    @user = current_user
+    if @user.update(user_params)
 
       redirect_to user_path(@user)
+    else
+      render :edit
+      # errors working, but attribute fields contain incorrect info upon render
     end
+
+    #   # @user.errors
+    #   # => @details={:password=>[{:error=>:too_short, :count=>6}]},
+    #   # => @messages={:password=>["is too short (minimum is 6 characters)"]}>
+
   end
 
   private

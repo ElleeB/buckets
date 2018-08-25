@@ -1,9 +1,9 @@
 User.create(
   name: "Sansa",
-  username: "lemoncakes",
+  username: "ladywolf",
   email: "lady@gmail.com",
-  password: "lady",
-  password_confirmation: "lady",
+  password: "lemoncakes",
+  password_confirmation: "lemoncakes",
   image: "/assets/sansa-stark.jpg",
   about: "I love Geoffrey"
 )

@@ -1,12 +1,14 @@
-<% if @user.errors.any? %>
-  <% @user.errors.each do |msg| %>
-    <%= msg %>
-  <% end %>
-<% end %>
-
 <h3><%= @user.name.titlecase %>, Edit your Account details here</h3>
 
 <%= form_for @user do |f| %>
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <p>Errors:</p>
+    <li> <%= message %> </li>
+  <% end %>
+<% end %>
+
 <!-- name -->
   <p><%= f.label 'Name' %></p>
   <%= f.text_field :name %>
