@@ -2,7 +2,9 @@
 
 <h2>Welcome to your bucket!</h2>
 
-<%= image_tag(@user.image) %>
+<% if @user.image %>
+  <%= image_tag(@user.image) %>
+<% end %>
 
 <!-- add new drop to bucket -->
 <!-- my drops (bucket_items) -->

@@ -33,14 +33,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @user.update!(user_params)
+    # binding.pry
+    @user = current_user.update(user_params)
 
-      redirect_to user_path(@user)
-    else
-      raise @messages = @user.errors.full_messages.inspect
+    # @user.errors
+    # => @details={:password=>[{:error=>:too_short, :count=>6}]},
+    # => @messages={:password=>["is too short (minimum is 6 characters)"]}>
+
+    if @user.errors.any?
 
       redirect_to edit_user_path(@user)
+    else
+
+      redirect_to user_path(@user)
     end
   end
 
