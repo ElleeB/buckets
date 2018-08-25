@@ -38,14 +38,11 @@ class UsersController < ApplicationController
 
       redirect_to user_path(@user)
     else
+      # raise @user.inspect => includes invalid attributes! Ex. name: ""
+      # this is a problem because the form field placeholder text is incorrect
+      # not persisted though
       render :edit
-      # errors working, but attribute fields contain incorrect info upon render
     end
-
-    #   # @user.errors
-    #   # => @details={:password=>[{:error=>:too_short, :count=>6}]},
-    #   # => @messages={:password=>["is too short (minimum is 6 characters)"]}>
-
   end
 
   private
