@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     if params[:id].to_i == session[:user_id]
       @user = current_user
     else
+      # elsif someone is logged in, take them to their show page
       redirect_to '/'
     end
   end
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    ## Need to lock this down so no one other than logged in can access
     @user = current_user
     if @user.update(user_params)
 
