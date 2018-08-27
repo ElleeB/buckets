@@ -1,3 +1,5 @@
+# Users
+
 User.create(
   name: "Sansa",
   username: "ladywolf",
@@ -27,3 +29,12 @@ User.create(
   image: "/assets/ygritte.jpg",
   about: "I love Jon"
 )
+
+# Bucket Items
+
+BucketItem.create(
+  user_id: "2",
+  title: "Kill Cersei",
+  description: "Kill that crazy brother humping biatch",
+  due_date: DateTime.strptime('09/14/4932', '%m/%d/%Y')
+  )
