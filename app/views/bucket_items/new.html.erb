@@ -1,1 +1,11 @@
-ADD A NEW DROP TO YOUR BUCKET
+<h3>ADD A NEW DROP TO YOUR BUCKET</h3>
+
+<%= form_for @bucket_item do |f| %>
+  <p><%= f.label "Title Your Drop" %></p>
+  <%= f.text_field :title %>
+  <p><%= f.label "Drescribe Your Drop" %></p>
+  <%= f.text_area :description %>
+  <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
+  <%= f.date_field :due_date %>
+  <p><%= f.submit %></p>
+<% end %>
