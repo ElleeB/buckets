@@ -1,6 +1,14 @@
 <h3>ADD A NEW DROP TO YOUR BUCKET</h3>
 
 <%= form_for @bucket_item do |f| %>
+
+<% if @bucket_item.errors.any? %>
+  <% @bucket_item.errors.full_messages.each do |message| %>
+    <p>Errors:</p>
+    <li> <%= message %> </li>
+  <% end %>
+<% end %>
+
   <p><%= f.label "Title Your Drop" %></p>
   <%= f.text_field :title %>
   <p><%= f.label "Drescribe Your Drop" %></p>
