@@ -1,0 +1,5 @@
+<h3><%= "#{@current_user.name}'s Drops!" %></h3>
+
+<% @bucket_items.each do |item| %>
+  <li><%= item.title %>
+<% end %>
