@@ -1,7 +1,6 @@
 class BucketItemsController < ApplicationController
 
   def index
-
     @bucket_items = current_user.bucket_items.all
   end
 
