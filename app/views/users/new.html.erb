@@ -1,11 +1,11 @@
 <h3>New User Registration</h3>
 
+<!-- dry this up -->
 <% @messages.each do |attribute, message| %>
   <li><%= attribute %> <%= message.join(", ") %>
 <% end %>
 
 <%= form_for @user do |f| %>
-<!-- how to make this a helper -->
   <p><%= f.label "Name" %></p>
   <%= f.text_field :name %>
   <p><%= f.label "Username" %></p>
@@ -19,5 +19,4 @@
   <p><%= f.submit %></p>
 <% end %>
 
-<!-- back or cancel button -->
 <%= link_to 'Back', :back %>

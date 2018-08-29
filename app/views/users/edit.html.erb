@@ -4,7 +4,7 @@
 
 <%= form_for @user do |f| %>
 
-<!-- how to make this a helper -->
+<!-- how to make this a helper and remove all this logic?-->
   <% if @user.errors.any? %>
   <p>Errors:</p>
     <% @user.errors.full_messages.each do |message| %>

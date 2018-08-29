@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # figure out how to use validation error messages here
     @user = User.create(user_params)
     if @user.valid?
       session[:@user_id] = @user.id
@@ -14,7 +13,6 @@ class UsersController < ApplicationController
       @messages = @user.errors.each do |msg|
         msg
       end
-      # flash[:notice] = "Please enter valid information in each of the fields below"
       render :new
     end
   end
