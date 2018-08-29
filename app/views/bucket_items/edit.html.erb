@@ -1,1 +1,21 @@
-EDIT YOUR BUCKET ITEM HERE!
+<h3>EDIT YOUR BUCKET ITEM HERE!</h3>
+
+<!-- create partial for this template -->
+
+<%= form_for @bucket_item do |f| %>
+
+<% if @bucket_item.errors.any? %>
+  <% @bucket_item.errors.full_messages.each do |message| %>
+    <p>Errors:</p>
+    <li> <%= message %> </li>
+  <% end %>
+<% end %>
+
+  <p><%= f.label "Title Your Drop" %></p>
+  <%= f.text_field :title %>
+  <p><%= f.label "Drescribe Your Drop" %></p>
+  <%= f.text_area :description %>
+  <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
+  <%= f.date_field :due_date %>
+  <p><%= f.submit %></p>
+<% end %>

@@ -25,9 +25,18 @@ class BucketItemsController < ApplicationController
   end
 
   def update
+    # create an app helper method for this
+    @bucket_item = BucketItem.find(params[:id])
+    if @bucket_item.update(bucket_item_params)
+
+      redirect_to bucket_item_path(@bucket_item)
+    else
+      render :edit
+    end
   end
 
   def show
+    # need to lock this down so only the bucket_items.user can access
     @bucket_item = BucketItem.find(params[:id])
   end
 
