@@ -4,12 +4,13 @@
 
 <%= form_for @user do |f| %>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |message| %>
-    <p>Errors:</p>
-    <li> <%= message %> </li>
+<!-- how to make this a helper -->
+  <% if @user.errors.any? %>
+  <p>Errors:</p>
+    <% @user.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
   <% end %>
-<% end %>
 
 <!-- name -->
   <p><%= f.label 'Name' %></p>

@@ -1,12 +1,11 @@
-<% if !flash[:notice].nil? %>
-  <h4><i><p><%= flash[:notice] %></p></i></h4>
-<% end %>
-
-<!-- instead of flash notice, use error messages? -->
-
 <h3>New User Registration</h3>
 
+<% @messages.each do |attribute, message| %>
+  <li><%= attribute %> <%= message.join(", ") %>
+<% end %>
+
 <%= form_for @user do |f| %>
+<!-- how to make this a helper -->
   <p><%= f.label "Name" %></p>
   <%= f.text_field :name %>
   <p><%= f.label "Username" %></p>

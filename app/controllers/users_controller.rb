@@ -5,14 +5,17 @@ class UsersController < ApplicationController
 
   def create
     # figure out how to use validation error messages here
-    user = User.create(user_params)
-    if user.valid?
-      session[:user_id] = user.id
+    @user = User.create(user_params)
+    if @user.valid?
+      session[:@user_id] = @user.id
 
-      redirect_to user_path(user)
+      redirect_to user_path(@user)
     else
-      flash[:notice] = "Please enter valid information in each of the fields below"
-      redirect_to new_user_path
+      @messages = @user.errors.each do |msg|
+        msg
+      end
+      # flash[:notice] = "Please enter valid information in each of the fields below"
+      render :new
     end
   end
 
@@ -20,7 +23,6 @@ class UsersController < ApplicationController
     if params[:id].to_i == session[:user_id]
       @user = current_user
     else
-      # elsif someone is logged in, take them to their show page
       redirect_to '/'
     end
   end
