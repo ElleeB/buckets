@@ -19,3 +19,6 @@
   <%= f.date_field :due_date %>
   <p><%= f.submit %></p>
 <% end %>
+
+<!-- add cancel link -->
+<%= link_to "Cancel", bucket_item_path(@bucket_item) %>
