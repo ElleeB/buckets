@@ -1,12 +1,10 @@
 <h3><%= "#{@current_user.name}'s Drops!" %></h3>
 
 <!-- return to this and reduce amnt of logic in this view -->
-<!-- link from each item to it's show page -->
 <% @bucket_items.each do |item| %>
   <li><%= link_to "#{item.title}", bucket_item_path(item) %>
 <% end %>
 
 <!-- breadcrumbs? -->
 
-<!-- link back to user_show -->
 <p><%= link_to 'Go Back to My User Page', user_path(@current_user) %></p>

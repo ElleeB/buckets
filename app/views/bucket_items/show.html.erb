@@ -2,9 +2,6 @@
 <h4><%= @bucket_item.description %></h4>
 <h4><%= @bucket_item.formated_date %></h4>
 
-<!-- link back to bucket_item_index -->
 <p><%= link_to 'Go Back to My Drops', bucket_items_path %></p>
-<!-- link back to user_show -->
 <p><%= link_to 'Go Back to My User Page', user_path(@bucket_item.user) %></p>
-<!-- link back to edit bucket item -->
 <p><%= link_to 'Edit This Drop', edit_bucket_item_path(@bucket_item) %></p>

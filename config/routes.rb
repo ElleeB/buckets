@@ -1,3 +1,5 @@
+# refactor with more user friendly and secure urls
+
 Rails.application.routes.draw do
   resources :bucket_items
   resources :users
@@ -6,7 +8,6 @@ Rails.application.routes.draw do
   # :user login => sessions#new | signup => users#new | or omniauth route
   get '/', to: "welcome#home"
 
-  # get '/account', to: "users#edit"
   get '/account' => 'users#account', :as => 'account'
 
   get '/login', to: "sessions#new"
