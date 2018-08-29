@@ -19,6 +19,14 @@ class BucketItemsController < ApplicationController
     end
   end
 
+  def edit
+    # create an app helper method for this
+    @bucket_item = BucketItem.find(params[:id])
+  end
+
+  def update
+  end
+
   def show
     @bucket_item = BucketItem.find(params[:id])
   end
