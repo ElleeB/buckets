@@ -20,14 +20,10 @@ class BucketItemsController < ApplicationController
   end
 
   def edit
-    # create an app helper method for this
-    # @bucket_item = BucketItem.find(params[:id])
     current_bucket_item
   end
 
   def update
-    # create an app helper method for this
-    # @bucket_item = BucketItem.find(params[:id])
     current_bucket_item
     if @bucket_item.update(bucket_item_params)
 
@@ -38,8 +34,6 @@ class BucketItemsController < ApplicationController
   end
 
   def show
-    # need to lock this down so only the bucket_items.user can access
-    # @bucket_item = BucketItem.find(params[:id])
     current_bucket_item
   end
 
