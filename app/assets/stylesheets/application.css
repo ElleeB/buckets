@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+a:link {
+   font-family: helvetica;
+   color: cornflowerblue;
+ }
+
+ a:visited {
+   font-family: helvetica;
+   color: purple;
+ }
+
+ h3 {
+   color: hotpink;
+ }
+
+ h2 {
+   color: midnightblue;
+ }
+
+ p {
+   color: dimgray;
+ }
+
+ img {
+   border-radius: 8px;
+   border: 3px solid hotpink;
+ }
