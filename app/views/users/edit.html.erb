@@ -1,3 +1,5 @@
+<!-- how to stop @user showing up blank if I force an error by not entering name? -->
+
 <h3><%= @user.name.titlecase %>, Edit your Account details here</h3>
 
 <%= form_for @user do |f| %>
@@ -21,8 +23,8 @@
 <!-- image -->
 <!-- how to allow someone to upload any image? -->
 <!-- error reads: The asset "" is not present in the asset pipeline -->
-  <p><%= f.label 'Image' %></p>
-  <%= f.file_field :image %>
+  <!-- <p><%= f.label 'Image' %></p>
+  <%= f.file_field :image %> -->
 <!-- about -->
   <p><%= f.label 'About' %></p>
   <%= f.text_area :about %>
