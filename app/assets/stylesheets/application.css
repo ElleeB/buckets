@@ -15,12 +15,12 @@
  */
 
 a:link {
-   font-family: helvetica;
+   font-size: 5;
    color: cornflowerblue;
  }
 
  a:visited {
-   font-family: helvetica;
+   font-size: 5;
    color: purple;
  }
 
@@ -33,6 +33,7 @@ a:link {
  }
 
  p {
+   font-size: 4;
    color: dimgray;
  }
 

@@ -1,8 +1,10 @@
 <h3>New User Registration</h3>
 
-<!-- dry this up -->
-<% @messages.each do |attribute, message| %>
-  <li><%= attribute %> <%= message.join(", ") %>
+<!-- dry this up and/or create a helper -->
+<% if @messages %>
+  <% @messages.each do |attribute, message| %>
+    <li><%= attribute %> <%= message.join(", ") %>
+  <% end %>
 <% end %>
 
 <%= form_for @user do |f| %>
@@ -19,4 +21,4 @@
   <p><%= f.submit %></p>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to "Back", :back %>
