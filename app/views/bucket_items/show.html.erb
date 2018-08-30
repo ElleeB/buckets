@@ -1,7 +1,8 @@
 <h2><%= @bucket_item.title %></h2>
+<hr>
 <h3><%= @bucket_item.description %></h3>
 <h3><%= @bucket_item.formated_date %></h3>
-
+<hr>
 <p><%= link_to 'Go Back to My Drops', bucket_items_path %></p>
 <p><%= link_to 'Go Back to My User Page', user_path(@bucket_item.user) %></p>
 <p><%= link_to 'Edit This Drop', edit_bucket_item_path(@bucket_item) %></p>

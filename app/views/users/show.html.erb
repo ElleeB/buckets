@@ -1,11 +1,12 @@
 <h3>Hello, <%= @user.name %>!</h3>
-
+<hr>
 <h2>Welcome to your bucket!</h2>
+
 
 <% if @user.image %>
   <%= image_tag(@user.image) %>
 <% end %>
-
+<hr>
 <p><%= link_to 'See My Drops', '/bucket_items' %></p>
 <p><%= link_to 'Add A Drop to My Bucket', '/bucket_items/new' %></p>
 

@@ -1,4 +1,5 @@
 <h3><%= "#{@current_user.name}'s Drops!" %></h3>
+<hr>
 
 <!-- return to this and reduce amnt of logic in this view -->
 <% @bucket_items.each do |item| %>
@@ -6,5 +7,5 @@
 <% end %>
 
 <!-- breadcrumbs? -->
-
+<hr>
 <p><%= link_to 'Go Back to My User Page', user_path(@current_user) %></p>
