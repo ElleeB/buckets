@@ -16,14 +16,14 @@ class BucketItem < ApplicationRecord
   # def countdown
   #   "#{refactor_for_calculation(due_date)}" - "#{refactor_for_calculation(Date.today)}"
   # end
-  def countdown_test
+  def countdown
     today = Date.today.to_time
 
     due = "Fri, 31 Aug 2018".to_time
 
     day = 86400
 
-    puts (due - today)/day
+    ((due - today)/day).to_i
   end
 
 
