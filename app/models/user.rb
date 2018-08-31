@@ -6,4 +6,10 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :email, presence: true
   validates :password, length: { :in => 6..20}
+
+  def upcoming_bucket_item_deadlines
+    self.bucket_items.reject do |item|
+      item.countdown > 50
+    end
+  end
 end
