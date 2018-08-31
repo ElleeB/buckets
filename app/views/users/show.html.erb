@@ -10,9 +10,9 @@
 <p><%= link_to 'See My Drops', '/bucket_items' %></p>
 <p><%= link_to 'Add A Drop to My Bucket', '/bucket_items/new' %></p>
 
-<!-- <p><%= @user.upcoming_bucket_items_dealine %></p> -->
-
-<!-- number of drops accomlished -->
+<% @user.upcoming_bucket_item_deadlines.each do |item| %>
+  <li><%= "#{item.title} | Due: #{item.formatted_date}"%>
+<% end %>
 
 <p><%= link_to 'My Account', '/account' %></p>
 <p><%= link_to 'Log Out', '/logout' %></p>

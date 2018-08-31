@@ -4,7 +4,7 @@ class BucketItem < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
 
-  def formated_date
+  def formatted_date
     due_date.strftime("%B %d, %Y")
   end
 
