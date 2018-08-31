@@ -38,6 +38,9 @@ a:link {
  }
 
  img {
+   display: block;
+   max-height:400px;
+   width: auto;
    border-radius: 8px;
    border: 3px solid hotpink;
  }
