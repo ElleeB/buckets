@@ -8,11 +8,12 @@
   <p><h3><%= "--> #{item.title} | Due: #{item.formatted_date}"%></p></h3>
 <% end %>
 <hr>
+
 <% if @user.image %>
   <%= image_tag(@user.image) %>
 <% end %>
-
 <hr>
+
 <p><%= link_to 'See My Drops', '/bucket_items' %></p>
 <p><%= link_to 'Add A Drop to My Bucket', '/bucket_items/new' %></p>
 <p><%= link_to 'My Account', '/account' %></p>

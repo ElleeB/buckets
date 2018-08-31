@@ -1,7 +1,7 @@
 <!-- how to stop @user showing up blank if I force an error by not entering name? -->
 <h3><%= @user.name.titlecase %>, Edit your Account details here</h3>
-<hr>
 
+<hr>
 <%= form_for @user do |f| %>
 
 <!-- how to make this a helper and remove all this logic?-->
@@ -38,5 +38,6 @@
 
   <p><%= f.submit 'Update Account Details' %></p>
 <% end %>
+
 <hr>
 <p><%= link_to 'Cancel', user_path(@user) %></p>

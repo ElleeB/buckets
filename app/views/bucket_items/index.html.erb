@@ -1,6 +1,6 @@
 <h3><%= "#{@current_user.name}'s Drops!" %></h3>
-<hr>
 
+<hr>
 <!-- return to this and reduce amnt of logic in this view -->
 <% @bucket_items.each do |item| %>
   <li><%= link_to "#{item.title}", bucket_item_path(item) %>
