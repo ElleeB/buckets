@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with :exception
+  # protect_from_forgery unless oauth is taking care of it
+  protect_from_forgery unless: -> { @auth }
 
   def auth
     @auth = request.env['omniauth.auth']
   end
-  
+
   def current_user
     @current_user ||= User.find(session[:user_id])
   end

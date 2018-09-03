@@ -5,17 +5,23 @@ class SessionsController < ApplicationController
 
   def create
 
-    # if used Facebook to log in
-
     # if used email and password to log in
+    if params[:email].present?
+      if user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
+        session[:user_id] = user.id
 
-    if user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
-      session[:user_id] = user.id
-
-      redirect_to user_path(user)
+        redirect_to user_path(user)
+      else
+        ##=> try using ar validations and callbacks here
+        redirect_to '/login', notice: "You must enter a valid email and password"
+      end
+    # if used Facebook to log in
     else
-      ##=> try using ar validations and callbacks here
-      redirect_to '/login', notice: "You must enter a valid email and password"
+      user = User.find_or_create_by(uid: auth['uid']) do |user|
+        user.name = auth['info']['name']
+      end
+
+      session[:user_id] = user.id
     end
   end
 
