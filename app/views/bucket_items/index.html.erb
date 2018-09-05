@@ -2,10 +2,15 @@
 
 <hr>
 <!-- return to this and reduce amnt of logic in this view -->
-<% @bucket_items.each do |item| %>
-  <li><%= link_to "#{item.title}", bucket_item_path(item) %>
+<% if @bucket_items.empty? %>
+  <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
+<% else %>
+  <% @bucket_items.each do |item| %>
+    <li><%= link_to "#{item.title}", bucket_item_path(item) %>
+  <% end %>
 <% end %>
 
 <!-- breadcrumbs? -->
 <hr>
+<p><%= link_to 'Add A Drop to My Bucket', '/bucket_items/new' %></p>
 <p><%= link_to 'Go Back to My User Page', user_path(@current_user) %></p>
