@@ -16,8 +16,8 @@ class SessionsController < ApplicationController
       end
     # if used Facebook to log in
     else
-      if @user = User.find_by(uid: auth['uid']) # throwing error when user logs in
-
+      if @user = User.find_by(uid: auth['uid'])
+        
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
