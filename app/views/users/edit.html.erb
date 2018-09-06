@@ -5,12 +5,9 @@
 <%= form_for @user do |f| %>
 
 <!-- how to make this a helper and remove all this logic?-->
-  <% if @user.errors.any? %>
-  <p>Errors:</p>
-    <% @user.errors.full_messages.each do |message| %>
-      <li> <%= message %> </li>
-    <% end %>
-  <% end %>
+<% if @messages %>
+  <%= render "print_messages" %>
+<% end %>
 
 <!-- name -->
   <p><%= f.label 'Name' %></p>
@@ -22,6 +19,7 @@
   <p><%= f.label 'Email' %></p>
   <%= f.text_field :email %>
 <!-- image -->
+<!-- gem? -->
 <!-- how to allow someone to upload any image? -->
 <!-- error reads: The asset "" is not present in the asset pipeline -->
   <!-- <p><%= f.label 'Image' %></p>

@@ -3,9 +3,7 @@
 
 <!-- dry this up and/or create a helper -->
 <% if @messages %>
-  <% @messages.each do |attribute, message| %>
-    <li><%= attribute %> <%= message.join(", ") %>
-  <% end %>
+  <%= render "print_messages" %>
 <% end %>
 
 <%= form_for @user do |f| %>

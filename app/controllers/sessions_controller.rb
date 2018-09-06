@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
 
   def create
     # if used email and password to log in
-    if params[:email].present?
+    if params[:user][:email].present?
       if @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
-        session[:user_id] = user.id
+        session[:user_id] = @user.id
 
         redirect_to user_path(@user)
       else
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       end
     # if used Facebook to log in
     else
-      if @user = User.find_by(uid: auth['uid'])
+      if @user = User.find_by(uid: auth['uid']) # throwing error when user logs in
 
         session[:user_id] = @user.id
         redirect_to user_path(@user)

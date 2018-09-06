@@ -43,6 +43,9 @@ class UsersController < ApplicationController
       # raise @user.inspect => includes invalid attributes! Ex. name: ""
       # this is a problem because the form field placeholder text is incorrect
       # not persisted though
+      @messages = @user.errors.each do |msg|
+        msg
+      end
       render :edit
     end
   end
