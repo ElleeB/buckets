@@ -6,7 +6,6 @@ class BucketItemsController < ApplicationController
 
   def new
     @bucket_item = BucketItem.new
-    @to_do_list = ToDoList.new
   end
 
   def create
@@ -35,7 +34,8 @@ class BucketItemsController < ApplicationController
   end
 
   def show
-    current_bucket_item
+    @bucket_item = BucketItem.find(params[:id])
+    session[:bucket_id] = @bucket_item.id
   end
 
   private

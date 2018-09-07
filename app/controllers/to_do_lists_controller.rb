@@ -4,9 +4,10 @@ class ToDoListsController < ApplicationController
   end
 
   def create
-    raise params.inspect
-    # params => "to_do_items"=>{"content"=>"buy stuff"}
-    @to_do_list.create(list_params)
+    @to_do_list = ToDoList.new(list_params)
+    @to_do_list.user_id = current_user.id
+    @to_do_list.bucket_item_id = current_bucket_item.id
+    @to_do_list.save!
 
     redirect_to to_do_list_path(@to_do_list)
   end
@@ -26,6 +27,6 @@ class ToDoListsController < ApplicationController
   private
 
   def list_params
-    params.require(:to_do_lists).permit(:to_do_items[content], :bucket_item_id)
+    params.require(:to_do_list).permit(:title)
   end
 end

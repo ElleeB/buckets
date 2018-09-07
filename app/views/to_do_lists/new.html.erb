@@ -2,6 +2,9 @@
 
 <hr>
 <%= form_for @to_do_list do |f| %>
+  <%= f.label "Title your to-do list" %>
+  <p><%= f.text_field :title %></p>
+
   <%= fields_for :to_do_items do |f| %>
     <%= f.label "Add an item to your to-do list!" %>
     <p><%= f.text_field :content %></p>
