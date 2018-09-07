@@ -1,4 +1,4 @@
-# refactor with more user friendly and secure urls
+# refactor with more user friendly and secure urls?
 
 Rails.application.routes.draw do
   resources :to_do_items
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: [:new, :create]
 
-  # :user login => sessions#new | signup => users#new | or omniauth route
   get '/', to: "welcome#home"
 
   get '/account' => 'users#account', :as => 'account'

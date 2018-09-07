@@ -1,3 +1,10 @@
-CREATE A NEW TO_DO_LIST!
+<h3> Create Your To-Do List! </h3>
 
-create new items and add them to this list 
+<hr>
+<%= form_for @to_do_list do |f| %>
+  <%= fields_for :to_do_items do |f| %>
+    <%= f.label "Add an item to your to-do list!" %>
+    <p><%= f.text_field :content %></p>
+  <% end %>
+  <%= f.submit "Add an item and start your list!" %>
+<% end %>

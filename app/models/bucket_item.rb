@@ -1,8 +1,7 @@
 class BucketItem < ApplicationRecord
   belongs_to :user
-  has_one :to_do_list
-  has_many :to_do_items, through: :to_do_list
-  accepts_nested_attributes_for :to_do_items 
+  has_many :to_do_lists
+  has_many :to_do_items, through: :to_do_lists
 
   validates :title, presence: true
   validates :description, presence: true

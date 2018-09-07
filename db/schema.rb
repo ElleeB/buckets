@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_163030) do
 
   create_table "to_do_lists", force: :cascade do |t|
     t.integer "bucket_item_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
