@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_163030) do
+ActiveRecord::Schema.define(version: 2018_09_07_214212) do
 
   create_table "bucket_items", force: :cascade do |t|
     t.string "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_163030) do
   end
 
   create_table "to_do_lists", force: :cascade do |t|
+    t.string "title"
     t.integer "bucket_item_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
