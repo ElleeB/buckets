@@ -75,5 +75,13 @@ BucketItem.create(
   )
 
 ToDoList.create(
+  bucket_item_id: 1
+)
+
+ToDoList.create(
+  bucket_item_id: 2
+)
+
+ToDoList.create(
   bucket_item_id: 3
 )
