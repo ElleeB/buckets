@@ -1,6 +1,7 @@
-class CreateToDoLists < ActiveRecord::Migration[5.2]
+class CreateLists < ActiveRecord::Migration[5.2]
   def change
-    create_table :to_do_lists do |t|
+    create_table :lists do |t|
+      t.string :name
       t.integer :bucket_item_id
       t.integer :user_id
 

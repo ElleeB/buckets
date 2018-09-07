@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :bucket_items
-  has_many :to_do_lists
-  has_many :to_do_items, through: :to_do_lists
+  has_many :lists
+  has_many :to_do_items, through: :lists
 
   validates :name, presence: true
   validates :username, uniqueness: true
