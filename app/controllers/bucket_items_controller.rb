@@ -6,6 +6,7 @@ class BucketItemsController < ApplicationController
 
   def new
     @bucket_item = BucketItem.new
+    @to_do_list = ToDoList.new
   end
 
   def create

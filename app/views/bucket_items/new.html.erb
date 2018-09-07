@@ -4,12 +4,12 @@
 <!-- create partial for this template -->
 <%= form_for @bucket_item do |f| %>
 
-<% if @bucket_item.errors.any? %>
-  <% @bucket_item.errors.full_messages.each do |message| %>
-    <p>Errors:</p>
-    <li> <%= message %> </li>
+  <% if @bucket_item.errors.any? %>
+    <% @bucket_item.errors.full_messages.each do |message| %>
+      <p>Errors:</p>
+      <li> <%= message %> </li>
+    <% end %>
   <% end %>
-<% end %>
 
   <p><%= f.label "Title Your Drop" %></p>
   <%= f.text_field :title %>

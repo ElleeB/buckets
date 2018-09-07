@@ -1,0 +1,2 @@
+class ItemToDosController < ApplicationController
+end
