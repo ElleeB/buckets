@@ -1,10 +1,17 @@
 # refactor with more user friendly and secure urls
 
 Rails.application.routes.draw do
-  resources :item_to_dos
+  resources :to_do_items
   resources :to_do_lists
+  resources :to_do_lists do
+    resources :to_do_items
+  end
+
   resources :bucket_items
   resources :users
+  resources :users do
+    resources :bucket_items
+  end
   resources :sessions, only: [:new, :create]
 
   # :user login => sessions#new | signup => users#new | or omniauth route
