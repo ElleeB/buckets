@@ -73,3 +73,7 @@ BucketItem.create(
   description: "This wasn't how it was supposed to happen. Now I need to find a way out of this shit",
   due_date: DateTime.strptime('10/4/2018', '%m/%d/%Y')
   )
+
+ToDoList.create(
+  bucket_item_id: 3
+)
