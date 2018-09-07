@@ -1,6 +1,7 @@
 # refactor with more user friendly and secure urls
 
 Rails.application.routes.draw do
+  resources :to_do_lists
   resources :bucket_items
   resources :users
   resources :sessions, only: [:new, :create]

@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_03_193432) do
+ActiveRecord::Schema.define(version: 2018_09_07_145510) do
 
   create_table "bucket_items", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "due_date"
     t.string "location"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "to_do_items", force: :cascade do |t|
+    t.string "content"
+    t.boolean "complete", default: false
+    t.integer "bucket_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "to_do_lists", force: :cascade do |t|
+    t.integer "bucket_item_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
