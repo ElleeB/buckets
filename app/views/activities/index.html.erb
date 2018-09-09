@@ -6,7 +6,7 @@
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
   <% @activities.each do |item| %>
-    <li><%= link_to "#{item.title}", bucket_item_path(item) %>
+    <li><%= link_to "#{item.title}", activity_path(item) %>
   <% end %>
 <% end %>
 
