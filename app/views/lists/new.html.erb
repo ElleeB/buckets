@@ -1,1 +1,8 @@
-CREATE A NEW TO-DO LIST!
+<h3>CREATE A NEW TO-DO LIST!</h3>
+
+<hr>
+<%= form_for @list do |f| %>
+  <%= f.label "Name your list" %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

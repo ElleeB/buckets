@@ -13,6 +13,7 @@ class ActivitiesController < ApplicationController
     @activity.user = current_user
     if @activity.save
 
+      session[:activity_id] = @activity.id
       redirect_to activity_path(@activity)
     else
       render :new

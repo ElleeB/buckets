@@ -7,5 +7,6 @@ class ListsController < ApplicationController
   end
 
   def create
+    
   end
 end
