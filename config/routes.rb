@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   resources :activities
   resources :users
   resources :sessions, only: [:new, :create]
+  resources :lists
+
+  resources :users do
+    resources :activities
+  end
 
   # :user login => sessions#new | signup => users#new | or omniauth route
   get '/', to: "welcome#home"
