@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :activities
   end
 
+  resources :activities do
+    resources :lists
+  end
+
   # :user login => sessions#new | signup => users#new | or omniauth route
   get '/', to: "welcome#home"
 

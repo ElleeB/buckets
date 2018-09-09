@@ -8,7 +8,8 @@
 <p><%= link_to 'Go Back to My Drops', activities_path %></p>
 <p><%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
 <p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
-<!-- link_to to-do list -->
+<!-- link_to create to-do list #=> new_activity_list_path-->
+<p><%= link_to 'Add a To-Do List', new_activity_list_path(@activity) %></p>
 <br>
 
 <hr>
