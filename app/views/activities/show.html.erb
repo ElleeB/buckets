@@ -1,0 +1,15 @@
+<h2><%= @activity.title %></h2>
+<hr>
+
+<h3><%= @activity.description %></h3>
+<h3><%= @activity.formatted_date %></h3>
+
+<hr>
+<p><%= link_to 'Go Back to My Drops', activities_path %></p>
+<p><%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
+<p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
+<!-- link_to to-do list -->
+<br>
+
+<hr>
+<h2><%= "#{@activity.countdown} days until due date!" %></h2>

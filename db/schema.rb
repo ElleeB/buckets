@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_09_03_193432) do
 
-  create_table "bucket_items", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "due_date"

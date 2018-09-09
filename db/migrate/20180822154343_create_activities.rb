@@ -1,6 +1,6 @@
-class CreateBucketItems < ActiveRecord::Migration[5.2]
+class CreateActivities < ActiveRecord::Migration[5.2]
   def change
-    create_table :bucket_items do |t|
+    create_table :activities do |t|
       t.string :title
       t.string :description
       t.string :due_date

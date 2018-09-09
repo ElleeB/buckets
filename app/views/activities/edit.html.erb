@@ -3,10 +3,10 @@
 
 <!-- create partial for this template -->
 
-<%= form_for @bucket_item do |f| %>
+<%= form_for @activity do |f| %>
 
-<% if @bucket_item.errors.any? %>
-  <% @bucket_item.errors.full_messages.each do |message| %>
+<% if @activity.errors.any? %>
+  <% @activity.errors.full_messages.each do |message| %>
     <p>Errors:</p>
     <li> <%= message %> </li>
   <% end %>
@@ -22,4 +22,4 @@
 <% end %>
 
 <hr>
-<%= link_to "Cancel", bucket_item_path(@bucket_item) %>
+<%= link_to "Cancel", activity_path(@activity) %>

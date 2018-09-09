@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
      !!session[:user_id]
    end
 
-  def current_bucket_item
-    @bucket_item = BucketItem.find(params[:id])
+  def current_activity
+    @activity = Activity.find(params[:id])
   end
 end

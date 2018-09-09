@@ -2,10 +2,10 @@
 
 <hr>
 <!-- create partial for this template -->
-<%= form_for @bucket_item do |f| %>
+<%= form_for @activities do |f| %>
 
-<% if @bucket_item.errors.any? %>
-  <% @bucket_item.errors.full_messages.each do |message| %>
+<% if @activities.errors.any? %>
+  <% @activities.errors.full_messages.each do |message| %>
     <p>Errors:</p>
     <li> <%= message %> </li>
   <% end %>
