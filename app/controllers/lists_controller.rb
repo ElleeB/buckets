@@ -9,7 +9,11 @@ class ListsController < ApplicationController
   def create
     @list = List.create(list_params)
 
-    redirect_to activity_list_path(@list)
+    redirect_to activity_list_path(current_activity, @list)
+  end
+
+  def show
+    @list = List.find(params[:id])
   end
 
   private
