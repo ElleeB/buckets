@@ -4,5 +4,6 @@
 <%= form_for @list do |f| %>
   <%= f.label "Name your list" %>
   <%= f.text_field :name %>
+  <%= f.hidden_field :activity_id, :value => session[:activity_id] %>
   <%= f.submit %>
 <% end %>

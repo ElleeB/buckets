@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
     @activity.user = current_user
     if @activity.save
 
-      session[:activity_id] = @activity.id
+      # session[:activity_id] = @activity.id
       redirect_to activity_path(@activity)
     else
       render :new
@@ -35,6 +35,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    session[:activity_id] = current_activity.id
     current_activity
   end
 

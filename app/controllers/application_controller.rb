@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
    end
 
   def current_activity
-    # @activity = Activity.find(params[:id])
-    @activity ||= Activity.find(session[:activity_id])
+    @activity = Activity.find(params[:id])
   end
 end
