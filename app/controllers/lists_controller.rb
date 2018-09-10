@@ -7,12 +7,11 @@ class ListsController < ApplicationController
   def new
     # make sure user is the owner of the activity/list
     @list = List.new
+    @user = current_user
   end
 
   def create
-    @list = List.new(list_params)
-    @list.user_id = current_user.id
-    @list.save!
+    @list = List.create(list_params)
 
     redirect_to activity_list_path(@list.activity_id, @list)
   end
