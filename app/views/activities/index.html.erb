@@ -5,8 +5,8 @@
 <% if @activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
-  <% @activities.each do |item| %>
-    <li><%= link_to "#{item.title}", activity_path(item) %>
+  <% @activities.each do |activity| %>
+    <li><%= link_to "#{activity.title}", activity_path(activity.id) %>
   <% end %>
 <% end %>
 

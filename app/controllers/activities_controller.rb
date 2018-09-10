@@ -13,7 +13,6 @@ class ActivitiesController < ApplicationController
     @activity.user = current_user
     if @activity.save
 
-      # session[:activity_id] = @activity.id
       redirect_to activity_path(@activity)
     else
       render :new
@@ -21,11 +20,11 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    current_activity
+    @activity = Activity.find(params[:id])
   end
 
   def update
-    current_activity
+    @activity = Activity.find(params[:id])
     if @activity.update(activity_params)
 
       redirect_to activity_path(@activity)
@@ -35,8 +34,13 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    session[:activity_id] = current_activity.id
-    current_activity
+    # if current_user == current_activity.user
+    #   # session[:activity_id] = current_activity.id
+      @activity = Activity.find(params[:id])
+    #
+    # else
+    #   redirect_to '/'
+    # end
   end
 
   private

@@ -13,6 +13,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    # make sure user is the owner of the activity/list
     @list = List.find(params[:id])
   end
 
