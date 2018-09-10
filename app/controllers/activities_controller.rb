@@ -37,13 +37,9 @@ class ActivitiesController < ApplicationController
 
   def show
     # make sure user is the owner of the activity
-    # if current_user == current_activity.user
-    #   # session[:activity_id] = current_activity.id
+
       @activity = Activity.find(params[:id])
-    #
-    # else
-    #   redirect_to '/'
-    # end
+      @list = List.find_by(activity_id: params[:id])
   end
 
   private
