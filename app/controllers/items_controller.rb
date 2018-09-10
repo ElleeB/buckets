@@ -1,7 +1,4 @@
 class ItemsController < ApplicationController
-  belongs_to :list
-  belongs_to :user
-  belongs_to :activity
 
   def index
   end
