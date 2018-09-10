@@ -10,7 +10,9 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.create(list_params)
+    @list = List.new(list_params)
+    @list.user_id = current_user.id
+    @list.save!
 
     redirect_to activity_list_path(@list.activity_id, @list)
   end
@@ -23,6 +25,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :activity_id)
+    params.require(:list).permit(:name, :activity_id, :user_id)
   end
 end
