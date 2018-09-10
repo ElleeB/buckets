@@ -12,4 +12,8 @@ class User < ApplicationRecord
       item.countdown > 50
     end
   end
+
+  # def lists
+
+  # def items
 end

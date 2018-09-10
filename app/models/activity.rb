@@ -15,4 +15,6 @@ class Activity < ApplicationRecord
   end
 
   # create a past due method
+
+  # def items
 end
