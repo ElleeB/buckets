@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :lists
   end
 
-  resources :lists
+  resources :lists do
     resources :items
   end
 
