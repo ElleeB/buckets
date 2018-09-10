@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    # make sure user is the owner of the activity
     @activity = Activity.new
   end
 
@@ -20,6 +21,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    # make sure user is the owner of the activity
     @activity = Activity.find(params[:id])
   end
 
@@ -34,6 +36,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    # make sure user is the owner of the activity
     # if current_user == current_activity.user
     #   # session[:activity_id] = current_activity.id
       @activity = Activity.find(params[:id])
