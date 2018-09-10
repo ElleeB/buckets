@@ -13,4 +13,6 @@ class Activity < ApplicationRecord
     dates_difference = (self.due_date.to_time) - (Date.today.to_time)
     (dates_difference/day_in_seconds).to_i
   end
+
+  # create a past due method
 end

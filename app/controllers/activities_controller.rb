@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    # make sure user is the owner of the activity
     @activity = Activity.new
   end
 
@@ -20,11 +21,12 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    current_activity
+    # make sure user is the owner of the activity
+    @activity = Activity.find(params[:id])
   end
 
   def update
-    current_activity
+    @activity = Activity.find(params[:id])
     if @activity.update(activity_params)
 
       redirect_to activity_path(@activity)
@@ -34,11 +36,14 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    current_activity
+    # make sure user is the owner of the activity
+
+      @activity = Activity.find(params[:id])
+      @list = List.find_by(activity_id: params[:id])
   end
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :description, :due_date, :user)
+    params.require(:activity).permit(:title, :description, :due_date, :user_id)
   end
 end

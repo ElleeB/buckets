@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
      !!session[:user_id]
    end
 
-  def current_activity
-    @activity = Activity.find(params[:id])
-  end
+  # def current_activity
+  #   if session[:activity_id]
+  #     @activity = Activity.find(session[:activity_id])
+  #   else
+  #     @activity ||= Activity.find(params[:id])
+  #   end
+  # end
 end

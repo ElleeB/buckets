@@ -4,8 +4,8 @@
 
 <h2> Upcoming Drop Deadlines! </h2>
 
-<% @user.upcoming_bucket_item_deadlines.each do |item| %>
-  <p><h3><%= "--> #{item.title} | Due: #{item.formatted_date}"%></p></h3>
+<% @user.upcoming_activity_deadlines.each do |activity| %>
+  <p><h3><%= "--> #{activity.title} | Due: #{activity.formatted_date}"%></p></h3>
 <% end %>
 <hr>
 
@@ -14,7 +14,7 @@
 <% end %>
 <hr>
 
-<p><%= link_to 'See My Drops', '/bucket_items' %></p>
-<p><%= link_to 'Add A Drop to My Bucket', '/bucket_items/new' %></p>
+<p><%= link_to 'See My Drops', user_activities_path(@user) %></p>
+<p><%= link_to 'Add A Drop to My Bucket', new_user_activity_path(@user) %></p>
 <p><%= link_to 'My Account', '/account' %></p>
 <p><%= link_to 'Log Out', '/logout' %></p>
