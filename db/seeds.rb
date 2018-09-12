@@ -73,3 +73,93 @@ Activity.create(
   description: "This wasn't how it was supposed to happen. Now I need to find a way out of this shit",
   due_date: DateTime.strptime('10/4/2018', '%m/%d/%Y')
   )
+
+List.create(
+  name: "list 1",
+  activity_id: "1"
+)
+
+List.create(
+  name: "list 2",
+  activity_id: "2"
+)
+
+List.create(
+  name: "list 3",
+  activity_id: "3"
+)
+
+List.create(
+  name: "list 4",
+  activity_id: "4"
+)
+
+List.create(
+  name: "list 5",
+  activity_id: "5"
+)
+
+List.create(
+  name: "list 6",
+  activity_id: "6"
+)
+
+Item.create(
+  name: "item 1",
+  list_id: "1"
+)
+
+Item.create(
+  name: "item 2",
+  list_id: "1"
+)
+
+Item.create(
+  name: "item 1",
+  list_id: 2
+)
+
+Item.create(
+  name: "item 2",
+  list_id: "2"
+)
+
+Item.create(
+  name: "item 1",
+  list_id: "3"
+)
+
+Item.create(
+  name: "item 2",
+  list_id: "3"
+)
+
+Item.create(
+  name: "item 1",
+  list_id: "4"
+)
+
+Item.create(
+  name: "item 2",
+  list_id: "4"
+)
+
+Item.create(
+  name: "item 1",
+  list_id: "5"
+)
+
+Item.create(
+  name: "item 2",
+  list_id: "5"
+)
+
+Item.create(
+  name: "item 1",
+  list_id: "6"
+)
+
+Item.create(
+  name: "item 2",
+  list_id: "6"
+)
