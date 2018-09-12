@@ -26,11 +26,13 @@ ActiveRecord::Schema.define(version: 2018_09_10_013833) do
     t.string "name"
     t.integer "list_id"
     t.integer "user_id"
+    t.integer "activity_id"
     t.boolean "complete", default: false
   end
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
     t.integer "activity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

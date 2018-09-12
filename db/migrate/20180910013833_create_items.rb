@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :list_id
       t.integer :user_id
+      t.integer :activity_id
       t.boolean :complete, default: false
     end
   end
