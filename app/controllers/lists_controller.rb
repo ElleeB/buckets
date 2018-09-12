@@ -20,7 +20,7 @@ class ListsController < ApplicationController
   def show
     # make sure user is the owner of the activity/list
     @list = List.find(params[:id])
-    @activity = @list.activity
+    # @activity = @list.activity
   end
 
   def update

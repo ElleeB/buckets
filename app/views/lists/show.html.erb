@@ -8,8 +8,7 @@
 <hr>
 <%= form_for @list do |f| %>
   <% @list.items.each do |item| %>
-    <p><%= check_box_tag :complete %> <%= item.name %> </p>
-    <%= hidden_field_tag 'item_id', item.id %>
+    <p><%= check_box_tag 'complete[item_ids][]', item.id %> <%= item.name %> </p>
   <% end %>
   <%= f.submit %>
 <% end %>
