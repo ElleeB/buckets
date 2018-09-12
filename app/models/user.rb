@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :activities
   has_many :lists
+  has_many :items
 
   validates :name, presence: true
   validates :username, uniqueness: true
@@ -13,4 +14,8 @@ class User < ApplicationRecord
       item.countdown > 50
     end
   end
+
+  # def lists
+
+  # def items
 end

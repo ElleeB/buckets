@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create]
   resources :lists
+  resources :items
 
   resources :users do
     resources :activities
@@ -12,6 +13,10 @@ Rails.application.routes.draw do
 
   resources :activities do
     resources :lists
+  end
+
+  resources :lists do
+    resources :items
   end
 
   # :user login => sessions#new | signup => users#new | or omniauth route

@@ -1,5 +1,7 @@
 class Activity < ApplicationRecord
   belongs_to :user
+  has_one :list
+  has_many :items
 
   validates :title, presence: true
   validates :description, presence: true
@@ -15,4 +17,6 @@ class Activity < ApplicationRecord
   end
 
   # create a past due method
+
+  # def items
 end
