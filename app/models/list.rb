@@ -3,5 +3,5 @@ class List < ApplicationRecord
   belongs_to :user
   has_many :items
 
-  # def user
+  accepts_nested_attributes_for :items
 end

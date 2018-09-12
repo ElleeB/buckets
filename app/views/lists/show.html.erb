@@ -1,5 +1,26 @@
-<h3> <%= @list.name %> </h3>
 
-<!-- add item to list -->
+
+<!-- make this a list of all the lists -->
+
+<!-- place\ the following code in the individual list show page-->
+<h3> <%= @list.name.titlecase %> </h3>
+
+<hr>
+<%= form_for @list do |f| %>
+  <% @list.items.each do |item| %>
+    <p><%= check_box_tag :complete %> <%= item.name %> </p>
+    <%= hidden_field_tag 'item_id', item.id %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
+<h4>Add and item to your to-do list!</h4>
+<%= form_for @list do |f| %>
+  <%= fields_for :items do |f| %>
+    <%= f.label "Item Name" %>
+    <%= f.text_field :name %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
 <!-- back to activity -->
 <!-- back to user page -->

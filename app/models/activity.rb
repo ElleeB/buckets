@@ -1,6 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :user
-  has_one :list
+  has_many :lists
   has_many :items
 
   validates :title, presence: true
