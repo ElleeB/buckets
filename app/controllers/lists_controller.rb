@@ -24,15 +24,20 @@ class ListsController < ApplicationController
   end
 
   def update
-    raise params.inspect
-    if params[:complete]
-      @item = Item.find(params[:item_id])
+    @list = List.find(params[:id])
+    if !params[:complete].nil?
+      item_ids = params[:complete][:item_ids]
+      item_ids.each do |id|
+        @item = Item.find(id)
+        @item.update!(complete: true)
+      end
+
+      redirect_to list_path(@list)
       # something like item update complete = params[:complete]
       # @item.update(complete: )
 
     else
-      @list = List.find(params[:id])
-      @item = Item.new(:complete => params[:items][:complete], :name => params[:items][:name])
+      @item = Item.new(:name => params[:items][:name])
       @item.user_id = current_user.id
       @item.list_id = @list.id
       @item.save!
