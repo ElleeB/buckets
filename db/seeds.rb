@@ -82,30 +82,66 @@ List.create(
 
 List.create(
   name: "to-do list 2",
+  activity_id: 1,
+  user_id: 2
+)
+
+List.create(
+  name: "to-do list 1",
   activity_id: 2,
   user_id: 2
 )
 
 List.create(
-  name: "to-do list 3",
+  name: "to-do list 2",
+  activity_id: 2,
+  user_id: 2
+)
+
+List.create(
+  name: "to-do list 1",
   activity_id: 3,
   user_id: 3
 )
 
 List.create(
-  name: "to-do list 4",
+  name: "to-do list 2",
+  activity_id: 3,
+  user_id: 3
+)
+
+List.create(
+  name: "to-do list 1",
   activity_id: 4,
   user_id: 3
 )
 
 List.create(
-  name: "to-do list 5",
+  name: "to-do list 2",
+  activity_id: 4,
+  user_id: 3
+)
+
+List.create(
+  name: "to-do list 1",
   activity_id: 5,
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 6",
+  name: "to-do list 2",
+  activity_id: 5,
+  user_id: 1
+)
+
+List.create(
+  name: "to-do list 1",
+  activity_id: 6,
+  user_id: 1
+)
+
+List.create(
+  name: "to-do list 2",
   activity_id: 6,
   user_id: 1
 )
@@ -125,6 +161,20 @@ Item.create(
 )
 
 Item.create(
+  name: "item 3",
+  list_id: 1,
+  user_id: 2,
+  activity_id: 1
+)
+
+Item.create(
+  name: "item 4",
+  list_id: 1,
+  user_id: 2,
+  activity_id: 1
+)
+
+Item.create(
   name: "item 1",
   list_id: 2,
   user_id: 2,
@@ -133,6 +183,13 @@ Item.create(
 
 Item.create(
   name: "item 2",
+  list_id: 2,
+  user_id: 2,
+  activity_id: 2
+)
+
+Item.create(
+  name: "item 3",
   list_id: 2,
   user_id: 2,
   activity_id: 2
@@ -147,6 +204,27 @@ Item.create(
 
 Item.create(
   name: "item 2",
+  list_id: 3,
+  user_id: 3,
+  activity_id: 3
+)
+
+Item.create(
+  name: "item 3",
+  list_id: 3,
+  user_id: 3,
+  activity_id: 3
+)
+
+Item.create(
+  name: "item 3",
+  list_id: 3,
+  user_id: 3,
+  activity_id: 3
+)
+
+Item.create(
+  name: "item 5",
   list_id: 3,
   user_id: 3,
   activity_id: 3
@@ -161,6 +239,13 @@ Item.create(
 
 Item.create(
   name: "item 2",
+  list_id: 4,
+  user_id: 3,
+  activity_id: 4
+)
+
+Item.create(
+  name: "item 3",
   list_id: 4,
   user_id: 3,
   activity_id: 4
@@ -189,6 +274,13 @@ Item.create(
 
 Item.create(
   name: "item 2",
+  list_id: 6,
+  user_id: 1,
+  activity_id: 6
+)
+
+Item.create(
+  name: "item 3",
   list_id: 6,
   user_id: 1,
   activity_id: 6
