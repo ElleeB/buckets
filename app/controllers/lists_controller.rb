@@ -20,7 +20,6 @@ class ListsController < ApplicationController
   def show
     # make sure user is the owner of the activity/list
     @list = List.find(params[:id])
-    # @activity = @list.activity
   end
 
   def update
@@ -33,9 +32,6 @@ class ListsController < ApplicationController
       end
 
       redirect_to list_path(@list)
-      # something like item update complete = params[:complete]
-      # @item.update(complete: )
-
     else
       @item = Item.new(:name => params[:items][:name])
       @item.user_id = current_user.id
