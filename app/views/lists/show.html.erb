@@ -1,19 +1,20 @@
 <h3> <%= @list.name.titlecase %> </h3>
 
 <hr>
-<!-- do this only if there are any items that are complete == false-->
-<%= form_for @list do |f| %>
-  <% @list.items.each do |item| %>
-    <% if item.complete == false %>
-      <h4><p><%= check_box_tag 'complete[item_ids][]', item.id %> <%= item.name %> </p></h4>
+<!-- get this logic out of here! -->
+<% if @list.items.any? {|item| item.complete == false} %>
+  <%= form_for @list do |f| %>
+    <% @list.items.each do |item| %>
+      <% if item.complete == false %>
+        <h4><p><%= check_box_tag 'complete[item_ids][]', item.id %> <%= item.name.titlecase %> </p></h4>
+      <% end %>
     <% end %>
+    <%= f.submit %>
   <% end %>
-  <%= f.submit %>
+  <hr>
 <% end %>
 
 <!-- option to see accomplished items (with checkbox checked) -->
-
-<hr>
 <h4>Add and item to your to-do list!</h4>
 <%= form_for @list do |f| %>
   <%= fields_for :items do |f| %>

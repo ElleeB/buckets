@@ -75,37 +75,37 @@ Activity.create(
   )
 
 List.create(
-  name: "list 1",
+  name: "to-do list 1",
   activity_id: 1,
   user_id: 2
 )
 
 List.create(
-  name: "list 2",
+  name: "to-do list 2",
   activity_id: 2,
   user_id: 2
 )
 
 List.create(
-  name: "list 3",
+  name: "to-do list 3",
   activity_id: 3,
   user_id: 3
 )
 
 List.create(
-  name: "list 4",
+  name: "to-do list 4",
   activity_id: 4,
   user_id: 3
 )
 
 List.create(
-  name: "list 5",
+  name: "to-do list 5",
   activity_id: 5,
   user_id: 1
 )
 
 List.create(
-  name: "list 6",
+  name: "to-do list 6",
   activity_id: 6,
   user_id: 1
 )
