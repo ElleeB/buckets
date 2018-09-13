@@ -2,7 +2,7 @@
 
 <hr>
 <!-- get this logic out of here! -->
-<% if @list.items.any? {|item| item.complete == false} %>
+<% if incomplete_items? %>
   <%= form_for @list do |f| %>
     <% @list.items.each do |item| %>
       <% if item.complete == false %>
