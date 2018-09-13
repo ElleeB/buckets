@@ -1,6 +1,7 @@
 <h3> <%= @list.name.titlecase %> </h3>
 
 <hr>
+<!-- do this only if there are any items that are complete == false-->
 <%= form_for @list do |f| %>
   <% @list.items.each do |item| %>
     <% if item.complete == false %>
@@ -9,6 +10,8 @@
   <% end %>
   <%= f.submit %>
 <% end %>
+
+<!-- option to see accomplished items (with checkbox checked) -->
 
 <hr>
 <h4>Add and item to your to-do list!</h4>
@@ -23,3 +26,5 @@
 <hr>
 <p><%= link_to 'Back to my drop', activity_path(@list.activity_id) %></p>
 <p><%= link_to 'Back to my home page', user_path(@list.user_id) %></p>
+
+<!-- option to delete list - maybe include 'are you sure?' -->
