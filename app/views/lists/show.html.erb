@@ -2,20 +2,12 @@
 
 <hr>
 <!-- get this logic out of here! -->
-<% if incomplete_items? %>
-  <%= form_for @list do |f| %>
-    <% @list.items.each do |item| %>
-      <% if item.complete == false %>
-        <h4><p><%= check_box_tag 'complete[item_ids][]', item.id %> <%= item.name.titlecase %> </p></h4>
-      <% end %>
-    <% end %>
-    <%= f.submit %>
-  <% end %>
-  <hr>
-<% end %>
+<%= display_incomplete_items(@list) %>
+
+<%= raw(@checkbox).sanitize %>
 
 <!-- option to see accomplished items (with checkbox checked) -->
-<h4>Add and item to your to-do list!</h4>
+<h4>Add an item to your to-do list!</h4>
 <%= form_for @list do |f| %>
   <%= fields_for :items do |f| %>
     <%= f.label "Item Name" %>

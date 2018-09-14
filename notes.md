@@ -9,3 +9,31 @@
   <% end %>
   <%= f.submit %>
 <% end %>
+
+
+
+# <% @list.items.each do |item| %>
+#   <% if item.complete == false %>
+#     <h4><p><%= check_box_tag 'complete[item_ids][]', item.id %> <%= item.name.titlecase %> </p></h4>
+#   <% end %>
+# <% end %>
+# <%= f.submit %>
+# <% end %>
+# <hr>
+
+# def incomplete_items?
+#   @list.items.any? {|item| item.complete == false}
+# end
+# end
+#
+#
+# def display_incomplete_items(list)
+# form_for list do |f|
+#   list.items.each do |item|
+#     if item.complete == false
+#       yield
+#       # raw("<h4><p>" "#{check_box_tag 'complete[item_ids][]' item.id} #{item.name.titlecase}" "</p></h4>")
+#     end
+#   end
+# end
+# end
