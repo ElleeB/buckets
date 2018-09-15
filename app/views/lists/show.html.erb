@@ -1,7 +1,6 @@
 <h3> <%= @list.name.titlecase %> </h3>
 
 <hr>
-
 <% if incomplete_items? %>
   <%= form_for @list do |f| %>
     <% display_incomplete_items(@list).each do |html| %>
@@ -12,9 +11,8 @@
   <hr>
 <% end %>
 
-
-
 <!-- option to see accomplished items (with checkbox checked) -->
+
 <h4>Add an item to your to-do list!</h4>
 <%= form_for @list do |f| %>
   <%= fields_for :items do |f| %>

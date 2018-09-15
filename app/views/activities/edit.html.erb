@@ -1,25 +1,5 @@
 <h3>EDIT YOUR BUCKET ITEM HERE!</h3>
-<hr>
 
-<!-- create partial for this template -->
+<%= render partial: "form" %>
 
-<%= form_for @activity do |f| %>
-
-<% if @activity.errors.any? %>
-  <% @activity.errors.full_messages.each do |message| %>
-    <p>Errors:</p>
-    <li> <%= message %> </li>
-  <% end %>
-<% end %>
-
-  <p><%= f.label "Title Your Drop" %></p>
-  <%= f.text_field :title %>
-  <p><%= f.label "Drescribe Your Drop" %></p>
-  <%= f.text_area :description %>
-  <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
-  <%= f.date_field :due_date %>
-  <p><%= f.submit %></p>
-<% end %>
-
-<hr>
 <%= link_to "Cancel", activity_path(@activity) %>
