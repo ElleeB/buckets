@@ -2,10 +2,17 @@
 
 <hr>
 
+<% if incomplete_items? %>
   <%= form_for @list do |f| %>
-    <%= display_incomplete_items(@list).each {|html| (html)} %>
-    <% f.submit %>
+    <% display_incomplete_items(@list).each do |html| %>
+      <%= raw(html) %>
+    <% end %>
+    <%= f.submit %>
   <% end %>
+  <hr>
+<% end %>
+
+
 
 <!-- option to see accomplished items (with checkbox checked) -->
 <h4>Add an item to your to-do list!</h4>
