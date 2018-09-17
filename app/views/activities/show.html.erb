@@ -10,7 +10,7 @@
 <%= link_to 'Edit This Drop', edit_activity_path(@activity) %> :
 
 <% if !@list.nil? %>
-  <%= link_to 'View my To-Do Lists', activity_lists_path(@list) %>
+  <%= link_to 'View my To-Do Lists', activity_lists_path(@activity) %>
 <% else %>
   <%= link_to 'Add a To-Do List', new_activity_list_path(@activity, @list) %>
 <% end %>

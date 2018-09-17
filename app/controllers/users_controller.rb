@@ -4,9 +4,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.valid?
-      session[:@user_id] = @user.id
+    if @user = User.create(user_params)
+      session[:user_id] = @user.id
 
       redirect_to user_path(@user)
     else
@@ -18,11 +17,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id].to_i == session[:user_id]
-      @user = current_user
-    else
-      redirect_to '/'
-    end
+    # if params[:id].to_i == session[:user_id]
+    # raise params.inspect
+      @user = User.find(params[:id])
+
+      redirect_to user_path(@user)
+    # else
+    #   redirect_to '/'
+    # end
   end
 
   def account
