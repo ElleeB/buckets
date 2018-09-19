@@ -1,0 +1,40 @@
+<!-- how to stop @user showing up blank if I force an error by not entering name? -->
+<h3><%= @user.name.titlecase %>, Edit your Account details here</h3>
+
+<hr>
+<%= form_for @user do |f| %>
+
+<% if @messages %>
+  <%= render "print_messages" %>
+<% end %>
+
+<!-- name -->
+  <p><%= f.label 'Name' %></p>
+  <%= f.text_field :name %>
+<!-- username -->
+  <p><%= f.label 'Username' %></p>
+  <%= f.text_field :username %>
+<!-- email -->
+  <p><%= f.label 'Email' %></p>
+  <%= f.text_field :email %>
+<!-- image -->
+<!-- Carrierwave Gem?  -->
+<!-- how to allow someone to upload any image? -->
+<!-- error reads: The asset "" is not present in the asset pipeline -->
+  <!-- <p><%= f.label 'Image' %></p>
+  <%= f.file_field :image %> -->
+<!-- about -->
+  <p><%= f.label 'About' %></p>
+  <%= f.text_area :about %>
+<!-- password -->
+  <p><%= f.label 'Password' %></p>
+  <%= f.password_field :password, value: :password %>
+<!-- password_confirmation -->
+  <p><%= f.label 'Confirm Password' %></p>
+  <%= f.password_field :password_confirmation, value: :password %>
+
+  <p><%= f.submit 'Update Account Details' %></p>
+<% end %>
+
+<hr>
+<p><%= link_to 'Cancel', user_path(@user) %></p>

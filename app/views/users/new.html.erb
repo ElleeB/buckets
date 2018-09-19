@@ -5,19 +5,7 @@
   <%= render "print_messages" %>
 <% end %>
 
-<%= form_for @user do |f| %>
-  <p><%= f.label "Name" %></p>
-  <%= f.text_field :name %>
-  <p><%= f.label "Username" %></p>
-  <%= f.text_field :username %>
-  <p><%= f.label "Email" %></p>
-  <%= f.text_field :email %>
-  <p><%= f.label "Password (6-20 characters)" %></p>
-  <%= f.password_field :password %>
-  <p><%= f.label "Re-Enter Password" %></p>
-  <%= f.password_field :password_confirmation %>
-  <p><%= f.submit %></p>
-<% end %>
-
+<%= render partial: "form",
+           locals: {submit_text: "create account" } %>
 <hr>
 <%= link_to "Back", :back %>
