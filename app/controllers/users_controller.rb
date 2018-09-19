@@ -20,8 +20,6 @@ class UsersController < ApplicationController
     # if params[:id].to_i == session[:user_id]
     # raise params.inspect
       @user = User.find(params[:id])
-
-      redirect_to user_path(@user)
     # else
     #   redirect_to '/'
     # end
