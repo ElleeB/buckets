@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # raise params.inspect
     # if used email and password to log in
-    if params[:user][:email].present?
+    if !params[:user].nil?
       if @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
         session[:user_id] = @user.id
 
