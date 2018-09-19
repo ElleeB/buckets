@@ -17,12 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    # if params[:id].to_i == session[:user_id]
-    # raise params.inspect
+    if params[:id].to_i == session[:user_id]
       @user = User.find(params[:id])
-    # else
-    #   redirect_to '/'
-    # end
+    else
+      redirect_to '/'
+    end
   end
 
   def account
