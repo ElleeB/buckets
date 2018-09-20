@@ -1,5 +1,9 @@
-<h3>Hello, <%= @user.name %>!</h3>
-<h2>Welcome to your bucket</h2>
+<h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
+
+<hr>
+<%= link_to 'Add A Drop to My Bucket', new_user_activity_path(@user) %> :
+<%= link_to 'My Account', '/account' %> :
+<%= link_to 'Log Out', '/logout' %>
 
 <hr>
 <% if @user.image %>
@@ -14,7 +18,8 @@
 <% end %>
 
 <hr>
-<h3> My Drops </h3>
+<hr>
+<h2> My Drops </h2>
 <!-- negates need for activities/show -->
 <% if @user.activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
@@ -23,7 +28,3 @@
     <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
   <% end %>
 <% end %>
-
-<%= link_to 'Add A Drop to My Bucket', new_user_activity_path(@user) %> :
-<%= link_to 'My Account', '/account' %> :
-<%= link_to 'Log Out', '/logout' %>
