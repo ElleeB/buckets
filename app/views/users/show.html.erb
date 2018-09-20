@@ -1,20 +1,29 @@
 <h3>Hello, <%= @user.name %>!</h3>
 <h2>Welcome to your bucket</h2>
+
 <hr>
-
-<h3> Upcoming Drop Deadlines </h3>
-
-<% @user.upcoming_activity_deadlines.each do |activity| %>
-  <h4><%= "#{activity.title} | Due: #{activity.formatted_date}"%></h4>
-<% end %>
-<hr>
-
 <% if @user.image %>
   <%= image_tag(@user.image) %>
 <% end %>
-<hr>
 
-<%= link_to 'See My Drops', user_activities_path(@user) %> :
+<hr>
+<h3> Upcoming Drop Deadlines </h3>
+
+<% @user.upcoming_activity_deadlines.each do |activity| %>
+  <p><%= "#{activity.title} | Due: #{activity.formatted_date}" %></p>
+<% end %>
+
+<hr>
+<h3> My Drops </h3>
+<!-- negates need for activities/show -->
+<% if @user.activities.empty? %>
+  <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
+<% else %>
+  <% @user.activities.each do |activity| %>
+    <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
+  <% end %>
+<% end %>
+
 <%= link_to 'Add A Drop to My Bucket', new_user_activity_path(@user) %> :
 <%= link_to 'My Account', '/account' %> :
 <%= link_to 'Log Out', '/logout' %>

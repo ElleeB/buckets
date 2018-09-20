@@ -10,8 +10,8 @@ class User < ApplicationRecord
   validates :password, length: { :in => 6..20}
 
   def upcoming_activity_deadlines
-    self.activities.reject do |item|
-      item.countdown > 50
+    self.activities.reject do |activity|
+      activity.countdown > 50
     end
   end
 end
