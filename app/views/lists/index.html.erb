@@ -1,9 +1,1 @@
-<h2> <%= @activity.title %> </h2>
-
-<% @activity.lists.each do |list| %>
-  <h3><p><%= link_to list.name.titlecase, activity_list_path(@activity, list) %> </p></h3>
-<% end %>
-
-<hr>
-<%= link_to 'Back', activity_path(@activity) %> :
-<%= link_to 'Back to my home page', user_path(@activity.user_id) %>
+<!-- user can view ALL of their to-do lists organized by each of their bucket drops -->

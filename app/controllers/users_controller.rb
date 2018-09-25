@@ -35,11 +35,29 @@ class UsersController < ApplicationController
   end
 
   def update
-    ## Need to lock this down so no one other than logged in can access
+    # raise params.inspect
+    # error: param is missing or the value is empty: user
+    # Need to lock this down so no one other than logged in can access
     @user = current_user
-    if @user.update(user_params)
 
-      redirect_to user_path(@user)
+    ###
+    if params[:activities][:title]
+      @activity = Activity.new(title: params[:activities][:title])
+      @activity.user_id = @user.id
+      @activity.description = params[:activities][:description]
+      @activity.due_date = params[:activities][:due_date]
+
+      if @activity.save
+
+        redirect_to user_path(@user)
+      else
+        redirect_to user_path(@user)
+      end
+    ###
+
+    # if @user.update(user_params)
+    #
+    #   redirect_to user_path(@user)
     else
       # raise @user.inspect => includes invalid attributes! Ex. name: ""
       # this is a problem because the form field placeholder text is incorrect
@@ -54,6 +72,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :image, :about, :password, :password_confirmation)
+    params.require(:user).permit(:name, :username, :email, :image, :about, :password, :password_confirmation,
+                                  activities: [:title, :description, :due_date, :user_id])
   end
 end
