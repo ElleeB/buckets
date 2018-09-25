@@ -8,8 +8,8 @@ User activerecord authentication errors instead of flash notice? Why do I feel I
   + how to do this if first time in DB? Like a tutorial?
 - Drop . title within for context? headings labeling drops . description
 - Make description of drop optional? enter WHY important...maybe checklist + text field
-- To-do list show within drop? Adding items should be on drops/show
-  + what would it look like to be able to add a drop ON user/show page?
 - Password complexity
 - Share?
 - User/Show . if no drops take away upcoming deadlines and recently added drops
+
+- Partial for activity submit = "Activity" instead of "Drop"
