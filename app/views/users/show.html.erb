@@ -35,12 +35,12 @@
 
 <%= form_for @user do |f| %>
   <%= fields_for :activities do |ff| %>
-    <%= ff.label "Drop Title" %>
+    <p><%= ff.label "Drop Title" %></p>
     <%= ff.text_field :title %>
-    <%= ff.label "Drop Description" %>
+    <p><%= ff.label "Drop Description" %></p>
     <%= ff.text_area :description %>
-    <%= ff.label "Due Date" %>
+    <p><%= ff.label "Due Date" %></p>
     <%= ff.date_field :due_date %>
   <% end %>
-  <%= f.submit %>
+  <p><%= f.submit "Add Drop to Bucket" %></p>
 <% end %>
