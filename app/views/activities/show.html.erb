@@ -5,16 +5,17 @@
 <h3><%= @activity.formatted_date %></h3>
 
 <hr>
-<%= link_to 'Go Back to My Drops', activities_path %> :
-<%= link_to 'Go Back to My User Page', user_path(@activity.user) %> :
-<%= link_to 'Edit This Drop', edit_activity_path(@activity) %> :
-
-<% if !@list.nil? %>
-  <%= link_to 'View my To-Do Lists', activity_lists_path(@activity) %>
-<% else %>
-  <%= link_to 'Add a To-Do List', new_activity_list_path(@activity, @list) %>
+<!-- see to-do lists -->
+<h2> Drop To-Dos </h2>
+<% @activity.lists.each do |list| %>
+  <h3><p><%= link_to list.name.titlecase, list_path(list) %></h3></p>
 <% end %>
-<br>
+<!-- add item to to-do list -->
+
+<hr>
+<%= link_to 'View All of My Drops', activities_path %> :
+<%= link_to 'Go Back to My User Page', user_path(@activity.user) %> :
+<%= link_to 'Edit This Drop', edit_activity_path(@activity) %>
 
 <hr>
 <h2><%= "#{@activity.countdown} days until your personal deadline!" %></h2>
