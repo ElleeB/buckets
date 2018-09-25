@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
 
       if @list.save
 
-        redirect_to activity_path(@activity)
+        redirect_to list_path(@list)
       else
         redirect_to activity_path(@activity)
       end
