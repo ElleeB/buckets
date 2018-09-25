@@ -36,15 +36,23 @@ class UsersController < ApplicationController
 
   def update
     # raise params.inspect
+    # error: param is missing or the value is empty: user
     # Need to lock this down so no one other than logged in can access
     @user = current_user
 
     ###
     if params[:activities][:title]
-      @activity = Activity.new(user_params)
-      @activity.user_id = @user
+      @activity = Activity.new(title: params[:activities][:title])
+      @activity.user_id = @user.id
+      @activity.description = params[:activities][:description]
+      @activity.due_date = params[:activities][:due_date]
 
-      redirect_to user_path(@user)
+      if @activity.save
+
+        redirect_to user_path(@user)
+      else
+        redirect_to user_path(@user)
+      end
     ###
 
     # if @user.update(user_params)
