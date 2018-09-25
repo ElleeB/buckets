@@ -13,3 +13,5 @@ User activerecord authentication errors instead of flash notice? Why do I feel I
 - User/Show . if no drops take away upcoming deadlines and recently added drops
 
 - Partial for activity submit = "Activity" instead of "Drop"
+
+- Need option to mark drop complete

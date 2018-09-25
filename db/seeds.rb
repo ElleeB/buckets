@@ -176,112 +176,126 @@ Item.create(
 
 Item.create(
   name: "item 1",
-  list_id: 2,
+  list_id: 3,
   user_id: 2,
   activity_id: 2
 )
 
 Item.create(
   name: "item 2",
-  list_id: 2,
+  list_id: 3,
   user_id: 2,
   activity_id: 2
 )
 
 Item.create(
   name: "item 3",
-  list_id: 2,
+  list_id: 3,
   user_id: 2,
   activity_id: 2
 )
 
 Item.create(
   name: "item 1",
-  list_id: 3,
+  list_id: 6,
   user_id: 3,
   activity_id: 3
 )
 
 Item.create(
   name: "item 2",
-  list_id: 3,
+  list_id: 6,
   user_id: 3,
   activity_id: 3
 )
 
 Item.create(
   name: "item 3",
-  list_id: 3,
+  list_id: 6,
   user_id: 3,
   activity_id: 3
 )
 
 Item.create(
-  name: "item 3",
-  list_id: 3,
+  name: "item 4",
+  list_id: 6,
   user_id: 3,
   activity_id: 3
 )
 
 Item.create(
   name: "item 5",
-  list_id: 3,
+  list_id: 6,
   user_id: 3,
   activity_id: 3
 )
 
 Item.create(
   name: "item 1",
-  list_id: 4,
+  list_id: 7,
   user_id: 3,
   activity_id: 4
 )
 
 Item.create(
   name: "item 2",
-  list_id: 4,
+  list_id: 7,
   user_id: 3,
   activity_id: 4
 )
 
 Item.create(
   name: "item 3",
-  list_id: 4,
+  list_id: 7,
   user_id: 3,
   activity_id: 4
 )
 
 Item.create(
   name: "item 1",
-  list_id: 5,
+  list_id: 9,
   user_id: 1,
   activity_id: 5
 )
 
 Item.create(
   name: "item 2",
-  list_id: 5,
+  list_id: 9,
+  user_id: 1,
+  activity_id: 5
+)
+
+Item.create(
+  name: "item 3",
+  list_id: 9,
   user_id: 1,
   activity_id: 5
 )
 
 Item.create(
   name: "item 1",
-  list_id: 6,
+  list_id: 10,
+  user_id: 1,
+  activity_id: 5
+)
+
+Item.create(
+  name: "item 1",
+  list_id: 11,
   user_id: 1,
   activity_id: 6
 )
 
 Item.create(
   name: "item 2",
-  list_id: 6,
+  list_id: 11,
   user_id: 1,
   activity_id: 6
 )
 
 Item.create(
-  name: "item 3",
-  list_id: 6,
+  name: "item 1",
+  list_id: 12,
   user_id: 1,
   activity_id: 6
 )
