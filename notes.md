@@ -37,3 +37,8 @@
 #   end
 # end
 # end
+
+
+<%= form_for @activity, :url => activity_path do |f| %>
+  <% f.submit "Mark Complete" %>
+<% end %>

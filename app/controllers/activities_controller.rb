@@ -26,7 +26,9 @@ class ActivitiesController < ApplicationController
   end
 
   def update
+    # make sure user is owner of activity
     @activity = Activity.find(params[:id])
+
     if params[:lists][:name]
       @list = List.new(name: params[:lists][:name])
       @list.activity_id = @activity.id
@@ -39,8 +41,6 @@ class ActivitiesController < ApplicationController
         redirect_to activity_path(@activity)
       end
 
-
-
     elsif @activity.update(activity_params)
 
       redirect_to activity_path(@activity)
@@ -51,7 +51,6 @@ class ActivitiesController < ApplicationController
 
   def show
     # make sure user is the owner of the activity!!!
-
       @activity = Activity.find(params[:id])
       @list = List.find_by(activity_id: params[:id])
   end

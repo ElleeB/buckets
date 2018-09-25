@@ -15,4 +15,8 @@ class Activity < ApplicationRecord
     dates_difference = (self.due_date.to_time) - (Date.today.to_time)
     (dates_difference/day_in_seconds).to_i
   end
+
+  def mark_complete
+    self.update(complete: true)
+  end
 end
