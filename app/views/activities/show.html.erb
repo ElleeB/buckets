@@ -4,14 +4,29 @@
 <h3><%= @activity.description %></h3>
 <h3><%= @activity.formatted_date %></h3>
 
-<hr>
 <!-- see to-do lists -->
 <!-- remove if no to-dos -->
-<h2> Drop To-Dos </h2>
-<% @activity.lists.each do |list| %>
-  <h3><p><%= link_to list.name.titlecase, list_path(list) %></h3></p>
+<% if !@activity.lists.empty? %>
+  <hr>
+  <h2> Drop To-Dos </h2>
+  <% @activity.lists.each do |list| %>
+    <h3><p><%= link_to list.name.titlecase, list_path(list) %></h3></p>
+  <% end %>
+<% else %>
+  <% nil %>
 <% end %>
-<!-- add item to to-do list -->
+
+<!-- add to-do list -->
+<h4>Add A To-Do List to Your Drop!</h4>
+
+<%= form_for @activity do |f| %>
+  <%= fields_for :lists do |ff| %>
+    <p><%= ff.label "List Name" %></p>
+    <%= ff.text_field :name %>
+  <% end %>
+  <p><%= f.submit "Add Drop to Bucket" %></p>
+<% end %>
+
 
 <hr>
 <%= link_to 'View All of My Drops', activities_path %> :

@@ -27,7 +27,21 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find(params[:id])
-    if @activity.update(activity_params)
+    if params[:lists][:name]
+      @list = List.new(name: params[:lists][:name])
+      @list.activity_id = @activity.id
+      @list.user_id = current_user.id
+
+      if @list.save
+
+        redirect_to activity_path(@activity)
+      else
+        redirect_to activity_path(@activity)
+      end
+
+
+
+    elsif @activity.update(activity_params)
 
       redirect_to activity_path(@activity)
     else
@@ -44,6 +58,7 @@ class ActivitiesController < ApplicationController
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :description, :due_date, :user_id)
+    params.require(:activity).permit(:title, :description, :due_date, :user_id,
+                                      lists: [:name])
   end
 end

@@ -55,9 +55,9 @@ class UsersController < ApplicationController
       end
     ###
 
-    # if @user.update(user_params)
-    #
-    #   redirect_to user_path(@user)
+    elsif @user.update(user_params)
+    
+      redirect_to user_path(@user)
     else
       # raise @user.inspect => includes invalid attributes! Ex. name: ""
       # this is a problem because the form field placeholder text is incorrect
