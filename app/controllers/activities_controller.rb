@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    # make sure user is the owner of the activity
+    # make sure user is the owner of the activity!!!
 
       @activity = Activity.find(params[:id])
       @list = List.find_by(activity_id: params[:id])

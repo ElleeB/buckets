@@ -30,3 +30,17 @@
     <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
   <% end %>
 <% end %>
+
+<h4>Add Drop to Your Bucket!</h4>
+
+<%= form_for @user do |f| %>
+  <%= fields_for :activities do |ff| %>
+    <%= ff.label "Drop Title" %>
+    <%= ff.text_field :title %>
+    <%= ff.label "Drop Description" %>
+    <%= ff.text_area :description %>
+    <%= ff.label "Due Date" %>
+    <%= ff.date_field :due_date %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

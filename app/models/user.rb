@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :activities
+  accepts_nested_attributes_for :activities
   has_many :lists
   has_many :items
 
