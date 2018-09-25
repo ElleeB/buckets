@@ -14,16 +14,18 @@
 <h3> Upcoming Drop Deadlines </h3>
 
 <% @user.upcoming_activity_deadlines.each do |activity| %>
-  <p><%= "#{activity.title} | Due: #{activity.formatted_date}" %></p>
+  <p><%= link_to "#{activity.title} | Due: #{activity.formatted_date}", activity_path(activity)  %></p>
 <% end %>
 
 <hr>
 <hr>
 <h2> My Drops </h2>
 <!-- negates need for activities/show -->
+<!-- if user has no drops -->
 <% if @user.activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
+<!-- list user's drops -->
   <% @user.activities.each do |activity| %>
     <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
   <% end %>
