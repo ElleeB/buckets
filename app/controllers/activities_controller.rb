@@ -28,15 +28,15 @@ class ActivitiesController < ApplicationController
   def update
     # make sure user is owner of activity
     @activity = Activity.find(params[:id])
-    # if check_box checked = update @activity.complete
-    if params[:activity]
+    # params[:activity][:complete] means checked :complete
+    if !params[:activity][:complete].nil?
       if params[:activity][:complete] == '1'
         @activity.update(complete: true)
         @user = current_user
 
         render 'users/show'
       end
-
+    #  if creating a new list associated with this activity
     elsif params[:lists]
       @list = List.new(name: params[:lists][:name])
       @list.activity_id = @activity.id
@@ -45,12 +45,15 @@ class ActivitiesController < ApplicationController
 
         redirect_to list_path(@list)
       else
+        # need to raise an error here
         redirect_to activity_path(@activity)
       end
-
+    # standard update from activity/edit form
     elsif @activity.update(activity_params)
+
       redirect_to activity_path(@activity)
     else
+      # error in standard edit-update - need to raise error
       render :edit
     end
   end
