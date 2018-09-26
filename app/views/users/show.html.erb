@@ -1,9 +1,9 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
-<!-- reduce the logic in this view!! -->
+<!-- ### reduce the logic in this view!! ### -->
 
-<!-- show if incomplete drops or upcoming_activity_deadlines -->
+<!-- show if incomplete drops or upcoming_activities -->
 <% if @user.activities.any? { |activity| activity.complete == false} &&
-  @user.upcoming_activity_deadlines.empty? == false %>
+  @user.upcoming_activities.empty? == false %>
 
   <hr>
   <h3> Upcoming Drop Deadlines </h3>
@@ -13,6 +13,7 @@
   <% end %>
 <% end %>
 
+<!-- if user has an image, display -->
 <% if @user.image %>
   <hr>
   <%= image_tag(@user.image) %>
