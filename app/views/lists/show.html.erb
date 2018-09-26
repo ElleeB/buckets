@@ -1,5 +1,7 @@
 <h3> <%= @list.name.titlecase %> </h3>
 
+<!-- reduce the logic in this view!! -->
+
 <hr>
 <% if incomplete_items? %>
   <%= form_for @list do |f| %>

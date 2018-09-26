@@ -2,6 +2,7 @@
 
 <hr>
 <h3> Upcoming Drop Deadlines </h3>
+<!-- reduce the logic in this view!! -->
 
 <% @user.upcoming_activity_deadlines.each do |activity| %>
   <p><%= link_to "#{activity.title} | Due: #{activity.formatted_date}", activity_path(activity)  %></p>
@@ -19,7 +20,6 @@
 <% if @user.activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
-<!-- reduce the logic here -->
 <!-- list user's incomplete drops -->
   <% @user.activities.each do |activity| %>
     <% if activity.complete == false %>
