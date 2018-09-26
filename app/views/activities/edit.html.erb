@@ -2,4 +2,5 @@
 
 <%= render partial: "form" %>
 
-<%= link_to "Cancel", activity_path(@activity) %>
+<p><%= link_to "Cancel", activity_path(@activity) %></p>
+<p><%= link_to "Delete This Drop", "/activity/#{@activity.id}/delete" %></p>

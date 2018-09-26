@@ -42,7 +42,7 @@ class ActivitiesController < ApplicationController
       @list.activity_id = @activity.id
       @list.user_id = current_user.id
       if @list.save
-        
+
         redirect_to list_path(@list)
       else
         redirect_to activity_path(@activity)
@@ -59,6 +59,13 @@ class ActivitiesController < ApplicationController
     # make sure user is the owner of the activity!!!
       @activity = Activity.find(params[:id])
       @list = List.find_by(activity_id: params[:id])
+  end
+
+  def destroy
+    @activity = Activity.find(params[:id])
+    @activity.delete
+
+    redirect_to user_path(current_user.id)
   end
 
   private
