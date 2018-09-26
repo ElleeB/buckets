@@ -28,28 +28,27 @@ class ActivitiesController < ApplicationController
   def update
     # make sure user is owner of activity
     @activity = Activity.find(params[:id])
-
     # if check_box checked = update @activity.complete
-    if params[:activity][:complete] == '1'
-      @activity.update(complete: true)
-      @user = current_user
+    if params[:activity]
+      if params[:activity][:complete] == '1'
+        @activity.update(complete: true)
+        @user = current_user
 
-      render 'users/show'
+        render 'users/show'
+      end
 
     elsif params[:lists]
       @list = List.new(name: params[:lists][:name])
       @list.activity_id = @activity.id
       @list.user_id = current_user.id
-
       if @list.save
-
+        
         redirect_to list_path(@list)
       else
         redirect_to activity_path(@activity)
       end
 
     elsif @activity.update(activity_params)
-
       redirect_to activity_path(@activity)
     else
       render :edit
