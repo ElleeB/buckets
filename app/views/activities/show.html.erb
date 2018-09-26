@@ -6,18 +6,11 @@
 
 <hr>
 <!-- if past due -->
-<% if @activity.countdown < 0 %>
-  <h3> This activity is past due! </h3>
-<% else %>
-  <h3><%= "#{@activity.countdown} days until this drop is due!" %></h3>
-<% end %>
+<%= render 'past_due' %>
 
 <hr>
-<!-- mark complete -->
-<%= form_for @activity do |f| %>
-  <%= f.check_box :complete, value: @activity.complete %> Mark Complete
-  <%= f.submit 'Update' %>
-<% end %>
+<!-- mark activity complete -->
+<%= render 'mark_complete' %>
 
 <!-- <hr> error here! to-do lists are showing up even if none created for the user/activity -->
 <!-- if activity has to-do lists -->

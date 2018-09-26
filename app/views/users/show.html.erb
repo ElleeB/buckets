@@ -1,7 +1,6 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 <!-- ### reduce the logic in this view!! ### -->
 
-<!-- #1 -->
 <!-- show if incomplete drops or upcoming_activities -->
 <%= render 'list_activities' %>
 
@@ -11,10 +10,8 @@
   <%= image_tag(@user.image) %>
 <% end %>
 
-<!-- #2 -->
 <%= render 'my_drops' %>
 
-<!-- #3 -->
 <%= render 'add_drop' %>
 
 <hr>

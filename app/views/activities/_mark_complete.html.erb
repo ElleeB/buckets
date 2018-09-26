@@ -1,0 +1,4 @@
+<%= form_for @activity do |f| %>
+  <%= f.check_box :complete, value: @activity.complete %> Mark Complete
+  <%= f.submit 'Update' %>
+<% end %>

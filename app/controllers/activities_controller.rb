@@ -29,12 +29,12 @@ class ActivitiesController < ApplicationController
     # make sure user is owner of activity
     @activity = Activity.find(params[:id])
     # params[:activity][:complete] means checked :complete
-    if !params[:activity][:complete].nil?
+    if params[:activity][:complete]
       if params[:activity][:complete] == '1'
         @activity.update(complete: true)
         @user = current_user
 
-        render 'users/show'
+        redirect_to user_path(@user)
       end
     #  if creating a new list associated with this activity
     elsif params[:lists]
