@@ -1,0 +1,10 @@
+<% if @user.activities.any? { |activity| activity.complete == false} &&
+  @user.upcoming_activities.empty? == false %>
+
+  <hr>
+  <h3> Upcoming Drop Deadlines </h3>
+
+  <% @user.upcoming_activity_deadlines.each do |activity| %>
+    <p><%= link_to "#{activity.title} | Due: #{activity.formatted_date}", activity_path(activity)  %></p>
+  <% end %>
+<% end %>

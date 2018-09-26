@@ -1,23 +1,17 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
-<!-- reduce the logic in this view!! -->
+<!-- ### reduce the logic in this view!! ### -->
 
-<!-- don't show if no incomplete drops or no upcoming_activity_deadlines -->
-<% if @user.activities.any? { |activity| activity.complete == false} ||
-  !@user.upcoming_activity_deadlines.empty? %>
+<!-- #1 -->
+<!-- show if incomplete drops or upcoming_activities -->
+<%= render 'list_activities' %>
 
-  <hr>
-  <h3> Upcoming Drop Deadlines </h3>
-
-  <% @user.upcoming_activity_deadlines.each do |activity| %>
-    <p><%= link_to "#{activity.title} | Due: #{activity.formatted_date}", activity_path(activity)  %></p>
-  <% end %>
-<% end %>
-
-<hr>
+<!-- if user has an image, display -->
 <% if @user.image %>
+  <hr>
   <%= image_tag(@user.image) %>
 <% end %>
 
+<!-- #2 -->
 <hr>
 <hr>
 <h2> My Drops </h2>
@@ -34,16 +28,16 @@
     <% end %>
   <% end %>
 <% end %>
-
+<!-- #3 -->
 <h2>Add A Drop to Your Bucket!</h2>
-
+<!-- this is the same as activity/new - how to combine? -->
 <%= form_for @user do |f| %>
   <%= fields_for :activities do |ff| %>
-    <p><%= ff.label "Give your drop a title" %></p>
+    <p><%= ff.label "Title Your Drop" %></p>
     <%= ff.text_field :title %>
-    <p><%= ff.label "Explain this drop and why is this important?" %></p>
+    <p><%= ff.label "Describe Your Drop. Why is it important?" %></p>
     <%= ff.text_area :description %>
-    <p><%= ff.label "By what date would you like to accomplish this drop?" %></p>
+    <p><%= ff.label "When Do You Hope To Complete Your Drop?" %></p>
     <%= ff.date_field :due_date %>
   <% end %>
   <p><%= f.submit "Add Drop to Bucket" %></p>

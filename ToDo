@@ -16,4 +16,17 @@ User activerecord authentication errors instead of flash notice? Why do I feel I
 
 - Need option to mark drop complete
 
+<!-- user can view ALL of their to-do lists organized by each of their bucket drops -->
+
+reduce resource routes to necessary
+
+activities /index & /show views
+
+lists /show view
+
+users /account & /edit & /new & /show
+
+activities/form partial for users/show? *******
+idea: <%= render "activities/form", locals: { @activity: Activity.new, submit_text: "Add Drop" }  %>
+
 - Add :notes to lists
