@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
     # make sure user is owner of activity
     @activity = Activity.find(params[:id])
     # params[:activity][:complete] means checked :complete
-    if params[:activity][:complete]
+    if params.has_key?(:activity)
       if params[:activity][:complete] == '1'
         @activity.update(complete: true)
         @user = current_user
