@@ -8,7 +8,7 @@
     <% display_incomplete_items(@list).each do |html| %>
       <%= raw(html) %>
     <% end %>
-    <%= f.submit %>
+    <%= f.submit 'Mark Item Complete' %>
   <% end %>
   <hr>
 <% end %>
@@ -27,6 +27,8 @@
 <hr>
 <p><%= link_to 'Back to my drop', activity_path(@list.activity_id) %></p>
 <p><%= link_to 'Back to my user page', user_path(@list.user_id) %></p>
+<p><%= link_to 'Delete To-Do List', "/list/#{@list.id}/delete" %></p>
+
 
 <!-- option to delete list - maybe include 'are you sure?' -->
 

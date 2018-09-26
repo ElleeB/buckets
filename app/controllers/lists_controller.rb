@@ -42,6 +42,13 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    @list.delete
+
+    redirect_to activity_path(@list.activity)
+  end
+
   private
 
   def list_params

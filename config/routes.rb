@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get '/logout', to: "sessions#destroy"
 
   get '/auth/facebook/callback' => 'sessions#create'
+
+  get '/list/:id/delete', to: 'lists#destroy'
 end
