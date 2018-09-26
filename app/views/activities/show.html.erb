@@ -1,6 +1,13 @@
 <h2><%= @activity.title %></h2>
-<hr>
 
+<hr>
+<!-- mark complete -->
+<%= form_for @activity do |f| %>
+  <%= f.check_box :complete, value: @activity.complete %> Mark Complete
+  <%= f.submit 'Update' %>
+<% end %>
+
+<hr>
 <h3><%= @activity.description %></h3>
 <h3><%= @activity.formatted_date %></h3>
 
@@ -15,7 +22,6 @@
 <% else %>
   <% nil %>
 <% end %>
-
 
 <!-- add to-do list -->
 <h4>Create a new to-do list!</h4>
@@ -33,10 +39,6 @@
 <%= link_to 'View All of My Drops', activities_path %> :
 <%= link_to 'Go Back to My User Page', user_path(@activity.user) %> :
 <%= link_to 'Edit This Drop', edit_activity_path(@activity) %>
-
-<hr>
-<%= link_to 'Mark Complete', edit_activity_path(@activity) %>
-
 
 <hr>
 <h2><%= "#{@activity.countdown} days until this drop is due!" %></h2>

@@ -29,7 +29,15 @@ class ActivitiesController < ApplicationController
     # make sure user is owner of activity
     @activity = Activity.find(params[:id])
 
-    if params[:lists][:name]
+    # if check_box checked = update @activity.complete
+    if params[:activity][:complete] == '1'
+      @activity.update(complete: true)
+      @user = current_user
+
+      render 'users/show'
+    end
+
+    if params[:lists]
       @list = List.new(name: params[:lists][:name])
       @list.activity_id = @activity.id
       @list.user_id = current_user.id
@@ -57,7 +65,7 @@ class ActivitiesController < ApplicationController
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :description, :due_date, :user_id,
+    params.require(:activity).permit(:title, :complete, :description, :due_date, :user_id,
                                       lists: [:name])
   end
 end
