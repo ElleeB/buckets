@@ -1,20 +1,15 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 
 <hr>
-<%= link_to 'Add A Drop to My Bucket', new_user_activity_path(@user) %> :
-<%= link_to 'My Account', '/account' %> :
-<%= link_to 'Log Out', '/logout' %>
-
-<hr>
-<% if @user.image %>
-  <%= image_tag(@user.image) %>
-<% end %>
-
-<hr>
 <h3> Upcoming Drop Deadlines </h3>
 
 <% @user.upcoming_activity_deadlines.each do |activity| %>
   <p><%= link_to "#{activity.title} | Due: #{activity.formatted_date}", activity_path(activity)  %></p>
+<% end %>
+
+<hr>
+<% if @user.image %>
+  <%= image_tag(@user.image) %>
 <% end %>
 
 <hr>
@@ -33,7 +28,7 @@
   <% end %>
 <% end %>
 
-<h4>Add Drop to Your Bucket!</h4>
+<h2>Add A Drop to Your Bucket!</h2>
 
 <%= form_for @user do |f| %>
   <%= fields_for :activities do |ff| %>
@@ -46,3 +41,8 @@
   <% end %>
   <p><%= f.submit "Add Drop to Bucket" %></p>
 <% end %>
+
+<hr>
+<p><%= link_to 'Add A Drop to My Bucket', new_user_activity_path(@user) %></p>
+<p><%= link_to 'My Account', '/account' %></p>
+<p><%= link_to 'Log Out', '/logout' %></p>
