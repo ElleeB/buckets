@@ -12,36 +12,10 @@
 <% end %>
 
 <!-- #2 -->
-<hr>
-<hr>
-<h2> My Drops </h2>
-<!-- if user has no drops -->
-<% if @user.activities.empty? %>
-  <h2><p>You haven't planned any drops! Add a drop below.</p></h2>
-<% else %>
-  <!-- see all drops! -->
-  <h5><i><%= link_to 'See All of My Drops', activities_path %></i></h5>
-  <!-- list user's incomplete drops -->
-  <% @user.activities.each do |activity| %>
-    <% if activity.complete == false %>
-      <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
-    <% end %>
-  <% end %>
-<% end %>
+<%= render 'my_drops' %>
+
 <!-- #3 -->
-<h2>Add A Drop to Your Bucket!</h2>
-<!-- this is the same as activity/new - how to combine? -->
-<%= form_for @user do |f| %>
-  <%= fields_for :activities do |ff| %>
-    <p><%= ff.label "Title Your Drop" %></p>
-    <%= ff.text_field :title %>
-    <p><%= ff.label "Describe Your Drop. Why is it important?" %></p>
-    <%= ff.text_area :description %>
-    <p><%= ff.label "When Do You Hope To Complete Your Drop?" %></p>
-    <%= ff.date_field :due_date %>
-  <% end %>
-  <p><%= f.submit "Add Drop to Bucket" %></p>
-<% end %>
+<%= render 'add_drop' %>
 
 <hr>
 <p><%= link_to 'My Account', '/account' %></p>
