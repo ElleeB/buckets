@@ -4,7 +4,7 @@
 <!-- don't show if no incomplete drops or no upcoming_activity_deadlines -->
 <% if @user.activities.any? { |activity| activity.complete == false} ||
   !@user.upcoming_activity_deadlines.empty? %>
-  
+
   <hr>
   <h3> Upcoming Drop Deadlines </h3>
 
@@ -21,10 +21,9 @@
 <hr>
 <hr>
 <h2> My Drops </h2>
-<!-- don't show if no upcoming drops or no drops -->
 <!-- if user has no drops -->
 <% if @user.activities.empty? %>
-  <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
+  <h2><p>You haven't planned any drops! Add a drop below.</p></h2>
 <% else %>
   <!-- see all drops! -->
   <h5><i><%= link_to 'See All of My Drops', activities_path %></i></h5>
@@ -40,11 +39,11 @@
 
 <%= form_for @user do |f| %>
   <%= fields_for :activities do |ff| %>
-    <p><%= ff.label "Drop Title" %></p>
+    <p><%= ff.label "Give your drop a title" %></p>
     <%= ff.text_field :title %>
-    <p><%= ff.label "Drop Description" %></p>
+    <p><%= ff.label "Explain this drop and why is this important?" %></p>
     <%= ff.text_area :description %>
-    <p><%= ff.label "Due Date" %></p>
+    <p><%= ff.label "By what date would you like to accomplish this drop?" %></p>
     <%= ff.date_field :due_date %>
   <% end %>
   <p><%= f.submit "Add Drop to Bucket" %></p>

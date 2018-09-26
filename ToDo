@@ -15,3 +15,5 @@ User activerecord authentication errors instead of flash notice? Why do I feel I
 - Partial for activity submit = "Activity" instead of "Drop"
 
 - Need option to mark drop complete
+
+- Add :notes to lists
