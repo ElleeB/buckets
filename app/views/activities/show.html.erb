@@ -19,7 +19,7 @@
   <%= f.submit 'Update' %>
 <% end %>
 
-<hr>
+<!-- <hr> error here! to-do lists are showing up even if none created for the user/activity -->
 <!-- if activity has to-do lists -->
 <% if !@activity.lists.empty? %>
   <hr>
@@ -44,6 +44,6 @@
 
 <hr>
 <p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
-<p><%= link_to 'Add A Drop to My Bucket', activity_path(@activity) %></p>
+<p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %></p>
 <p><%= link_to 'View All of My Drops', activities_path %></p>
 <p><%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
