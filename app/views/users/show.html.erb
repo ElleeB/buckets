@@ -1,10 +1,10 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 <!-- reduce the logic in this view!! -->
 
-<!-- don't show if no incomplete drops or no upcoming_activity_deadlines -->
-<% if @user.activities.any? { |activity| activity.complete == false} ||
-  !@user.upcoming_activity_deadlines.empty? %>
-  
+<!-- show if incomplete drops or upcoming_activity_deadlines -->
+<% if @user.activities.any? { |activity| activity.complete == false} &&
+  @user.upcoming_activity_deadlines.empty? == false %>
+
   <hr>
   <h3> Upcoming Drop Deadlines </h3>
 
@@ -13,15 +13,14 @@
   <% end %>
 <% end %>
 
-<hr>
 <% if @user.image %>
+  <hr>
   <%= image_tag(@user.image) %>
 <% end %>
 
 <hr>
 <hr>
 <h2> My Drops </h2>
-<!-- don't show if no upcoming drops or no drops -->
 <!-- if user has no drops -->
 <% if @user.activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
