@@ -1,6 +1,7 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 <!-- ### reduce the logic in this view!! ### -->
 
+<!-- #1 -->
 <!-- show if incomplete drops or upcoming_activities -->
 <% if @user.activities.any? { |activity| activity.complete == false} &&
   @user.upcoming_activities.empty? == false %>
@@ -19,6 +20,7 @@
   <%= image_tag(@user.image) %>
 <% end %>
 
+<!-- #2 -->
 <hr>
 <hr>
 <h2> My Drops </h2>
@@ -35,16 +37,16 @@
     <% end %>
   <% end %>
 <% end %>
-
+<!-- #3 -->
 <h2>Add A Drop to Your Bucket!</h2>
-
+<!-- this is the same as activity/new - how to combine? -->
 <%= form_for @user do |f| %>
   <%= fields_for :activities do |ff| %>
-    <p><%= ff.label "Drop Title" %></p>
+    <p><%= ff.label "Title Your Drop" %></p>
     <%= ff.text_field :title %>
-    <p><%= ff.label "Drop Description" %></p>
+    <p><%= ff.label "Describe Your Drop. Why is it important?" %></p>
     <%= ff.text_area :description %>
-    <p><%= ff.label "Due Date" %></p>
+    <p><%= ff.label "When Do You Hope To Complete Your Drop?" %></p>
     <%= ff.date_field :due_date %>
   <% end %>
   <p><%= f.submit "Add Drop to Bucket" %></p>

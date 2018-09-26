@@ -44,6 +44,6 @@
 
 <hr>
 <p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
-<p><%= link_to 'Add A Drop to My Bucket', activity_path(@activity) %></p>
+<p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %></p>
 <p><%= link_to 'View All of My Drops', activities_path %></p>
 <p><%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>

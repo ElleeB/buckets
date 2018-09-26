@@ -25,3 +25,6 @@ activities /index & /show views
 lists /show view
 
 users /account & /edit & /new & /show
+
+activities/form partial for users/show? *******
+idea: <%= render "activities/form", locals: { @activity: Activity.new, submit_text: "Add Drop" }  %>
