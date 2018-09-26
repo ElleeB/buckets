@@ -1,10 +1,12 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
+<!-- reduce the logic in this view!! -->
 
-<!-- don't show if no upcoming drops or no drops -->
-<% if @user.activities.any? { |activity| activity.complete == false} %>
+<!-- don't show if no incomplete drops or no upcoming_activity_deadlines -->
+<% if @user.activities.any? { |activity| activity.complete == false} ||
+  !@user.upcoming_activity_deadlines.empty? %>
+  
   <hr>
   <h3> Upcoming Drop Deadlines </h3>
-  <!-- reduce the logic in this view!! -->
 
   <% @user.upcoming_activity_deadlines.each do |activity| %>
     <p><%= link_to "#{activity.title} | Due: #{activity.formatted_date}", activity_path(activity)  %></p>
@@ -24,9 +26,9 @@
 <% if @user.activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
-<!-- list user's incomplete drops -->
-<!-- see all drops! -->
-<h5><i><%= link_to 'See All of My Drops', activities_path %></i></h5>
+  <!-- see all drops! -->
+  <h5><i><%= link_to 'See All of My Drops', activities_path %></i></h5>
+  <!-- list user's incomplete drops -->
   <% @user.activities.each do |activity| %>
     <% if activity.complete == false %>
       <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
