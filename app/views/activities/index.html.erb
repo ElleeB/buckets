@@ -1,4 +1,4 @@
-<h3><%= "#{@current_user.name}'s Drops!" %></h3>
+<h2><%= "#{@current_user.name}'s Drops!" %></h2>
 
 <hr>
 <!-- return to this and reduce amnt of logic in this view -->
@@ -6,7 +6,7 @@
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
   <% @activities.each do |activity| %>
-    <li><%= link_to "#{activity.title}", activity_path(activity.id) %>
+    <h2><%= link_to "#{activity.title}", activity_path(activity.id) %></h2>
   <% end %>
 <% end %>
 

@@ -1,9 +1,16 @@
 <h2>Your Drop: <%= @activity.title %></h2>
-
 <!-- reduce the logic in this view!! -->
 
+<h2>Description</h2><h3><%= @activity.description %></h3>
+<h4><p> Due Date: <%= @activity.formatted_date %> </p></h4>
+
 <hr>
-<h3><%= "#{@activity.countdown} days until this drop is due!" %></h3>
+<!-- if past due -->
+<% if @activity.countdown < 0 %>
+  <h3> This activity is past due! </h3>
+<% else %>
+  <h3><%= "#{@activity.countdown} days until this drop is due!" %></h3>
+<% end %>
 
 <hr>
 <!-- mark complete -->
@@ -13,9 +20,7 @@
 <% end %>
 
 <hr>
-<h2>Description</h2><h3><%= @activity.description %></h3>
-<h4><p> Due Date: <%= @activity.formatted_date %> </p></h4>
-
+<!-- if activity has to-do lists -->
 <% if !@activity.lists.empty? %>
   <hr>
   <h2> To-Do Lists </h2>
@@ -36,7 +41,6 @@
   <% end %>
   <p><%= f.submit "Create To-Do List" %></p>
 <% end %>
-
 
 <hr>
 <p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
