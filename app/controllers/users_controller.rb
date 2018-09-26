@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     ###
 
     elsif @user.update(user_params)
-    
+
       redirect_to user_path(@user)
     else
       # raise @user.inspect => includes invalid attributes! Ex. name: ""
@@ -73,6 +73,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :username, :email, :image, :about, :password, :password_confirmation,
-                                  activities: [:title, :description, :due_date, :user_id])
+                          activities: [:title, :description, :due_date, :user_id])
   end
 end

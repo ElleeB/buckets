@@ -45,6 +45,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :activity_id, :user_id, items: [:name, :complete])
+    params.require(:list).permit(:name, :activity_id, :user_id,
+                          items: [:name, :complete])
   end
 end
