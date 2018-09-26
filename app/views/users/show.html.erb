@@ -20,14 +20,16 @@
 <hr>
 <hr>
 <h2> My Drops </h2>
-<!-- need to be able to add a drop to the bucket -->
 <!-- if user has no drops -->
 <% if @user.activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
-<!-- list user's drops -->
+<!-- reduce the logic here -->
+<!-- list user's incomplete drops -->
   <% @user.activities.each do |activity| %>
-    <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
+    <% if activity.complete == false %>
+      <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
+    <% end %>
   <% end %>
 <% end %>
 

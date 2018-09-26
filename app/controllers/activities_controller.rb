@@ -35,9 +35,8 @@ class ActivitiesController < ApplicationController
       @user = current_user
 
       render 'users/show'
-    end
 
-    if params[:lists]
+    elsif params[:lists]
       @list = List.new(name: params[:lists][:name])
       @list.activity_id = @activity.id
       @list.user_id = current_user.id
