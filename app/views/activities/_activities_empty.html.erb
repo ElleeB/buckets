@@ -4,7 +4,9 @@
   <!-- reformat divide page into accomplished and pending -->
   <% @activities.each do |activity| %>
     <% if activity.complete %>
-      <%= "Accomplished" %>
+      <h3>Accomplished</h3>
+    <% else %>
+      <h3>Pending</h3>
     <% end %>
     <h2><%= link_to "#{activity.title}", activity_path(activity.id) %></h2>
   <% end %>
