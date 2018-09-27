@@ -1,28 +1,36 @@
 class ListsController < ApplicationController
   def index
-    # make sure user is the owner of the activity/list
-    @activity = current_activity
-    @lists = @activity.lists
+    if logged_in? && params[:activity_id]
+      @activity = Activity.find(params[:activity_id])
+      @lists = @activity.lists
+    else
+      redirect_to '/'
+    end
   end
 
   def new
-    # make sure user is the owner of the activity/list
+    # secure via activities#edit
     @list = List.new
     @user = current_user
   end
 
   def create
+    # secure via activities#edit
     @list = List.create(list_params)
 
     redirect_to activity_list_path(@list.activity_id, @list)
   end
 
   def show
-    # make sure user is the owner of the activity/list
-    @list = current_list
+    if list_user?
+      @list = current_list
+    else
+      redirect_to '/'
+    end
   end
 
   def update
+    # secure via activities
     @list = current_list
     if !params[:complete].nil?
       item_ids = params[:complete][:item_ids]
@@ -43,6 +51,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    # secure via #show
     @list = current_list
     @list.delete
 

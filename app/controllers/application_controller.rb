@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def current_user?
     current_user.id == session[:user_id]
   end
-  
+
   def current_user_activities
     current_user.activities.all
   end
@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
   def activity_user?
     activity = current_activity
     activity.user_id == current_user.id
+  end
+
+  def list_user?
+    list = current_list
+    list.activity.user_id == session[:user_id]
   end
 
   def current_list
