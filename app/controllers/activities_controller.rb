@@ -1,11 +1,12 @@
 class ActivitiesController < ApplicationController
 
   def index
+    ###
     @activities = current_user.activities.all
   end
 
   def new
-    # make sure user is the owner of the activity
+    # make sure user is the owner of the account
     @activity = Activity.new
   end
 
@@ -59,9 +60,12 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    # make sure user is the owner of the activity!!!
+    if activity_user?
       @activity = Activity.find(params[:id])
       @list = List.find_by(activity_id: params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy
