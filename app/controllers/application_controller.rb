@@ -10,8 +10,16 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_id(session[:user_id])
   end
 
+  def current_user?
+    current_user.id == session[:user_id]
+  end
+
+  def current_activity
+    Activity.find(params[:id])
+  end
+
   def activity_user?
-    activity = Activity.find(params[:id])
+    activity = current_activity
     activity.user_id == current_user.id
   end
 

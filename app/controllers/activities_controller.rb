@@ -9,9 +9,10 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    if activity_user?
+    if current_user?
       @activity = Activity.new(activity_params)
       @activity.user = current_user
+      
       if @activity.save
 
         redirect_to activity_path(@activity)
@@ -25,7 +26,7 @@ class ActivitiesController < ApplicationController
 
   def edit
     if activity_user?
-      @activity = Activity.find(params[:id])
+      @activity = current_activity
     else
       redirect_to '/'
     end
@@ -33,7 +34,7 @@ class ActivitiesController < ApplicationController
 
   def update
     if activity_user?
-      @activity = Activity.find(params[:id])
+      @activity = current_activity
       # params.has_key?(:activity) means checked :complete = true
       if params.has_key?(:activity)
         if params[:activity][:complete] == '1'
@@ -69,7 +70,7 @@ class ActivitiesController < ApplicationController
 
   def show
     if activity_user?
-      @activity = Activity.find(params[:id])
+      @activity = current_activity
       @list = List.find_by(activity_id: params[:id])
     else
       redirect_to '/'
@@ -78,7 +79,7 @@ class ActivitiesController < ApplicationController
 
   def destroy
     if activity_user?
-      @activity = Activity.find(params[:id])
+      @activity = current_activity
       @activity.delete
 
       redirect_to user_path(current_user.id)
