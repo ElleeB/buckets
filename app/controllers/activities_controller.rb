@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
     if current_user?
       @activity = Activity.new(activity_params)
       @activity.user = current_user
-      
+
       if @activity.save
 
         redirect_to activity_path(@activity)
@@ -35,8 +35,9 @@ class ActivitiesController < ApplicationController
   def update
     if activity_user?
       @activity = current_activity
+
       # params.has_key?(:activity) means checked :complete = true
-      if params.has_key?(:activity)
+      if params.has_value?(:complete)
         if params[:activity][:complete] == '1'
           @activity.update(complete: true)
           @user = current_user
@@ -60,8 +61,9 @@ class ActivitiesController < ApplicationController
 
         redirect_to activity_path(@activity)
       else
-        # error in standard edit-update - need to raise error
-        render :edit
+        @activity = current_activity
+        # how to raise and error here with the redirect rather than render?
+        redirect_to edit_activity_path(@activity), alert: "Must include an activity title and description"
       end
     else
       redirect_to '/'

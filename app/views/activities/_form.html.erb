@@ -8,9 +8,13 @@
   <% end %>
 <% end %>
 
+<% flash.each do |key, value| %>
+  <i><div class="alert alert-<%= key %>"><%= value %></div></i>
+<% end %>
+
   <p><%= f.label "Title Your Drop" %></p>
   <%= f.text_field :title %>
-  <p><%= f.label "Drescribe Your Drop. Why is it important?" %></p>
+  <p><%= f.label "Why is this drop important?" %></p>
   <%= f.text_area :description %>
   <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
   <%= f.date_field :due_date %>

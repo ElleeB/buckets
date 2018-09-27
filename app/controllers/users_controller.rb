@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    if @user = User.create(user_params)
+    # why create fails to work here?
+    @user = User.new(user_params)
+    if @user.save
       session[:user_id] = @user.id
 
       redirect_to user_path(@user)
@@ -34,13 +36,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    # raise params.inspect
-    # error: param is missing or the value is empty: user
-    # Need to lock this down so no one other than logged in can access
     @user = current_user
 
-    ###
-    if params[:activities][:title]
+    # if a new activity was provided
+    if params.has_key?(:activities)
       @activity = Activity.new(title: params[:activities][:title])
       @activity.user_id = @user.id
       @activity.description = params[:activities][:description]
@@ -52,19 +51,15 @@ class UsersController < ApplicationController
       else
         redirect_to user_path(@user)
       end
-    ###
-
+    # if updating user account info
     elsif @user.update(user_params)
 
       redirect_to user_path(@user)
     else
-      # raise @user.inspect => includes invalid attributes! Ex. name: ""
-      # this is a problem because the form field placeholder text is incorrect
-      # not persisted though
       @messages = @user.errors.each do |msg|
         msg
       end
-      render :edit
+      redirect_to edit_user_path(current_user)
     end
   end
 
