@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get '/account' => 'users#account', :as => 'account'
 
+  get '/account/edit', to: 'users#edit', :as  => 'account/edit'
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"

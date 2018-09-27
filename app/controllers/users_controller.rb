@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    ### the need for .to_i is so weird
     if params[:id].to_i == session[:user_id]
       @user = User.find(params[:id])
     else
@@ -25,12 +26,10 @@ class UsersController < ApplicationController
   end
 
   def account
-    # make sure user is the owner of the account
     @user = current_user
   end
 
   def edit
-    # make sure user is the owner of the account
     @user = current_user
   end
 
