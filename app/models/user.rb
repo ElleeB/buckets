@@ -15,4 +15,8 @@ class User < ApplicationRecord
       activity.countdown > 50
     end
   end
+
+  def incomplete_activities
+    self.activities.reject { |activity| activity.complete == true}
+  end
 end
