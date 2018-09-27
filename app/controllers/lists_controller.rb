@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   def index
     # make sure user is the owner of the activity/list
-    @activity = Activity.find(params[:activity_id])
+    @activity = current_activity
     @lists = @activity.lists
   end
 
@@ -19,11 +19,11 @@ class ListsController < ApplicationController
 
   def show
     # make sure user is the owner of the activity/list
-    @list = List.find(params[:id])
+    @list = current_list
   end
 
   def update
-    @list = List.find(params[:id])
+    @list = current_list
     if !params[:complete].nil?
       item_ids = params[:complete][:item_ids]
       item_ids.each do |id|
@@ -43,7 +43,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find(params[:id])
+    @list = current_list
     @list.delete
 
     redirect_to activity_path(@list.activity)

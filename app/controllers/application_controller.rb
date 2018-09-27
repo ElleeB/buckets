@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
   def current_user?
     current_user.id == session[:user_id]
   end
+  
+  def current_user_activities
+    current_user.activities.all
+  end
 
   def current_activity
     Activity.find(params[:id])
@@ -23,8 +27,8 @@ class ApplicationController < ActionController::Base
     activity.user_id == current_user.id
   end
 
-  def current_user_activities
-    current_user.activities.all
+  def current_list
+    List.find(params[:id])
   end
 
   def logged_in?
