@@ -30,3 +30,7 @@ users /account & /edit & /new & /show
 
 activities/form partial for users/show? *******
 idea: <%= render "activities/form", locals: { @activity: Activity.new, submit_text: "Add Drop" }  %>
+
+_activities_empty fix "accomplished" vs. pending
+
+make sure user cannot create :due_ate before "today's date"

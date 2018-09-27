@@ -1,7 +1,11 @@
 <% if @activities.empty? %>
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
+  <!-- reformat divide page into accomplished and pending -->
   <% @activities.each do |activity| %>
+    <% if activity.complete %>
+      <%= "Accomplished" %>
+    <% end %>
     <h2><%= link_to "#{activity.title}", activity_path(activity.id) %></h2>
   <% end %>
 <% end %>
