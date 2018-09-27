@@ -63,6 +63,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user?
+      current_user.delete
+
+      render '/welcome/home'
+    else
+      redirect_to '/'
+    end
+  end
+
   private
 
   def user_params

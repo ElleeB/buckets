@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   get '/list/:id/delete', to: 'lists#destroy'
 
   get '/activity/:id/delete', to: 'activities#destroy'
+
+  get '/account/delete', to: 'users#destroy'
 end

@@ -35,9 +35,8 @@ class ActivitiesController < ApplicationController
   def update
     if activity_user?
       @activity = current_activity
-
       # params.has_key?(:activity) means checked :complete = true
-      if params.has_value?(:complete)
+      if params[:activity].has_key?(:complete) ###ERROR
         if params[:activity][:complete] == '1'
           @activity.update(complete: true)
           @user = current_user
@@ -57,7 +56,7 @@ class ActivitiesController < ApplicationController
           redirect_to activity_path(@activity)
         end
       # standard update from activity/edit form
-      elsif @activity.update(activity_params)
+    elsif @activity.update(activity_params)###ERROR this also has :activity key
 
         redirect_to activity_path(@activity)
       else

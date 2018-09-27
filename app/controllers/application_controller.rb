@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user?
-    current_user.id == session[:user_id]
+    if current_user
+      current_user.id == session[:user_id]
+    else
+      render '/welcome/home'
+    end
   end
 
   def current_user_activities
