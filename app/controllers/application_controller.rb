@@ -19,11 +19,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_activities
-    current_user.activities.all
+    current_user.activities#.all
   end
 
   def current_activity
-    Activity.find(params[:id])
+    # Activity.find(params[:id])
+    Activity.where(id: "#{params[:id]}").first
   end
 
   def activity_user?
@@ -37,7 +38,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_list
-    List.find(params[:id])
+    # List.find(params[:id])
+    List.where(id: "#{params[:id]}").first
   end
 
   def logged_in?

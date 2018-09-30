@@ -19,9 +19,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    ### the need for .to_i is so weird
+    ### the need for .to_i is so weird ###
     if params[:id].to_i == session[:user_id]
-      @user = User.find(params[:id])
+      @user = current_user
     else
       redirect_to '/'
     end
@@ -56,6 +56,7 @@ class UsersController < ApplicationController
 
       redirect_to user_path(@user)
     else
+      ### create a capture message method
       @messages = @user.errors.each do |msg|
         msg
       end

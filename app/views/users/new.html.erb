@@ -1,10 +1,7 @@
 <h3>New User Registration</h3>
 <hr>
-<!-- create print messages method -->
 
-<% if @messages %>
-  <%= render "print_messages" %>
-<% end %>
+<%= render "print_messages" %>
 
 <%= render partial: "form",
            locals: {submit_text: "create account" } %>

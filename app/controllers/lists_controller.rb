@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
   def index
     if logged_in? && params[:activity_id]
-      @activity = Activity.find(params[:activity_id])
-      @lists = @activity.lists
+      @activity = current_activity
+      # @lists = @activity.lists
     else
       redirect_to '/'
     end
@@ -41,12 +41,18 @@ class ListsController < ApplicationController
 
       redirect_to list_path(@list)
     else
-      @item = Item.new(:name => params[:items][:name])
-      @item.user_id = current_user.id
-      @item.list_id = @list.id
-      @item.save!
+      @item = Item.new(name: params[:items][:name],
+              user_id: current_user.id,
+              list_id: @list.id)
+      if @item.save
 
-      redirect_to list_path(@list)
+        redirect_to list_path(@list)
+      else
+        @messages = @item.errors.each do |msg|
+          msg
+        end
+        render :show
+      end
     end
   end
 
