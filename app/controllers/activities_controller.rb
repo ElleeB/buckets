@@ -35,11 +35,10 @@ class ActivitiesController < ApplicationController
   def update
     if activity_user?
       @activity = current_activity
-      # get this logic out of here
-      # params.has_key?(:activity) means checked :complete = true
-      if params[:activity].has_key?(:complete) ###ERROR
+      # params.has_key?(:complete) => checked "mark complete"
+      if params[:activity] && params[:activity].has_key?(:complete) ###ERROR
         if params[:activity][:complete] == '1'
-          @activity.update(complete: true)
+          @activity.mark_complete
           @user = current_user
 
           redirect_to user_path(@user)

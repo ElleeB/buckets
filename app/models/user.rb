@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :password, length: { :in => 6..20}
 
   def upcoming_activities
-    self.activities.reject { |activity| activity.countdown > 50 }
+    self.activities.where(complete: false).reject { |activity| activity.countdown > 50 }
   end
 
   def incomplete_activities
