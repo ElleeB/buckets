@@ -35,6 +35,7 @@ class ActivitiesController < ApplicationController
   def update
     if activity_user?
       @activity = current_activity
+      # get this logic out of here
       # params.has_key?(:activity) means checked :complete = true
       if params[:activity].has_key?(:complete) ###ERROR
         if params[:activity][:complete] == '1'

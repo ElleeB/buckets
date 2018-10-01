@@ -30,6 +30,7 @@ class ListsController < ApplicationController
   end
 
   def update
+    # get this logic out of here!
     # secure via activities
     @list = current_list
     if !params[:complete].nil?

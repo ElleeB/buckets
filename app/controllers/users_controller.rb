@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-
+    # remove logic?
     # if a new activity was provided
     if params.has_key?(:activities)
       @activity = Activity.new(title: params[:activities][:title])

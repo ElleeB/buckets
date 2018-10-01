@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # remove this logic?
     # if used email and password to log in
     if !params[:user].nil?
       if @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
