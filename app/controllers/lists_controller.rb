@@ -2,7 +2,6 @@ class ListsController < ApplicationController
   def index
     if logged_in? && params[:activity_id]
       @activity = current_activity
-      # @lists = @activity.lists
     else
       redirect_to '/'
     end

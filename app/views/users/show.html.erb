@@ -1,5 +1,3 @@
-<%= render 'print_messages' %>
-
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 <!-- ### reduce the logic in this view!! ### -->
 
@@ -13,6 +11,8 @@
 <% end %>
 
 <%= render 'my_drops' %>
+
+<p><%= render 'print_messages' %></p>
 
 <%= render 'add_drop' %>
 

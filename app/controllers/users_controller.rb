@@ -45,15 +45,15 @@ class UsersController < ApplicationController
       @activity.description = params[:activities][:description]
       @activity.due_date = params[:activities][:due_date]
 
-      if @activity.save
+      if @activity.save ### this should not be saving with an invalid due date
 
         redirect_to user_path(@user)
       else
         @messages = @activity.errors.each do |msg|
           msg
         end
-        
-        redirect_to user_path(@user)
+
+        render :show
       end
     # if updating user account info
     elsif @user.update(user_params)
@@ -64,7 +64,9 @@ class UsersController < ApplicationController
       @messages = @user.errors.each do |msg|
         msg
       end
-      redirect_to edit_user_path(current_user)
+      # lost current_user.name if render
+      # lost errors if redirect
+      render :edit
     end
   end
 

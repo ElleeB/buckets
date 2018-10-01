@@ -1,5 +1,7 @@
 <% if @messages %>
+<hr>
+  ERRORS!
   <% @messages.each do |attribute, message| %>
-    <li><%= attribute %> <%= message.join(", ") %>
+    <li><%= attribute.to_s.titlecase  %> <%= message.join(", ") %>
   <% end %>
 <% end %>

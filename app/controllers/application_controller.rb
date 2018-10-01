@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  # methods for handling http requests
+  # filters such as: handling authentication, authorization etc.
   # protect_from_forgery unless oauth is taking care of it
   protect_from_forgery unless: -> { @auth }
 
