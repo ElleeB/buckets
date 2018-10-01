@@ -4,35 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # remove this logic?
     # if used email and password to log in
     if !params[:user].nil?
-      if @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
-        session[:user_id] = @user.id
-
-        redirect_to user_path(@user)
-      else
-        ##=> try using ar validations and callbacks here
-        redirect_to '/login', notice: "You must enter a valid email and password"
-      end
+      email_login
     # if used Facebook to log in
     else
       if @user = User.find_by(uid: auth['uid'])
-
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        existing_user_facebook_login
       else
-        @user = User.create(
-          uid: auth['uid'],
-          name: auth['info']['name'],
-          username: auth['info']['name'],
-          email: auth['info']['email'],
-          image: auth['info']['image'],
-        )
-        @user.save(validate: false)
-
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        new_user_facebook_login
       end
     end
   end
