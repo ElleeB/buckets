@@ -1,3 +1,5 @@
+<%= render 'print_messages' %>
+
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 <!-- ### reduce the logic in this view!! ### -->
 
@@ -13,6 +15,8 @@
 <%= render 'my_drops' %>
 
 <%= render 'add_drop' %>
+
+
 
 <hr>
 <p><%= link_to 'My Account', '/account' %></p>

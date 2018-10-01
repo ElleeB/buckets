@@ -49,6 +49,10 @@ class UsersController < ApplicationController
 
         redirect_to user_path(@user)
       else
+        @messages = @activity.errors.each do |msg|
+          msg
+        end
+        
         redirect_to user_path(@user)
       end
     # if updating user account info
