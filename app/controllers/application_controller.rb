@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # filters such as: handling authentication, authorization etc.
   # protect_from_forgery unless oauth is taking care of it
   protect_from_forgery unless: -> { @auth }
-
+  
+  helper :activities
   # SESSIONS
   def auth
     @auth = request.env['omniauth.auth']
