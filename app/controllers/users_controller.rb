@@ -8,11 +8,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-
       redirect_to user_path(@user)
     else
       @messages = @user.define_error_messages
-
       render :new
     end
   end
@@ -45,19 +43,15 @@ class UsersController < ApplicationController
       @activity.due_date = params[:activities][:due_date]
 
       if @activity.save
-
         redirect_to user_path(@user)
       else
         @messages = @activity.define_error_messages
-
         render :show
       end
     # if updating user account info
     elsif @user.update(user_params)
-
       redirect_to user_path(@user)
     else
-      ### create a capture message method
       @messages = @user.define_error_messages
       # lost current_user.name if render
       # lost errors if redirect
@@ -68,7 +62,6 @@ class UsersController < ApplicationController
   def destroy
     if current_user?
       current_user.delete
-
       render '/welcome/home'
     else
       redirect_to '/'

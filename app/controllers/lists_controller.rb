@@ -30,13 +30,13 @@ class ListsController < ApplicationController
 
   def update
     # get this logic out of here!
-    # secure via activities
+    # secured via activities
     @list = current_list
     if !params[:complete].nil?
+      # marked item complete
       item_ids = params[:complete][:item_ids]
       item_ids.each do |id|
-        @item = Item.find(id)
-        @item.update!(complete: true)
+        @list.mark_item_complete(id)
       end
 
       redirect_to list_path(@list)
@@ -55,7 +55,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    # secure via #show
+    # secured via #show
     @list = current_list
     @list.delete
 

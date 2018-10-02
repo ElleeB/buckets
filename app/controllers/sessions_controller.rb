@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     # if used email and password to log in
     if !params[:user].nil?
       email_login
+      
     # if used Facebook to log in
     else
       if @user = User.find_by(uid: auth['uid'])
