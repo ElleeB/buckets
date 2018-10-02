@@ -48,9 +48,7 @@ class ListsController < ApplicationController
 
         redirect_to list_path(@list)
       else
-        @messages = @item.errors.each do |msg|
-          msg
-        end
+        @messages = @item.define_error_messages
         render :show
       end
     end

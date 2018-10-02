@@ -11,9 +11,8 @@ class UsersController < ApplicationController
 
       redirect_to user_path(@user)
     else
-      @messages = @user.errors.each do |msg|
-        msg
-      end
+      @messages = @user.define_error_messages
+
       render :new
     end
   end
@@ -45,13 +44,11 @@ class UsersController < ApplicationController
       @activity.description = params[:activities][:description]
       @activity.due_date = params[:activities][:due_date]
 
-      if @activity.save ### this should not be saving with an invalid due date
+      if @activity.save
 
         redirect_to user_path(@user)
       else
-        @messages = @activity.errors.each do |msg|
-          msg
-        end
+        @messages = @activity.define_error_messages
 
         render :show
       end
@@ -61,9 +58,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       ### create a capture message method
-      @messages = @user.errors.each do |msg|
-        msg
-      end
+      @messages = @user.define_error_messages
       # lost current_user.name if render
       # lost errors if redirect
       render :edit
