@@ -17,6 +17,7 @@ class ActivitiesController < ApplicationController
 
         redirect_to activity_path(@activity)
       else
+        @messages = @activity.define_error_messages
         render :new
       end
     else
@@ -52,17 +53,17 @@ class ActivitiesController < ApplicationController
 
           redirect_to list_path(@list)
         else
-          # need to raise an error here
-          redirect_to activity_path(@activity)
+          @messages = @activity.define_error_messages
+          # redirect_to activity_path(@activity)
+          render :show
         end
       # standard update from activity/edit form
     elsif @activity.update(activity_params)###ERROR this also has :activity key
 
         redirect_to activity_path(@activity)
       else
-        @activity = current_activity
-        # how to raise and error here with the redirect rather than render?
-        redirect_to edit_activity_path(@activity), alert: "Must include an activity title and description"
+        @messages = @activity.define_error_messages
+        render :edit
       end
     else
       redirect_to '/'

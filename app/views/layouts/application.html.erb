@@ -10,6 +10,17 @@
   </head>
 
   <body>
+
+    <% if @messages %>
+    <hr>
+      ERRORS!
+      <% @messages.each do |attribute, message| %>
+        <% if !message.empty? %>
+          <li><%= attribute.to_s.titlecase  %>, <%= message.join(", ") %>
+        <% end %>
+      <% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

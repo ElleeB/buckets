@@ -1,9 +1,0 @@
-<% if incomplete_items? %>
-  <%= form_for @list do |f| %>
-    <% display_incomplete_items(@list).each do |html| %>
-      <%= raw(html) %>
-    <% end %>
-    <%= f.submit 'Mark Item Complete' %>
-  <% end %>
-  <hr>
-<% end %>

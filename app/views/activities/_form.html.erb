@@ -1,17 +1,5 @@
 <hr>
 <%= form_for @activity do |f| %>
-<!-- clean up these errors etc. -->
-<% if @activity.errors.any? %>
-  <% @activity.errors.full_messages.each do |message| %>
-    <p>Errors:</p>
-    <li> <%= message %> </li>
-  <% end %>
-<% end %>
-
-<% flash.each do |key, value| %>
-  <i><div class="alert alert-<%= key %>"><%= value %></div></i>
-<% end %>
-
   <p><%= f.label "Title Your Drop" %></p>
   <%= f.text_field :title %>
   <p><%= f.label "Why is this drop important?" %></p>
