@@ -10,9 +10,11 @@
 
 <hr>
 <!-- mark activity complete -->
-<%= render 'mark_complete' %>
+<%= form_for @activity do |f| %>
+  <%= f.check_box :complete, value: @activity.complete %> Mark Complete
+  <%= f.submit 'Update' %>
+<% end %>
 
-<!-- <hr> error here! to-do lists are showing up even if none created for the user/activity -->
 <!-- if activity has to-do lists -->
 <% if !@activity.lists.empty? %>
   <hr>
