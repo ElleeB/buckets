@@ -1,7 +1,31 @@
 <h2><%= "#{@current_user.name}'s Drops!" %></h2>
 
 <hr>
-<%= render 'activities_empty' %>
+<!-- if there are no activities at all, prompt user to add some -->
+<% if any_activities?(@activities) %>
+  <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
+<% else %>
+  <!-- if there are activities and some of them are incomplete -->
+  <% if pending_activities(@activities) %>
+    <h3>Pending</h3>
+    <!-- itterate through activities -->
+    <% @activities.each do |activity| %>
+      <!-- link to each that is incomplete -->
+      <% if !activity.complete %>
+        <h2><%= link_to "#{activity.title}", activity_path(activity.id) %></h2>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if accomplished_activities(@activities) %>
+    <h3>Accomplished</h3>
+    <% @activities.each do |activity| %>
+      <% if activity.complete %>
+        <h2><%= link_to "#{activity.title}", activity_path(activity.id) %></h2>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <hr>
 <p><%= link_to 'Add A Drop to My Bucket', '/activities/new' %></p>

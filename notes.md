@@ -42,3 +42,11 @@
 <%= form_for @activity, :url => activity_path do |f| %>
   <% f.submit "Mark Complete" %>
 <% end %>
+
+
+<% !activity.complete %>
+<h3>Pending</h3>
+<% @activites.each do |activity| %>
+  <h2><%= link_to "#{activity.title}", activity_path(activity.id) %></h2>
+<% end %>
+<% end %>
