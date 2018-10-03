@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # filters such as: handling authentication, authorization etc.
   # protect_from_forgery unless oauth is taking care of it
   protect_from_forgery unless: -> { @auth }
-  
+
   helper :activities
   # SESSIONS
   def auth
@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
 
       redirect_to user_path(@user)
     else
-      ##=> try using ar validations and callbacks here
       redirect_to '/login', notice: "You must enter a valid email and password"
     end
   end
