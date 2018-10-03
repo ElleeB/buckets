@@ -8,6 +8,16 @@ module ActivitiesHelper
     end
   end
 
+  def display_activity_lists(activity)
+    display = []
+    tag.hr
+    tag.h2 "To-Do Lists"
+    activity.lists.each do |list|
+      display << "<h4><p>#{link_to list.name.titlecase, list_path(list)}</h4></p>"
+    end
+    display
+  end
+
   def accomplished_activities(activities)
     accomplished = activities.reject { |activity| !activity.complete }
     !accomplished.empty?

@@ -4,6 +4,8 @@ class List < ApplicationRecord
   has_many :items
 
   accepts_nested_attributes_for :items
+  
+  validates :name, uniqueness: true
 
   def mark_item_complete(id)
     item = Item.find(id)

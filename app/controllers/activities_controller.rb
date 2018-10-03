@@ -55,7 +55,7 @@ class ActivitiesController < ApplicationController
 
           redirect_to list_path(@list)
         else
-          @messages = @activity.define_error_messages
+          @messages = @list.define_error_messages
           # redirect_to activity_path(@activity)
           render :show
         end

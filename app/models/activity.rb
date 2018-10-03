@@ -27,4 +27,8 @@ class Activity < ApplicationRecord
       errors.add(:due_date, "can't be in the past")
     end
   end
+
+  def any_lists?
+    !self.lists.empty?
+  end
 end

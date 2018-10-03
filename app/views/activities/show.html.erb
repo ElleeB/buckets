@@ -1,6 +1,4 @@
 <h2>Your Drop: <%= @activity.title %></h2>
-<!-- ### reduce the logic in this view!! ### -->
-
 <h2>Description</h2><h3><%= @activity.description %></h3>
 <h4><p> Due Date: <%= @activity.formatted_date %> </p></h4>
 
@@ -16,14 +14,10 @@
 <% end %>
 
 <!-- if activity has to-do lists -->
-<% if !@activity.lists.empty? %>
-  <hr>
-  <h2> To-Do Lists </h2>
-  <% @activity.lists.each do |list| %>
-    <h3><p><%= link_to list.name.titlecase, list_path(list) %></h3></p>
+<% if @activity.any_lists? %>
+  <% display_activity_lists(@activity).each do |html| %>
+    <%= raw(html) %>
   <% end %>
-<% else %>
-  <% nil %>
 <% end %>
 
 <!-- add to-do list -->
