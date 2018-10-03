@@ -17,4 +17,12 @@ class User < ApplicationRecord
   def incomplete_activities
     self.activities.reject { |activity| activity.complete == true }
   end
+
+  def self.most_activities
+    # which user_id appears most often in the activities table?
+    hash = Activity.order('user_id').group('user_id').count('user_id')
+    array = hash.sort_by { |user_id, num_activities| num_activities }
+    user_id = array.last[0]
+    @user = User.where(id: user_id).to_a.first
+  end
 end

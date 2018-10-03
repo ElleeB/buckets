@@ -71,6 +71,20 @@ Activity.create(
   due_date: DateTime.strptime('10/31/2018', '%m/%d/%Y')
   )
 
+Activity.create(
+  user_id: 1,
+  title: "Dye Hair Dark",
+  description: "This auburn's gotta go",
+  due_date: DateTime.strptime('11/30/2018', '%m/%d/%Y')
+  )
+
+Activity.create(
+  user_id: 1,
+  title: "Become Queen in The North",
+  description: "Move out of the way, Jon!",
+  due_date: DateTime.strptime('11/11/2018', '%m/%d/%Y')
+  )
+
 List.create(
   name: "to-do list 1",
   activity_id: 1,
