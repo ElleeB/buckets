@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
 
   def create
     if current_user?
+      ###### remove this
       @activity = Activity.new(activity_params)
       @activity.user = current_user
 
@@ -46,6 +47,7 @@ class ActivitiesController < ApplicationController
         end
       #  if creating a new list associated with this activity
       elsif params[:lists]
+        ###### remove this
         @list = List.new(name: params[:lists][:name])
         @list.activity_id = @activity.id
         @list.user_id = current_user.id
@@ -73,6 +75,7 @@ class ActivitiesController < ApplicationController
   def show
     if activity_user?
       @activity = current_activity
+      ############### remove this
       @list = List.find_by(activity_id: params[:id])
     else
       redirect_to '/'
