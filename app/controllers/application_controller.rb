@@ -11,15 +11,31 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-     !!session[:user_id]
+     !!current_user
   end
 
   def email_login
-    if @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
-      session[:user_id] = @user.id
+    # error if existing email belongs to facebook user and then a password is entered - password digest is nil for that user in the db
+    # if user instance found via email
+    if @user = User.find_by(email: params[:user][:email])
+      # check if @user has password digest
+      # if user has password digest
+      if !@user.password_digest.nil?
+        # authenticate the password
+        if @user.try(:authenticate, params[:user][:password])
+          # if password match
+          session[:user_id] = @user.id
 
-      redirect_to user_path(@user)
+          redirect_to user_path(@user)
+        else
+          redirect_to '/login', notice: "You must enter a valid email and password"
+        end
+      # if user does not have password digest *means they are in the db having already used facebook to log in
+      else
+        redirect_to '/login', notice: "Please login via facebook, or create a new account"
+      end
     else
+      # if user instance NOT found via email
       redirect_to '/login', notice: "You must enter a valid email and password"
     end
   end

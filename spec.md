@@ -21,7 +21,7 @@ Specs:
 - *OmniAuth Facebook*
 - [X] Include nested resource show or index (URL e.g. users/2/recipes)
 - */users/1/activities*
-- [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+- [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 - *activities/6/lists*
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 - *missed this*
