@@ -9,11 +9,15 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    # categories param includes "" ??
     if current_user?
       @activity = Activity.new(activity_params)
       @activity.user = current_user
-      ### right now just single category
-      @activity.categories << Category.find_by(name: params[:activity][:categories])
+      params[:activity][:categories].shift
+      params[:activity][:categories].each do |category_name|
+        @activity.categories << Category.find_by(name: category_name)
+        # need to make sure do not duplicate a category that already exists
+      end
 
       if @activity.save
 

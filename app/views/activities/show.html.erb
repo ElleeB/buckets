@@ -1,11 +1,15 @@
 <h2>Your Drop: <%= @activity.title %></h2>
-<% @activity.categories.each do |cat| %>
-  <h2>Categories: <p><%= cat.name %></p>
+
+<h3>Categories</h3>
+<% list_categories(@activity).each do |html| %>
+  <%= raw(html) %>
 <% end %>
-<h2>Description</h2><h3><%= @activity.description %></h3>
-<h4><p> Due Date: <%= @activity.formatted_date %> </p></h4>
+
+<h3>Description</h3><%= @activity.description %>
 
 <hr>
+<p> Due Date: <%= @activity.formatted_date %> </p>
+
 <!-- if past due -->
 <h3><%= past_due(@activity) %></h3>
 

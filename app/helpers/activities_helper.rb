@@ -18,6 +18,14 @@ module ActivitiesHelper
     display
   end
 
+  def list_categories(activity)
+    categories = []
+    activity.categories.each do |category|
+      categories << "<p> #{category.name} </p>"
+    end
+    categories
+  end
+
   def accomplished_activities(activities)
     accomplished = activities.reject { |activity| !activity.complete }
     !accomplished.empty?

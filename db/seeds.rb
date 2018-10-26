@@ -27,63 +27,97 @@ User.create(
   image: "/assets/ygritte.jpg",
 )
 
+# Categories
+
+Category.create(
+  name: "Adventure"
+)
+
+Category.create(
+  name: "Travel"
+)
+
+Category.create(
+  name: "Lifestyle"
+)
+
+Category.create(
+  name: "Personal Improvement"
+)
+
 # Bucket Items
 
-Activity.create(
+activity_1 = Activity.create(
   user_id: 2,
   title: "Kill Cersei",
   description: "Kill that crazy witch",
   due_date: DateTime.strptime('10/20/2018', '%m/%d/%Y')
   )
 
-Activity.create(
+  activity_1.categories += [Category.first, Category.second]
+
+activity_2 = Activity.create(
   user_id: 2,
   title: "Become No One",
   description: "Become a badass nobody",
   due_date: DateTime.strptime('03/2/2019', '%m/%d/%Y')
   )
 
-Activity.create(
+  activity_2.categories += [Category.first, Category.third, Category.fourth]
+
+activity_3 = Activity.create(
   user_id: 3,
   title: "Give It To Jon",
   description: "Make sweets in the caves",
   due_date: DateTime.strptime('1/1/2019', '%m/%d/%Y')
   )
 
-Activity.create(
+  activity_3.categories += [Category.second]
+
+activity_4 = Activity.create(
   user_id: 3,
   title: "Destroy The Watch",
   description: "Welp, that didn't really work out with Jon",
   due_date: DateTime.strptime('09/30/2019', '%m/%d/%Y')
   )
 
-Activity.create(
+  activity_4.categories += [Category.first, Category.third, Category.fourth]
+
+activity_5 = Activity.create(
   user_id: 1,
   title: "Become a Princess",
   description: "Marry Geoffrey and be a princess",
   due_date: DateTime.strptime('12/28/2018', '%m/%d/%Y')
   )
 
-Activity.create(
+  activity_2.categories += [Category.first, Category.second, Category.fourth]
+
+activity_6 = Activity.create(
   user_id: 1,
   title: "Divorce Tyrion",
   description: "This wasn't how it was supposed to happen. Now I need to find a way out of this shit",
   due_date: DateTime.strptime('10/31/2018', '%m/%d/%Y')
   )
 
-Activity.create(
+  activity_6.categories += [Category.first]
+
+activity_7 = Activity.create(
   user_id: 1,
   title: "Dye Hair Dark",
   description: "This auburn's gotta go",
   due_date: DateTime.strptime('11/30/2018', '%m/%d/%Y')
   )
 
-Activity.create(
+  activity_7.categories += [Category.third, Category.fourth]
+
+activity_8 = Activity.create(
   user_id: 1,
   title: "Become Queen in The North",
   description: "Move out of the way, Jon!",
   due_date: DateTime.strptime('11/11/2018', '%m/%d/%Y')
   )
+
+  activity_8.categories += [Category.fourth]
 
 List.create(
   name: "to-do list 1",
@@ -309,20 +343,4 @@ Item.create(
   list_id: 12,
   user_id: 1,
   activity_id: 6
-)
-
-Category.create(
-  name: "Adventure"
-)
-
-Category.create(
-  name: "Travel"
-)
-
-Category.create(
-  name: "Lifestyle"
-)
-
-Category.create(
-  name: "Personal Improvement"
 )
