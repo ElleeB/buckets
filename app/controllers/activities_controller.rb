@@ -12,6 +12,8 @@ class ActivitiesController < ApplicationController
     if current_user?
       @activity = Activity.new(activity_params)
       @activity.user = current_user
+      ### right now just single category
+      @activity.categories << Category.find_by(name: params[:activity][:categories])
 
       if @activity.save
 
@@ -93,6 +95,7 @@ class ActivitiesController < ApplicationController
   private
   def activity_params
     params.require(:activity).permit(:title, :complete, :description, :due_date, :user_id,
-                              lists: [:name])
+                              lists: [:name],
+                              categories: [:name])
   end
 end

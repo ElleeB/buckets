@@ -1,4 +1,7 @@
 <h2>Your Drop: <%= @activity.title %></h2>
+<% @activity.categories.each do |cat| %>
+  <h2>Categories: <p><%= cat.name %></p>
+<% end %>
 <h2>Description</h2><h3><%= @activity.description %></h3>
 <h4><p> Due Date: <%= @activity.formatted_date %> </p></h4>
 
