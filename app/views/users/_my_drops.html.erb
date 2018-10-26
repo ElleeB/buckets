@@ -11,5 +11,6 @@
       <h4><li><%= link_to "#{activity.title}", activity_path(activity.id) %></h4>
     <% end %>
   <% end %>
-  <%= link_to 'view all drops', user_activities_path(@user) %>
+  <p><%= link_to 'View All Drops', user_activities_path(@user) %></p>
+  <p><%= link_to 'Add A Drop', new_user_activity_path(@user) %></p>
 <% end %>
