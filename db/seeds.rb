@@ -310,3 +310,19 @@ Item.create(
   user_id: 1,
   activity_id: 6
 )
+
+Category.create(
+  name: "Adventure"
+)
+
+Category.create(
+  name: "Travel"
+)
+
+Category.create(
+  name: "Lifestyle"
+)
+
+Category.create(
+  name: "Personal Improvement"
+)

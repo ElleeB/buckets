@@ -1,6 +1,7 @@
 # refactor with more user friendly and secure urls
 
 Rails.application.routes.draw do
+  resources :categories
   resources :activities
   resources :users
   resources :sessions, only: [:new, :create]
