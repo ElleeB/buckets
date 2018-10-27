@@ -51,7 +51,7 @@ activity_1 = Activity.create(
   user_id: 2,
   title: "Kill Cersei",
   description: "Kill that crazy witch",
-  due_date: DateTime.strptime('10/20/2018', '%m/%d/%Y')
+  due_date: DateTime.strptime('10/20/2019', '%m/%d/%Y')
   )
 
   activity_1.categories += [Category.first, Category.second]
@@ -87,7 +87,7 @@ activity_5 = Activity.create(
   user_id: 1,
   title: "Become a Princess",
   description: "Marry Geoffrey and be a princess",
-  due_date: DateTime.strptime('12/28/2018', '%m/%d/%Y')
+  due_date: DateTime.strptime('12/28/2020', '%m/%d/%Y')
   )
 
   activity_2.categories += [Category.first, Category.second, Category.fourth]
@@ -96,7 +96,7 @@ activity_6 = Activity.create(
   user_id: 1,
   title: "Divorce Tyrion",
   description: "This wasn't how it was supposed to happen. Now I need to find a way out of this shit",
-  due_date: DateTime.strptime('10/31/2018', '%m/%d/%Y')
+  due_date: DateTime.strptime('10/31/2021', '%m/%d/%Y')
   )
 
   activity_6.categories += [Category.first]
@@ -105,7 +105,7 @@ activity_7 = Activity.create(
   user_id: 1,
   title: "Dye Hair Dark",
   description: "This auburn's gotta go",
-  due_date: DateTime.strptime('11/30/2018', '%m/%d/%Y')
+  due_date: DateTime.strptime('11/30/2019', '%m/%d/%Y')
   )
 
   activity_7.categories += [Category.third, Category.fourth]
@@ -114,7 +114,7 @@ activity_8 = Activity.create(
   user_id: 1,
   title: "Become Queen in The North",
   description: "Move out of the way, Jon!",
-  due_date: DateTime.strptime('11/11/2018', '%m/%d/%Y')
+  due_date: DateTime.strptime('11/11/2019', '%m/%d/%Y')
   )
 
   activity_8.categories += [Category.fourth]

@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create]
   resources :lists
+  resources :categories, only: [:show]
 
   resources :users do
     resources :activities
+    resources :categories
   end
 
   resources :activities do

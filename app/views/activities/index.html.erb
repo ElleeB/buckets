@@ -6,6 +6,7 @@
   <h2><p>You haven't planned any drops! Click below to add a drop.</p></h2>
 <% else %>
   <!-- if there are activities and some of them are incomplete -->
+<!-- get rid of this logic! -->
   <% if pending_activities(@activities) %>
     <h3>Pending</h3>
     <!-- itterate through activities -->
@@ -25,6 +26,14 @@
       <% end %>
     <% end %>
   <% end %>
+<% end %>
+
+<hr>
+<!--  show user activity categories via User.categories (User has many categories through activities)-->
+<h4><p>My drop categories:</h4></p>
+<!-- click on the category and see all activities under this category  -->
+<% current_user_categories.each do |category| %>
+  <%= category.name %>
 <% end %>
 
 <hr>
