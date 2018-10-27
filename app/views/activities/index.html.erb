@@ -30,10 +30,10 @@
 
 <hr>
 <!--  show user activity categories via User.categories (User has many categories through activities)-->
-<h4><p>My drop categories:</h4></p>
+<h4><p>My drop categories (LINKS IN PROGRESS):</h4></p>
 <!-- click on the category and see all activities under this category  -->
 <% current_user_categories.each do |category| %>
-  <%= category.name %>
+  <%= link_to category.name %>
 <% end %>
 
 <hr>

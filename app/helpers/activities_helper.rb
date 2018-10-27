@@ -39,12 +39,4 @@ module ActivitiesHelper
   def any_activities?(activities)
     activities.empty?
   end
-
-  def current_user_categories
-    @current_user.categories
-  end
-
-  def user_category_activities
-  
-  end
 end
