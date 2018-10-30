@@ -43,8 +43,4 @@ module ActivitiesHelper
   def current_user_categories
     @current_user.categories
   end
-
-  def user_category_activities
-  
-  end
 end
