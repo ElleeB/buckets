@@ -90,7 +90,7 @@ activity_5 = Activity.create(
   due_date: DateTime.strptime('12/28/2020', '%m/%d/%Y')
   )
 
-  activity_2.categories += [Category.first, Category.second, Category.fourth]
+  activity_5.categories += [Category.first, Category.second, Category.fourth]
 
 activity_6 = Activity.create(
   user_id: 1,

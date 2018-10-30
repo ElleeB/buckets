@@ -1,4 +1,11 @@
-list all a user's activities that fall under this category
 <h2><%= @category.name %></h2>
-<% binding.pry %>
-<% @category.activities.where(user_id: @user.id) %>
+
+<%= form_for :activity_category do |f| %>
+  <%= f.check_box :favorite %>
+  <%= f.label :favorite %>
+  <p><%= f.submit "submit" %></p>
+<% end %>
+<hr>
+<% @category.activities.where(user_id: @user.id).each do |activity| %>
+  <h3><%= link_to activity.title, activity_path(activity) %></h3>
+<% end %>
