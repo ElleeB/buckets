@@ -9,16 +9,9 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    # categories param includes "" ??
-    # when a user creates a new activity, assign the category to the UserCategories
     if current_user?
       @activity = Activity.new(activity_params)
       @activity.user = current_user
-      params[:activity][:categories].shift
-      params[:activity][:categories].each do |category_name|
-        @activity.categories << Category.find_by(name: category_name)
-        # need to make sure do not duplicate a category that already exists
-      end
 
       if @activity.save
 
@@ -99,8 +92,7 @@ class ActivitiesController < ApplicationController
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :complete, :description, :due_date, :user_id,
-                              lists: [:name],
-                              categories: [:name])
+    params.require(:activity).permit(:title, :complete, :description, :due_date, :user_id, :category_id,
+                              lists: [:name])
   end
 end

@@ -1,9 +1,6 @@
 <h2>Your Drop: <%= @activity.title %></h2>
-
-<h3>Categories</h3>
-<% list_categories(@activity).each do |html| %>
-  <%= raw(html) %>
-<% end %>
+<!-- want to click and see all user activities by category -->
+<h4> Category: <%= @activity.category_name %>
 
 <h3>Description</h3><%= @activity.description %>
 

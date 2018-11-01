@@ -29,13 +29,5 @@
 <% end %>
 
 <hr>
-<!--  show user activity categories via User.categories (User has many categories through activities)-->
-<h4><p>My drop categories:</h4></p>
-<!-- click on the category and see all activities under this category  -->
-<% current_user_categories.each do |category| %>
-  <%= category.name %>
-<% end %>
-
-<hr>
 <p><%= link_to 'Add A Drop to My Bucket', '/activities/new' %></p>
 <p><%= link_to 'Go Back to My User Page', user_path(@current_user) %></p>
