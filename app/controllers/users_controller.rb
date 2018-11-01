@@ -4,9 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    # why create fails to work here?
     @user = User.new(user_params)
     if @user.save
+      # create user_category and mark as favorite
+      favorite_category = Category.find_by_name(params[:user][:categories])
+      user_category = UserCategory.create(user_id: @user.id, category_id: favorite_category.id)
+      user_category.user_favorite = true
+      #
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -72,6 +76,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :username, :email, :image, :about, :password, :password_confirmation,
-                          activities: [:title, :description, :due_date, :user_id])
+                          activities: [:title, :description, :due_date, :user_id],
+                          user_categories: [:user_favorite])
   end
 end

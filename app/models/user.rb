@@ -2,9 +2,10 @@ class User < ApplicationRecord
   has_secure_password
   has_many :activities
   accepts_nested_attributes_for :activities
-  has_many :categories, through: :activities
   has_many :lists
   has_many :items
+  has_many :user_categories
+  has_many :categories, through: :user_categories
 
   validates :name, presence: true
   validates :username, uniqueness: true

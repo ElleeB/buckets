@@ -10,4 +10,6 @@
   <p><%= f.label "Re-Enter Password" %></p>
   <%= f.password_field :password_confirmation %>
   <p><%= f.submit submit_text %></p>
+  <p><%= f.label "Choose your favorite bucket category" %></p>
+  <%= f.select(:categories, Category.all.collect { |cat| cat.name }, { :prompt => "Please select" }) %>
 <% end %>

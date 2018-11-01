@@ -1,6 +1,6 @@
 # Users
 
-User.create(
+sansa = User.create(
   name: "Sansa",
   username: "ladywolf",
   email: "lady@gmail.com",
@@ -9,7 +9,8 @@ User.create(
   image: "/assets/sansa-stark.jpg",
 )
 
-User.create(
+
+arya = User.create(
   name: "Arya",
   username: "A Girl",
   email: "needle@gmail.com",
@@ -18,7 +19,7 @@ User.create(
   image: "/assets/arya-stark.jpg",
 )
 
-User.create(
+ygritte = User.create(
   name: "Ygritte",
   username: "touchedbyfire",
   email: "knowingnothing@gmail.com",
@@ -343,4 +344,22 @@ Item.create(
   list_id: 12,
   user_id: 1,
   activity_id: 6
+)
+
+UserCategory.create(
+  user_id: 1,
+  category_id: 4,
+  user_favorite: true
+)
+
+UserCategory.create(
+  user_id: 2,
+  category_id: 1,
+  user_favorite: true
+)
+
+UserCategory.create(
+  user_id: 3,
+  category_id: 3,
+  user_favorite: true
 )

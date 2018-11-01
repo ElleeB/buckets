@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
 
   def create
     # categories param includes "" ??
+    # when a user creates a new activity, assign the category to the UserCategories
     if current_user?
       @activity = Activity.new(activity_params)
       @activity.user = current_user

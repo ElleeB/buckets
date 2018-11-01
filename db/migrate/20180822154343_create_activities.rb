@@ -4,7 +4,6 @@ class CreateActivities < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :description
       t.string :due_date
-      t.string :location
       t.integer :user_id
 
       t.timestamps
