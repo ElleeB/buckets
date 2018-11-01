@@ -1,9 +1,8 @@
 class Activity < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   has_many :lists
   has_many :items
-  has_many :activity_categories
-  has_many :categories, through: :activity_categories
 
   validates :title, presence: true
   validates :description, presence: true
