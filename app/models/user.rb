@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :username, uniqueness: true
   validates :email, presence: true
-  validates :password, length: { :in => 6..20}
+  validates :password, length: { :in => 6..20 }
 
   def upcoming_activities
     self.activities.where(complete: false).reject { |activity| activity.countdown > 50 }

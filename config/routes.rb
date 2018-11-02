@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   get '/account/delete', to: 'users#destroy'
 
   get '/admin/most_activities', to: 'admin#most_activities'
+
+  get '/admin/category_users', to: 'admin#category_users'
 end

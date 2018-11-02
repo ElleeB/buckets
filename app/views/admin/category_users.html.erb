@@ -1,0 +1,8 @@
+<h1>Category Users</h1>
+
+<% Category.all.each do |category| %>
+  <h2><%= category.name %></h2>
+  <% category.users.all.uniq.each do |user| %>
+    <h4><p><%= user.name %></p><h4>
+  <% end %>
+<% end %>
