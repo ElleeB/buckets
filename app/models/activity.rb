@@ -2,7 +2,7 @@ class Activity < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
   has_many :lists
-  has_many :items 
+  has_many :items
 
   validates :title, presence: true
   validates :description, presence: true
@@ -24,7 +24,7 @@ class Activity < ApplicationRecord
   end
 
   def due_date_cannot_be_in_the_past
-    if due_date < Date.today
+    if !due_date.nil? && due_date < Date.today
       errors.add(:due_date, "can't be in the past")
     end
   end
