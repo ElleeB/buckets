@@ -5,4 +5,9 @@ class Category < ApplicationRecord
   def self.order_by_name
     order('name')
   end
+
+  def unique_users
+    self.users.all.uniq
+  end
+
 end
