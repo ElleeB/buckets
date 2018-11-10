@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   get '/admin/most_activities', to: 'admin#most_activities'
 
   get '/admin/category_users', to: 'admin#category_users'
+
+  get '/admin/category_by_name', to: 'admin#order_by_name'
 end
