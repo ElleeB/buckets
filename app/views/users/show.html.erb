@@ -10,6 +10,8 @@
 
 <%= render 'my_drops' %>
 
+<div id="show-all-drops"></div>
+
 <hr>
 <p><%= link_to 'My Account', '/account' %></p>
 <p><%= link_to 'Log Out', '/logout' %></p>
@@ -18,9 +20,11 @@
 
 <script>
   $(function() {
-    $("#all-drops").on('click', function() {
+    $("#all-drops").on('click', function(event) {
+      event.preventDefault()
       $.get("/users/`${<%= @user.id %>}`/activities", function(data) {
-        console.log(data[0])
+        let activities = data
+        activities.forEach( (activity => console.log(activity.title)))
       })
     })
   })
