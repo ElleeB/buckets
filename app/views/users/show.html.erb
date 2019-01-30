@@ -19,7 +19,9 @@
 <script>
   $(function() {
     $("#all-drops").on('click', function() {
-      alert("click!!!!!!!!!!!!!!!")
+      $.get("/users/1/activities", function(data) {
+        console.log(data[0])
+      })
     })
   })
 </script>

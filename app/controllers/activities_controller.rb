@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = current_user_activities
+    render json: @activities
   end
 
   def new
