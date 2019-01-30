@@ -19,7 +19,7 @@
 <script>
   $(function() {
     $("#all-drops").on('click', function() {
-      $.get("/users/1/activities", function(data) {
+      $.get("/users/`${<%= @user.id %>}`/activities", function(data) {
         console.log(data[0])
       })
     })
