@@ -1,3 +1,10 @@
+$(console.log(document))
+
+// $(document).ready(function(event) {
+//   console.log("ready!")
+// })
+
+
 // const main = $('main')
 //
 // $( main ).ready(function(event) {
