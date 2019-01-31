@@ -11,21 +11,7 @@
 <% if @user.activities.empty? %>
   <h2><p>You haven no planned drops! Add a drop below.</p></h2>
 <% else %>
-  <script>
-    $(function() {
-      $("#all-drops").on('click', function(event) {
-        event.preventDefault()
-        $.get("/users/`${<%= @user.id %>}`/activities", function(data) {
-          let activities = data
-          let div = $("#show-drop-button")
-          activities.forEach(function(activity) {
-            div.append(`<ul><li>${activity.title}</li></ul>`)
-            // need to ensure that it doesn't repeat append
-          })
-        })
-      })
-    })
-  </script>
+  
   <br>
   <button id="all-drops">View All Drops</button>
   <div id="show-drop-button"></div>

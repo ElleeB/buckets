@@ -1,22 +1,12 @@
-$(console.log(document))
-
-// $(document).ready(function(event) {
-//   console.log("ready!")
-// })
-
-
-// const main = $('main')
-//
-// $( main ).ready(function(event) {
-//     console.log( "ready!" )
-// })
-
-
-
-
-
-// function addListeners() {
-//   $("#all-drops").on('click', function() {
-//     alert("click!!!!!!!!!!!!!!!")
-//   })
-// }
+$(function() {
+  $("#all-drops").on('click', function(event) {
+    $.get("/users/`${<%= @user.id %>}`/activities", function(data) {
+      let activities = data
+      let div = $("#show-drop-button")
+      activities.forEach(function(activity) {
+        div.append(`<ul><li>${activity.title}</li></ul>`)
+        // need to ensure that it doesn't repeat append
+      })
+    })
+  })
+})
