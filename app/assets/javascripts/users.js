@@ -1,6 +1,7 @@
 $(function() {
   $("#all-drops").on('click', function(event) {
-    $.get("/users/`${<%= @user.id %>}`/activities", function(data) {
+    let userID = this.dataset.userId
+    $.get(`/users/${userID}/activities`, function(data) {
       let activities = data
       let div = $("#show-drop-button")
       activities.forEach(function(activity) {
