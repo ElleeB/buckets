@@ -10,15 +10,15 @@
 
 <% if @user.activities.empty? %>
   <h2><p>You haven no planned drops! Add a drop below.</p></h2>
+    <hr>
+  <button id="add-drop-button">Add A Drop</button>
+  <div id="add-a-drop"></div>
 <% else %>
 
   <br>
   <button id="all-drops" data-user-id="<%= @user.id %>">View All Drops</button>
   <div id="show-drop-button"></div>
-  <br>
-    <hr>
-  <button id="add-drop-button">Add A Drop</button>
-  <div id="add-a-drop"></div>
+
 <% end %>
 
 <hr>
