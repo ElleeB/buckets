@@ -20,6 +20,9 @@
 <button id="add-drop-button">Add A Drop</button>
 <div id="add-a-drop"></div>
 
+<%= render partial: 'activities/form',
+                    locals: {activity: Activity.new}  %>
+
 <hr>
 <p><%= link_to 'My Account', '/account' %></p>
 <p><%= link_to 'Log Out', '/logout' %></p>
