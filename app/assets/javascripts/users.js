@@ -9,7 +9,7 @@ $(function() {
         $.get(`/users/${userID}/activities`, function(data) {
           let activities = data
           activities.forEach(function(activity) {
-            div.append(`<ul><li>${activity.title}</li></ul>`)
+            div.append(`<ul><li><a href="../activities/${activity.id}">${activity.title}</a></li></ul>`)
             // need to ensure that it doesn't repeat append
             //  + turn innerText into 'hide my drops'
             $("#all-drops-button")[0].innerText = "Hide My Drops"
