@@ -20,7 +20,7 @@
 <button id="add-drop-button">Add A Drop</button>
 <!--  change submit button text from 'Activity' to 'Drop'-->
 <div id="add-a-drop">
-  <%= form_for activity do |f| %>
+  <%= form_for @activity do |f| %>
     <p><%= f.label "Title Your Drop" %></p>
     <%= f.text_field :title %>
     <p><%= f.label "Category" %></p>
