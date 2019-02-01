@@ -1,4 +1,4 @@
-// View/Hide Activities Button Functionality
+// View/Hide Activities Button Functionality //
 $(function() {
   $("#all-drops-button").on('click', function() {
     let div = $("#list-drops")
@@ -23,5 +23,16 @@ $(function() {
       // reset button text
       $("#all-drops-button")[0].innerText = "View All Drops"
     }
+  })
+})
+
+// Add New Drop/Activity Button //
+$(function() {
+  $("#add-drop-button").on("click", function() {
+    // remember to remove @activity from activities/new
+    let div = $("#add-a-drop")
+    if (div.empty())
+    console.log("no form here!")
+
   })
 })
