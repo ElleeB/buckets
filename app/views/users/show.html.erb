@@ -20,8 +20,15 @@
 <button id="add-drop-button">Add A Drop</button>
 <div id="add-a-drop"></div>
 
+<script type="text/javascript" charset="utf-8">
+  $("#add-drop-button").on("click", function() {
+    alert("pow!")
+
+  })
+</script>
+
 <%= render partial: 'activities/form',
-                    locals: {activity: Activity.new}  %>
+           locals: {activity: Activity.new}  %>
 
 <hr>
 <p><%= link_to 'My Account', '/account' %></p>
