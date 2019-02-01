@@ -1,5 +1,6 @@
 // View/Hide Activities Button Functionality //
 $(function() {
+  // try to apply .toggle() here
   $("#all-drops-button").on('click', function() {
     let div = $("#list-drops")
     // if button says view all drops
@@ -32,6 +33,7 @@ $(function() {
     // remember to remove @activity from activities/new
     let div = $("#add-a-drop")
     // reveal form
+    div.toggle()
     // run post request for new drop/activity data
   })
 })
