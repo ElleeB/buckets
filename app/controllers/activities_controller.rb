@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    if current_user?
+    if current_user?      
       @activity = Activity.new(activity_params)
       @activity.user = current_user
 
