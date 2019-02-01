@@ -32,7 +32,6 @@ $(function() {
     // remember to remove @activity from activities/new
     let div = $("#add-a-drop")
     // reveal form
-    div.html("<%= escape_javascript(render partial: 'activities/form', locals: { activity: Activity.new } ) %>")
     // run post request for new drop/activity data
   })
 })

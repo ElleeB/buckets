@@ -20,21 +20,20 @@
 <button id="add-drop-button">Add A Drop</button>
 <!--  change submit button text from 'Activity' to 'Drop'-->
 <div id="add-a-drop">
-  <%= form_for @user do |f| %>
-    <p><%= f.label "Name" %></p>
-    <%= f.text_field :name %>
-    <p><%= f.label "Username" %></p>
-    <%= f.text_field :username %>
-    <p><%= f.label "Email" %></p>
-    <%= f.text_field :email %>
-    <p><%= f.label "Password (6-20 characters)" %></p>
-    <%= f.password_field :password %>
-    <p><%= f.label "Re-Enter Password" %></p>
-    <%= f.password_field :password_confirmation %>
-    <p><%= f.submit submit_text %></p>
-    <p><%= f.label "Choose your favorite bucket category" %></p>
-    <%= f.select(:categories, Category.all.collect { |cat| cat.name }, { :prompt => "Please select" }) %>
+  <%= form_for activity do |f| %>
+    <p><%= f.label "Title Your Drop" %></p>
+    <%= f.text_field :title %>
+    <p><%= f.label "Category" %></p>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <p><%= f.label "Why is this drop important?" %></p>
+    <%= f.text_area :description %>
+    <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
+    <%= f.date_field :due_date %>
+    <p><%= f.submit %></p>
   <% end %>
+
+  <hr>
+  <%= link_to "Back", :back %>
 </div>
 
 <hr>
