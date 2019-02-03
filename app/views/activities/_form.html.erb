@@ -3,9 +3,9 @@
   <%= f.text_field :title %>
   <p><%= f.label "Category" %></p>
   <%= f.collection_select :category_id, Category.all, :id, :name %>
-  <p><%= f.label "Why is this drop important?" %></p>
+  <p><%= f.label "Description" %></p>
   <%= f.text_area :description %>
-  <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
+  <p><%= f.label "Deadline" %></p>
   <%= f.date_field :due_date %>
   <p><%= f.submit %></p>
 <% end %>
