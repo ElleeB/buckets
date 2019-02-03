@@ -107,7 +107,7 @@ Activity.create(
   category_id: 1,
   title: "Dye Hair Dark",
   description: "This auburn's gotta go",
-  due_date: DateTime.strptime('3/30/2019', '%m/%d/%Y')
+  due_date: DateTime.strptime('3/1/2019', '%m/%d/%Y')
   )
 
 
