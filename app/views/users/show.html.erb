@@ -1,5 +1,7 @@
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 
+<!-- ### after adding a new activity, split the page in two columns to highlight new activity on right ###-->
+
 <%= render 'list_activities' %>
 
 <!-- if user has an image, display -->
@@ -18,7 +20,7 @@
 
 <hr>
 <button id="add-drop-button">Add A Drop</button>
-<!--  change submit button text from 'Activity' to 'Drop'-->
+<!-- ### change submit button text from 'Activity' to 'Drop'### -->
 <div id="add-a-drop">
   <%= form_for @activity do |f| %>
     <p><%= f.label "Title Your Drop" %></p>
