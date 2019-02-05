@@ -6,3 +6,18 @@
  div#add-a-drop {
    display:none;
  }
+
+ .column {
+  float: left;
+}
+
+.left {
+  padding: 10px;
+  width: 350px;
+  border-right: solid #000000
+}
+
+.right {
+  padding: 10px;
+  width: 75%;
+}
