@@ -1,3 +1,4 @@
+<div id="bounding-box">
 <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 
 <!-- ### after adding a new activity, split the page in two columns to highlight new activity on right ###-->
@@ -5,16 +6,24 @@
 <%= render 'list_activities' %>
 
 <div id="container">
+  <!-- left column! -->
   <div id="left">
-    Hello
+    <div>
+      <p><%= link_to 'My Account', '/account' %></p>
+      <p><%= link_to 'Log Out', '/logout' %></p>
+    </div>
   </div>
+  <!-- right column! -->
   <div id="right">
-    <div style="background-color: red; height: 10px;">Hello</div>
+    <div>
+      <p>survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with des</p>
+    </div>
   </div>
   <div class="clear"></div>
 </div>
 
 <!-- if user has an image, display -->
+<br><br><br>
 <% if @user.image %>
   <!-- <hr> -->
   <%= image_tag(@user.image) %>
@@ -48,6 +57,5 @@
   <%= link_to "Back", :back %>
 </div>
 
-<hr>
-<p><%= link_to 'My Account', '/account' %></p>
-<p><%= link_to 'Log Out', '/logout' %></p>
+
+</div>
