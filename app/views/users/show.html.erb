@@ -1,9 +1,7 @@
 <div id="bounding-box">
   <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 
-  <!-- ### after adding a new activity, split the page in two columns to highlight new activity on right ###-->
-
-  <%= render 'list_activities' %>
+  <hr>
 
   <div id="container">
     <!-- left column! -->
@@ -30,6 +28,7 @@
     </div>
     <!-- right column! -->
     <div id="right">
+      <div id="slogan">SLOGAN!</div>
       <div id="right-column-content">
       </div>
     </div>
@@ -55,4 +54,5 @@
     <hr>
     <%= link_to "Back", :back %>
   </div>
+  <%= render 'list_activities' %>
 </div>
