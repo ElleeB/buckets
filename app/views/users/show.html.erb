@@ -21,13 +21,17 @@
   </div>
   <div class="clear"></div>
 </div>
+<br><br><br>
 
 <!-- if user has an image, display -->
-<br><br><br>
+
 <% if @user.image %>
-  <!-- <hr> -->
-  <%= image_tag(@user.image) %>
+  <div id="image-container">
+    <%= image_tag(@user.image) %>
+  </div>
 <% end %>
+
+
 
 <% if @user.activities.empty? %>
   <h2><p>You haven no planned drops! Add a drop below.</p></h2>

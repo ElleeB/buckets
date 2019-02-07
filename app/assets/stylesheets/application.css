@@ -37,10 +37,26 @@ a:link {
    color: dimgray;
  }
 
- img {
+/* User image style */
+ div#image-container {
    display: block;
-   max-height:400px;
+   /* width: auto; */
+   float: left;
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   background-color: pink;
+   clip-path: circle(40%);
+
+ }
+
+ img {
    width: auto;
-   border-radius: 8px;
-   border: 3px solid hotpink;
+   height: 100px;
+   /* object-fit: contain; */
+   position: relative; right: 50%;
+   /* margin: 1px 2px 3px 4px; */
+
+   /* border-radius: 8px; */
+   /* border: 3px solid hotpink; */
  }
