@@ -1,65 +1,60 @@
 <div id="bounding-box">
-<h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
+  <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
 
-<!-- ### after adding a new activity, split the page in two columns to highlight new activity on right ###-->
+  <!-- ### after adding a new activity, split the page in two columns to highlight new activity on right ###-->
 
-<%= render 'list_activities' %>
+  <%= render 'list_activities' %>
 
-<div id="container">
-  <!-- left column! -->
-  <div id="left">
-    <div>
-      <p><%= link_to 'My Account', '/account' %></p>
-      <p><%= link_to 'Log Out', '/logout' %></p>
+  <div id="container">
+    <!-- left column! -->
+    <div id="left">
+      <div>
+        <!-- if user has an image, display -->
+        <% if @user.image %>
+          <span id="image-container">
+            <%= image_tag(@user.image) %>
+          </span>
+        <% end %>
+        <br>
+        <br>
+        <p><%= link_to 'My Account', '/account' %></p>
+        <p><%= link_to 'Log Out', '/logout' %></p>
+      </div>
     </div>
-  </div>
-  <!-- right column! -->
-  <div id="right">
-    <div>
-      <p>survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with des</p>
+    <!-- right column! -->
+    <div id="right">
+      <div>
+        <p>survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with des</p>
+      </div>
     </div>
+    <div class="clear"></div>
   </div>
-  <div class="clear"></div>
-</div>
-<br><br><br>
 
-<!-- if user has an image, display -->
-
-<% if @user.image %>
-  <div id="image-container">
-    <%= image_tag(@user.image) %>
-  </div>
-<% end %>
-
-
-
-<% if @user.activities.empty? %>
-  <h2><p>You haven no planned drops! Add a drop below.</p></h2>
-<% else %>
-  <br>
-  <button id="all-drops-button" data-user-id="<%= @user.id %>">View All Drops</button>
-  <div id="list-drops"></div>
-<% end %>
-
-<hr>
-<button id="add-drop-button">Add A Drop</button>
-<!-- ### change submit button text from 'Activity' to 'Drop'### -->
-<div id="add-a-drop">
-  <%= form_for @activity do |f| %>
-    <p><%= f.label "Title Your Drop" %></p>
-    <%= f.text_field :title %>
-    <p><%= f.label "Category" %></p>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-    <p><%= f.label "Description" %></p>
-    <%= f.text_area :description %>
-    <p><%= f.label "Deadline" %></p>
-    <%= f.date_field :due_date %>
-    <p><%= f.submit %></p>
+  <% if @user.activities.empty? %>
+    <h2><p>You haven no planned drops! Add a drop below.</p></h2>
+  <% else %>
+    <br>
+    <button id="all-drops-button" data-user-id="<%= @user.id %>">View All Drops</button>
+    <div id="list-drops"></div>
   <% end %>
 
   <hr>
-  <%= link_to "Back", :back %>
-</div>
+  <button id="add-drop-button">Add A Drop</button>
+  <!-- ### change submit button text from 'Activity' to 'Drop'### -->
+  <div id="add-a-drop">
+    <%= form_for @activity do |f| %>
+      <p><%= f.label "Title Your Drop" %></p>
+      <%= f.text_field :title %>
+      <p><%= f.label "Category" %></p>
+      <%= f.collection_select :category_id, Category.all, :id, :name %>
+      <p><%= f.label "Description" %></p>
+      <%= f.text_area :description %>
+      <p><%= f.label "Deadline" %></p>
+      <%= f.date_field :due_date %>
+      <p><%= f.submit %></p>
+    <% end %>
 
-
+    <hr>
+    <%= link_to "Back", :back %>
+  </div>
 </div>

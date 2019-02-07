@@ -37,18 +37,7 @@ a:link {
    color: dimgray;
  }
 
-/* User image style */
- div#image-container {
-   display: block;
-   float: left;
-   width: 100px;
-   height: 100px;
-   border-radius: 50%;
-   clip-path: circle(40%);
-   margin: auto;
- }
-
  img {
-   width: auto;
-   height: 100px;
+   width: 198px;
+   height: auto;
  }
