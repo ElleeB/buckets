@@ -16,27 +16,25 @@
           </span>
         <% end %>
         <br>
-        <br>
+        <% if @user.activities.empty? %>
+          <h2><p>You haven no planned drops! Add a drop below.</p></h2>
+        <% else %>
+          <br>
+          <button id="all-drops-button" data-user-id="<%= @user.id %>">View All Drops</button>
+        <% end %>
+        <p>my to-do-lists</p>
+        <p>add a drop </p>
         <p><%= link_to 'My Account', '/account' %></p>
         <p><%= link_to 'Log Out', '/logout' %></p>
       </div>
     </div>
     <!-- right column! -->
     <div id="right">
-      <div>
-        <p>survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with des</p>
+      <div id="right-column-content">
       </div>
     </div>
     <div class="clear"></div>
   </div>
-
-  <% if @user.activities.empty? %>
-    <h2><p>You haven no planned drops! Add a drop below.</p></h2>
-  <% else %>
-    <br>
-    <button id="all-drops-button" data-user-id="<%= @user.id %>">View All Drops</button>
-    <div id="list-drops"></div>
-  <% end %>
 
   <hr>
   <button id="add-drop-button">Add A Drop</button>

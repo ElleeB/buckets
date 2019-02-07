@@ -2,11 +2,11 @@
 $(function() {
   // try to apply .toggle() here
   $("#all-drops-button").on('click', function() {
-    let div = $("#list-drops")
+    let div = $("#right-column-content")
     // if button says view all drops
     if ($("#all-drops-button")[0].innerText === "View All Drops") {
       // if no drops visible
-      if ($("#list-drops").empty()) {
+      if ($("#right-column-content").empty()) {
         let userID = this.dataset.userId
         $.get(`/users/${userID}/activities`, function(data) {
           let activities = data
@@ -20,7 +20,7 @@ $(function() {
     // if button says hide my drops and is clicked
     } else {
       // hide the activities listed
-      $("#list-drops")[0].innerHTML = ""
+      $("#right-column-content")[0].innerHTML = ""
       // reset button text
       $("#all-drops-button")[0].innerText = "View All Drops"
     }
