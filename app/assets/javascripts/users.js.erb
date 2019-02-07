@@ -1,49 +1,16 @@
-// View/Hide Activities Button Functionality //
+// View All Drops Button //
 $(function() {
-  // try to apply .toggle() here
   $("#all-drops-button").on('click', function() {
     let div = $("#right-column-content")
-    // if button says view all drops
-    if ($("#all-drops-button")[0].innerText === "View All Drops") {
-      // if no drops visible
-      if ($("#right-column-content").empty()) {
-        let userID = this.dataset.userId
-        $.get(`/users/${userID}/activities`, function(data) {
-          let activities = data
-          activities.forEach(function(activity) {
-            div.append(`<ul><li><a href="../activities/${activity.id}">${activity.title}</a></li></ul>`)
-            //  change button text to 'hide my drops'
-            $("#all-drops-button")[0].innerText = "Hide My Drops"
-          })
-        })
-      }
-    // if button says hide my drops and is clicked
-    } else {
-      // hide the activities listed
-      $("#right-column-content")[0].innerHTML = ""
-      // reset button text
-      $("#all-drops-button")[0].innerText = "View All Drops"
-    }
+    let userID = this.dataset.userId
+    div.empty()
+    $.get(`/users/${userID}/activities`, function(data) {
+      let activities = data
+      activities.forEach(function(activity) {
+        div.append(
+        `<ul><li><a href="../activities/${activity.id}">${activity.title}</a></li></ul>`
+        )
+      })
+    })
   })
 })
-
-// // Add New Drop/Activity Button //
-// $(function() {
-//   $("#add-drop-button").on("click", function() {
-//     // remember to remove @activity from activities/new
-//     let div = $("#add-a-drop")
-//     // reveal form
-//     div.toggle()
-//     // run post request for new drop/activity data
-//   })
-// })
-
-// Right column content function //
-// $(function() {
-//   $("#add-drop-button").on("click", function() {
-//     let div = $("#right-column-content")
-//   })
-// })
-
-// create function that displays a slogan if nothing is present in
-// the right column
