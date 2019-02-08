@@ -22,10 +22,9 @@
         <% end %>
         <br><br>
 
-        <button id="add-drop-button">Add A Drop</button>
+        <%= button_tag "Add A Drop", id: "add-drop-button", remote: true %>
         <br>
         <p>my to-do-lists</p>
-        <p>add a drop </p>
         <p><%= link_to 'My Account', '/account' %></p>
         <p><%= link_to 'Log Out', '/logout' %></p>
       </div>
@@ -39,24 +38,3 @@
 
   <%= render 'list_activities' %>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-    $(function() {
-      $("#add-drop-button").on("click", function() {
-        let div = $("#right-column-content")
-
-        div[0].innerHTML =
-          `<%= form_for @activity do |f| %>
-          <p><%= f.label "Title Your Drop" %></p>
-          <%= f.text_field :title %>
-          <p><%= f.label "Category" %></p>
-          <%= f.collection_select :category_id, Category.all, :id, :name %>
-          <p><%= f.label "Description" %></p>
-          <%= f.text_area :description %>
-          <p><%= f.label "Deadline" %></p>
-          <%= f.date_field :due_date %>
-          <p><%= f.submit %></p>
-        <% end %>`
-      })
-    })
-</script>

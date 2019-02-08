@@ -1,16 +1,36 @@
 // View All Drops Button //
 $(function() {
   $("#all-drops-button").on('click', function() {
-    let div = $("#right-column-content")
+    let rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
-    div.empty()
+    rightColumnDiv.empty()
     $.get(`/users/${userID}/activities`, function(data) {
       let activities = data
       activities.forEach(function(activity) {
-        div.append(
+        rightColumnDiv.append(
         `<ul><li><a href="../activities/${activity.id}">${activity.title}</a></li></ul>`
         )
       })
     })
   })
+})
+
+// Form Display
+function displayAddActivityForm() {
+  let rightColumnDiv = $("#right-column-content")[0]
+  
+}
+
+// Add A Drop Button //
+$(function() {
+  $("#add-drop-button").on("click", function() {
+    displayAddActivityForm()
+  })
+})
+
+
+
+// Slogan Function //
+$(function() {
+
 })
