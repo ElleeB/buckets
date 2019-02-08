@@ -4,7 +4,7 @@ $(function() {
     $("#activities-form").hide()
     const rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
-    
+
     rightColumnDiv.empty()
     rightColumnDiv.html("<h2>My Drops</h2>")
 
@@ -37,7 +37,8 @@ $(function() {
   $("#to-do-button").on('click', function() {
     const rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
-
+    
+    $("#activities-form").hide()
     rightColumnDiv.empty()
     rightColumnDiv.html("<h2>My To Dos</h2>")
 
