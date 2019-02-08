@@ -2,7 +2,7 @@
 $(function() {
   $("#all-drops-button").on('click', function() {
     $("#activities-form").hide()
-    let rightColumnDiv = $("#right-column-content")
+    const rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
     rightColumnDiv.empty()
     $.get(`/users/${userID}/activities`, function(data) {
@@ -18,7 +18,7 @@ $(function() {
 
 function displayNewActivityForm() {
   $("#right-column-content").empty()
-  let newActivityFormDiv = $("#activities-form")
+  const newActivityFormDiv = $("#activities-form")
   newActivityFormDiv.toggle()
 }
 
