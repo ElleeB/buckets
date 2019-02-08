@@ -1,9 +1,8 @@
 <div id="bounding-box">
   <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
-
   <hr>
-
   <div id="container">
+
     <!-- left column! -->
     <div id="left">
       <div>
@@ -22,16 +21,33 @@
         <% end %>
         <br><br>
 
-        <%= button_tag "Add A Drop", id: "add-drop-button", remote: true %>
+        <%= button_tag "Add A Drop", id: "add-drop-button" %>
         <br>
         <p>my to-do-lists</p>
         <p><%= link_to 'My Account', '/account' %></p>
         <p><%= link_to 'Log Out', '/logout' %></p>
       </div>
     </div>
+
     <!-- right column! -->
     <div id="right">
       <div id="right-column-content"></div>
+      <div id="activities-form" style="display:none">
+        <%= form_for @activity do |f| %>
+          <p><%= f.label "Title Your Drop" %></p>
+          <%= f.text_field :title %>
+          <p><%= f.label "Category" %></p>
+          <%= f.collection_select :category_id, Category.all, :id, :name %>
+          <p><%= f.label "Description" %></p>
+          <%= f.text_area :description %>
+          <p><%= f.label "Deadline" %></p>
+          <%= f.date_field :due_date %>
+          <p><%= f.submit %></p>
+        <% end %>
+        <hr>
+        <%= link_to "Back", :back %>
+      </div>
+
     </div>
     <div class="clear"></div>
   </div>

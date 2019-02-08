@@ -1,6 +1,7 @@
 // View All Drops Button //
 $(function() {
   $("#all-drops-button").on('click', function() {
+    $("#activities-form").hide()
     let rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
     rightColumnDiv.empty()
@@ -15,16 +16,17 @@ $(function() {
   })
 })
 
-// Form Display
-function displayAddActivityForm() {
-  let rightColumnDiv = $("#right-column-content")[0]
-  
+function displayNewActivityForm() {
+  $("#right-column-content").empty()
+  let newActivityFormDiv = $("#activities-form")
+  newActivityFormDiv.toggle()
 }
 
-// Add A Drop Button //
+// Add A Drop Form Display //
 $(function() {
   $("#add-drop-button").on("click", function() {
-    displayAddActivityForm()
+    displayNewActivityForm()
+    $(this).off('click')
   })
 })
 
