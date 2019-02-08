@@ -4,7 +4,9 @@ $(function() {
     $("#activities-form").hide()
     const rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
+    
     rightColumnDiv.empty()
+    rightColumnDiv.html("<h2>My Drops</h2>")
 
     $.get(`/users/${userID}/activities`, function(data) {
       let activities = data
@@ -21,6 +23,10 @@ $(function() {
 $(function() {
   $("#add-drop-button").on("click", function() {
     $("#right-column-content").empty()
+
+    const rightColumnDiv = $("#right-column-content")
+    rightColumnDiv.html("<h2>Add A Drop To Your Bucket!</h2>")
+
     const newActivityFormDiv = $("#activities-form")
     newActivityFormDiv.show()
   })
@@ -31,16 +37,17 @@ $(function() {
   $("#to-do-button").on('click', function() {
     const rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
+
     rightColumnDiv.empty()
+    rightColumnDiv.html("<h2>My To Dos</h2>")
 
     $.get(`/users/${userID}/lists`, function(data) {
       let lists = data
-      console.log(data)
-      // lists.forEach(function(list) {
-      //   rightColumnDiv.append(
-      //   `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
-      //   )
-      // })
+      lists.forEach(function(list) {
+        rightColumnDiv.append(
+        `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
+        )
+      })
     })
 
   })
