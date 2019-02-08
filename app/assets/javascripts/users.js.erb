@@ -5,6 +5,7 @@ $(function() {
     const rightColumnDiv = $("#right-column-content")
     let userID = this.dataset.userId
     rightColumnDiv.empty()
+
     $.get(`/users/${userID}/activities`, function(data) {
       let activities = data
       activities.forEach(function(activity) {
@@ -25,7 +26,22 @@ $(function() {
   })
 })
 
-// Slogan Function //
+// Show To Do Lists //
 $(function() {
+  $("#to-do-button").on('click', function() {
+    const rightColumnDiv = $("#right-column-content")
+    let userID = this.dataset.userId
+    rightColumnDiv.empty()
 
+    $.get(`/users/${userID}/lists`, function(data) {
+      let lists = data
+      console.log(data)
+      // lists.forEach(function(list) {
+      //   rightColumnDiv.append(
+      //   `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
+      //   )
+      // })
+    })
+
+  })
 })

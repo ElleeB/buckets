@@ -2,6 +2,9 @@ class ListsController < ApplicationController
   def index
     if logged_in? && params[:activity_id]
       @activity = current_activity
+    elsif logged_in?
+      @lists = current_user.lists
+      render json: @lists
     else
       redirect_to '/'
     end
