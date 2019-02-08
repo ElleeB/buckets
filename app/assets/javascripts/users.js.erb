@@ -16,21 +16,15 @@ $(function() {
   })
 })
 
-function displayNewActivityForm() {
-  $("#right-column-content").empty()
-  const newActivityFormDiv = $("#activities-form")
-  newActivityFormDiv.toggle()
-}
-
 // Add A Drop Form Display //
 $(function() {
   $("#add-drop-button").on("click", function() {
-    displayNewActivityForm()
+    $("#right-column-content").empty()
+    const newActivityFormDiv = $("#activities-form")
+    newActivityFormDiv.toggle()
     $(this).off('click')
   })
 })
-
-
 
 // Slogan Function //
 $(function() {
