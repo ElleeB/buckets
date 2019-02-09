@@ -1,0 +1,16 @@
+function toDo(name, activity, user) {
+	this.name = name,
+  this.activity = activity,
+	this.user = user,
+	this.headline = function() {
+		return this.name.toUpperCase() + " | " + this.activity.toUpperCase() + " | " + this.user.toUpperCase();
+	}
+}
+
+// function Human(firstName, lastName) {
+// 	this.firstName = firstName,
+// 	this.lastName = lastName,
+// 	this.fullName = function() {
+// 		return this.firstName + " " + this.lastName;
+// 	}
+// }
