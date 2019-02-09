@@ -1,5 +1,6 @@
 <div id="bounding-box">
   <h2>Welcome To Your Bucket, <%= @user.name.capitalize %>!</h2>
+  <p><%= link_to 'Account', '/account' %> | <%= link_to 'Log Out', '/logout' %></p>
   <hr>
   <div id="container">
 
@@ -24,8 +25,6 @@
         <%= button_tag "Add A Drop", id: "add-drop-button" %>
         <br><br>
         <%= button_tag "My To-Do-Lists", id: "to-do-button" %>
-        <p><%= link_to 'My Account', '/account' %></p>
-        <p><%= link_to 'Log Out', '/logout' %></p>
       </div>
     </div>
 
