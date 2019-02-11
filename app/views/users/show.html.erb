@@ -32,7 +32,8 @@
     <div id="right">
       <div id="right-column-content">ADVENTURE AWAITS!!</div>
       <div id="activities-form" style="display:none">
-        <%= form_for @activity do |f| %>
+
+        <%= form_for Activity.new do |f| %>
           <p><%= f.label "Title Your Drop" %></p>
           <%= f.text_field :title %>
           <p><%= f.label "Category" %></p>

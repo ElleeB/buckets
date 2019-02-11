@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   def show
     if params[:id].to_i == session[:user_id]
       @user = current_user
-      @activity = Activity.new
     else
       redirect_to '/'
     end
