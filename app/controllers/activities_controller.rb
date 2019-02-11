@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    if current_user?    
+    if current_user?
       @activity = Activity.new(activity_params)
       @activity.user = current_user
 
@@ -63,7 +63,12 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @list = List.find_by(activity_id: params[:id])
+    # @list = List.find_by(activity_id: params[:id])
+    @activity = current_activity
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @activity}
+    end
   end
 
   def destroy

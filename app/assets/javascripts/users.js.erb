@@ -38,15 +38,24 @@ $(function createNewActivity() {
   $('form').submit(function(event) {
     event.preventDefault()
 
-    console.log($("#activity_title")[0].value)
-    console.log($("option:selected")[0].innerText)
-    console.log($("#activity_description")[0].value)
-    console.log($("#activity_due_date")[0].value)
+    let values = $(this).serialize()
+    const posting = $.post('/activities', values)
+
+    posting.done(function(data) {
+      $("#right-column-content").empty()
+
+      let activity = data
+
+      const rightColumnDiv = $("#right-column-content")
+      rightColumnDiv.html("<h2>Your Newest Drop!</h2>")
+
+
+      // $("#activity_title").text(activity["title"])
+      // $("option:selected").text(activity["category_id"])
+      // $("#activity_description").text(activity["description"])
+      // $("#activity_due_date").text(activity["due_date"])
+    })
   })
-  // title #activity_title
-  // category #activity_category_id
-  // description #activity_description
-  // dealine #activity_due_date
 })
 
 
