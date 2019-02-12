@@ -44,7 +44,9 @@ $(function() {
       $('form').empty()
 
       let activity = data
-      console.log(data)
+      // need category text instead of idea
+      // need to format time
+      // PROTOTYPE!
       const rightColumnDiv = $("#right-column-content")
       rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${activity.category_id}</p><p>${activity.description}</p><p>${activity.due_date}</p>`)
 

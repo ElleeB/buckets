@@ -1,8 +1,15 @@
 // Activity Prototype //
-function Activity(title, user) {
+function Activity(title, categoryID, description, dueDate) {
 	this.title = title,
+	this.categoryID = categoryID,
+	this.description = description,
   this.dueDate = dueDate,
-	this.headline = function() {
-		return this.title.toUpperCase() + " | " + this.user
+
+	this.categoryText = function() {
+		// return this.title.toUpperCase() + " | " + this.user
+	}
+
+	this.dueDate = function() {
+		// return this.title.toUpperCase() + " | " + this.user
 	}
 }
