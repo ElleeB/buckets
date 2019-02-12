@@ -36,19 +36,26 @@ $(function() {
 $(function() {
   $('input#submit-new-drop-button').on("click", function(event){
     event.preventDefault()
-    console.log("hello")
-  })
-})
 
+    let values = $('form').serialize()
+    const posting = $.post('/activities', values)
 
+    posting.done(function(data) {
+      $('form').empty()
+
+      let activity = data
+      console.log(data)
+      const rightColumnDiv = $("#right-column-content")
+      rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${activity.category_id}</p><p>${activity.description}</p><p>${activity.due_date}</p>`)
 
       // $("#activity_title").text(activity["title"])
       // $("option:selected").text(activity["category_id"])
       // $("#activity_description").text(activity["description"])
       // $("#activity_due_date").text(activity["due_date"])
 
-
-
+    })
+  })
+})
 
 // Show To Do Lists //
 $(function() {
