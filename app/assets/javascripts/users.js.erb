@@ -3,13 +3,13 @@ $(function() {
   $("#all-drops-button").on('click', function() {
     $("#activities-form").hide()
     const rightColumnDiv = $("#right-column-content")
-    let userID = this.dataset.userId
+    const userID = this.dataset.userId
 
     rightColumnDiv.empty()
     rightColumnDiv.html("<h2>My Drops</h2>")
 
     $.get(`/users/${userID}/activities`, function(data) {
-      let activities = data
+      const activities = data
       activities.forEach(function(activity) {
         rightColumnDiv.append(
         `<ul><li><a href="../activities/${activity.id}">${activity.title}</a></li></ul>`
@@ -37,24 +37,17 @@ $(function() {
   $('input#submit-new-drop-button').on("click", function(event){
     event.preventDefault()
 
-    let values = $('form').serialize()
-    const posting = $.post('/activities', values)
+    const values = $('form').serialize()
+    const posting = $.post("/activities", values)
 
     posting.done(function(data) {
       $('form').empty()
+      console.log(data)
+      const activity = data.activity
+      const category_name = data.activity_category
 
-      let activity = data
-      // need category text instead of idea
-      // need to format time
-      // PROTOTYPE!
       const rightColumnDiv = $("#right-column-content")
-      rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${activity.category_id}</p><p>${activity.description}</p><p>${activity.due_date}</p>`)
-
-      // $("#activity_title").text(activity["title"])
-      // $("option:selected").text(activity["category_id"])
-      // $("#activity_description").text(activity["description"])
-      // $("#activity_due_date").text(activity["due_date"])
-
+      rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${category_name}</p><p>${activity.description}</p><p>${activity.due_date}</p>`)
     })
   })
 })
@@ -63,14 +56,14 @@ $(function() {
 $(function() {
   $("#to-do-button").on('click', function() {
     const rightColumnDiv = $("#right-column-content")
-    let userID = this.dataset.userId
+    const userID = this.dataset.userId
 
     $("#activities-form").hide()
     rightColumnDiv.empty()
     rightColumnDiv.html("<h2>My To Dos</h2>")
 
     $.get(`/users/${userID}/lists`, function(data) {
-      let lists = data
+      const lists = data
       lists.forEach(function(list) {
         rightColumnDiv.append(
         `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`

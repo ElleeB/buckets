@@ -16,7 +16,11 @@ class ActivitiesController < ApplicationController
       @activity.user = current_user
 
       if @activity.save
-        render json: @activity
+        category = Category.find(params[:activity][:category_id])
+        render json: {
+          "activity": @activity,
+          "activity_category": category.name
+        }
       else
         @messages = @activity.define_error_messages
         render :new
