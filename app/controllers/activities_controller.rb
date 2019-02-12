@@ -17,7 +17,6 @@ class ActivitiesController < ApplicationController
 
       if @activity.save
         render json: @activity
-        # redirect_to activity_path(@activity)
       else
         @messages = @activity.define_error_messages
         render :new
