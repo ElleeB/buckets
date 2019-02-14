@@ -1,14 +1,9 @@
 // Activity Prototype //
 function Activity(dueDate) {
-
   this.dueDate = dueDate,
 
-	this.formatDueDate = function() {
-		// Uncaught TypeError: Cannot read property 'toDateString' of undefined
-		return dueDate.toDateString()
+	this.formatDate = function() {
+		let date = new Date(dueDate).toDateString()
+    return date
 	}
 }
-
-// let date1 = new Date('2019-02-20T00:00:00.000Z')
-
-// Date.prototype.toDateString

@@ -1,12 +1,4 @@
-function Activity(dueDate) {
 
-  this.dueDate = dueDate,
-
-	this.formatDueDate = function() {
-		return dueDate.toDateString()
-	}
-}
-//
 
 // View All Drops Button //
 $(function() {
@@ -56,11 +48,12 @@ $(function() {
       const activity = data.activity
       const category_name = data.activity_category
 
-      let activity1 = new Activity(activity.due_date)
-      let date = new Date(activity.due_date).toDateString()
+      let date = new Date(activity.due_date)
+      let activityB = new Activity(date)
+
       const rightColumnDiv = $("#right-column-content")
-      // debugger
-      rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${category_name}</p><p>${activity.description}</p><p>${date}</p>`)
+
+      rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${category_name}</p><p>${activity.description}</p><p>${activityB.formatDate()}</p>`)
     })
   })
 })
