@@ -62,21 +62,29 @@ $(function() {
 
 // Show To Do Lists //
 $(function() {
+
+  // CONDITIONAL: IF user has any to do lists! If not, what then?
   $("#to-do-button").on('click', function() {
-    const rightColumnDiv = $("#right-column-content")
     const userID = this.dataset.userId
 
-    $("#activities-form").hide()
-    rightColumnDiv.empty()
-    rightColumnDiv.html("<h2>My To Dos</h2>")
-
     $.get(`/users/${userID}/lists`, function(data) {
-      const lists = data
-      lists.forEach(function(list) {
-        rightColumnDiv.append(
-        `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
-        )
-      })
+      const rightColumnDiv = $("#right-column-content")
+
+      if (data.length != 0) {
+        const lists = data
+
+        $("#activities-form").hide()
+        rightColumnDiv.empty()
+        rightColumnDiv.html("<h2>My To Dos</h2>")
+
+        lists.forEach(function(list) {
+          rightColumnDiv.append(
+          `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
+          )
+        })
+      } else {
+        rightColumnDiv.html("<h2>You Have No To-Do Lists</h2>")
+      }
     })
   })
 })
