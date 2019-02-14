@@ -1,5 +1,3 @@
-
-
 // View All Drops Button //
 $(function() {
   $("#all-drops-button").on('click', function() {
@@ -7,6 +5,7 @@ $(function() {
     const rightColumnDiv = $("#right-column-content")
     const userID = this.dataset.userId
 
+    // clear right column and refill with new title
     rightColumnDiv.empty()
     rightColumnDiv.html("<h2>My Drops</h2>")
 
@@ -39,21 +38,24 @@ $(function() {
   $('input#submit-new-drop-button').on("click", function(event){
     event.preventDefault()
 
+    // serialize form data + create post request
     const values = $('form').serialize()
     const posting = $.post("/activities", values)
 
     posting.done(function(data) {
+      // clear form visibility from html
       $('form').empty()
 
       const activity = data.activity
       const category_name = data.activity_category
 
-      let date = new Date(activity.due_date)
-      let activityB = new Activity(date)
+      const date = new Date(activity.due_date)
+      // activity instance in order to display formatted date
+      const activityInstance = new Activity(date)
 
       const rightColumnDiv = $("#right-column-content")
 
-      rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${category_name}</p><p>${activity.description}</p><p>${activityB.formatDate()}</p>`)
+      rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${category_name}</p><p>${activity.description}</p><p>${activityInstance.formatDate()}</p>`)
     })
   })
 })
