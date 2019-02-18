@@ -12,7 +12,7 @@ function Activity(dueDate) {
 
 		let dateD = dateC.split(" ")
 		dateD.splice(5, 0, ", ")
-
+    // fix final date format - remove the day ex. "Sat"
 		return dateD.join(" ")
 	}
 }
@@ -25,10 +25,15 @@ $(function () {
 
     $.get("/activities/" + nextId + ".json", function(data) {
       const activity = data
+      const newActivity = new Activity(activity["activity"]["due_date"])
       console.log(activity)
+      console.log(newActivity)
       $(".activityTitle").text(activity["activity"]["title"])
       $(".categoryName").text(activity["activity_category"])
       $(".description").text(activity["activity"]["description"])
+      $(".dueDate").text(newActivity.formatDate)
+
+
       // set the data id to current activity
       $(".js-next").attr("data-id", activity["activity"]["id"])
     })
