@@ -1,10 +1,5 @@
 <div id="bounding-box">
   <h2>Your Drop: <%= @activity.title %></h2>
-  <!-- mark activity complete -->
-  <%= form_for @activity do |f| %>
-    <%= f.check_box :complete, value: @activity.complete %> Mark Complete
-    <%= f.submit 'Update' %>
-  <% end %>
   <hr>
 
   <p> Due Date: <%= @activity.formatted_date %> </p>
@@ -21,8 +16,17 @@
   <div id="container">
       <!-- left column -->
     <div id="left">
+      <%= button_tag "Add A To-Do list", id: "add-todo-button" %>
+      <br><br>
       <%= button_tag "Edit This Drop", id: "edit-drop-button" %>
       <br><br>
+
+      <hr>
+      <!-- mark activity complete -->
+      <%= form_for @activity do |f| %>
+        <%= f.check_box :complete, value: @activity.complete %> Mark This Drop Complete
+        <%= f.submit 'Update' %>
+      <% end %>
     </div>
 
     <!-- right column -->
@@ -52,8 +56,5 @@
   </div>
 
   <hr>
-  <p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
-  <p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %></p>
-  <p><%= link_to 'View All of My Drops', user_activities_path(@activity.user) %></p>
-  <p><%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
+  <p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %>  |  <%= link_to 'View All of My Drops', user_activities_path(@activity.user) %>  |  <%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
 </div>
