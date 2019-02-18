@@ -18,3 +18,11 @@ function Activity(dueDate) {
 }
 
 // Next Link //
+$(function () {
+  $(".js-next").on("click", function() {
+    const nextId = parseInt($(".js-next").attr("data-id")) + 1
+    $.get("/activities/" + nextId + ".json", function(data) {
+      console.log(data)
+    })
+  })
+})
