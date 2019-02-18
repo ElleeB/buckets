@@ -1,0 +1,12 @@
+#header-left-column {
+  padding: 10px;
+  width: 600px;
+  float: left;
+}
+
+#header-right-column {
+  padding: 10px;
+  text-align: right;
+  max-height: 200px;
+  min-height: 18px;
+}

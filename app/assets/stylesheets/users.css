@@ -3,31 +3,3 @@
  div#add-a-drop {
    display:none;
  }
-
-/* Users/show layout styles  */
- #bounding-box {
-   margin-left: 50px;
-   margin-top: 30px;
- }
-
- #container {
-   width: 1200px;
-   width: 80%;
- }
-
- #left {
-   padding: 10px;
-   width: 200px;
-   float: left;
- }
- #right {
-   margin-left: 240px;
-   padding: 10px;
-   width: 90%;
-   max-height: 600px;
-   min-height: 320px;
-   border-left: 1px solid black;
- }
- .clear {
-   clear: both;
- }
