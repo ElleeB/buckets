@@ -2,18 +2,18 @@
   <div id="header-right-column">
     <p><a href="#" class="js-previous" data-id="<%= @activity.id %>">previous activity</a> | <a href="#" class="js-next" data-id="<%= @activity.id %>">next activity</a></p>
   </div>
-  <h2>Your Drop: <%= @activity.title %></h2>
+  <h2 class="activityTitle">Your Drop: <%= @activity.title %></h2>
   <hr>
 
-  <p> Due Date: <%= @activity.formatted_date %> </p>
+  <p class="dueDate"> Due Date: <%= @activity.formatted_date %> </p>
 
   <!-- if past due -->
-  <h3><%= past_due(@activity) %></h3>
+  <h3 class="pastDue"><%= past_due(@activity) %></h3>
   <hr>
   <!-- want to click and see all user activities by category -->
-  <h4> Category</h4><%= @activity.category_name.upcase %>
+  <h4 class="categoryName"> Category</h4><%= @activity.category_name.upcase %>
 
-  <h4>Description</h4><%= @activity.description %>
+  <h4 class="description">Description</h4><%= @activity.description %>
   <hr>
 
   <div id="container">

@@ -19,10 +19,16 @@ function Activity(dueDate) {
 
 // Next Link //
 $(function () {
-  $(".js-next").on("click", function() {
+  $(".js-next").on("click", function(e) {
+    e.preventDefault()
     const nextId = parseInt($(".js-next").attr("data-id")) + 1
+
     $.get("/activities/" + nextId + ".json", function(data) {
-      console.log(data)
+      const activity = data
+
+      $(".activityTitle").text(activity["activity"]["title"])
+      // set the data id to current activity
+      $(".js-next").attr("data-id", activity["id"])
     })
   })
 })

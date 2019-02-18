@@ -68,9 +68,15 @@ class ActivitiesController < ApplicationController
   def show
     # @list = List.find_by(activity_id: params[:id])
     @activity = current_activity
+    category = @activity.category
+
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @activity}
+      format.json { render json: {
+        "activity": @activity,
+        "activity_category": category.name
+        }
+      }
     end
   end
 
