@@ -1,6 +1,6 @@
 <div id="bounding-box">
   <div id="header-right-column">
-    <%= link_to "previous", activity_path(@activity) %> | <%= link_to "next", activity_path(@activity) %>
+    <p><a href="#" class="js-previous" data-id="<%= @activity.id %>">previous activity</a> | <a href="#" class="js-next" data-id="<%= @activity.id %>">next activity</a></p>
   </div>
   <h2>Your Drop: <%= @activity.title %></h2>
   <hr>
