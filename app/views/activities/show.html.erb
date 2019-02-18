@@ -1,42 +1,59 @@
-<h2>Your Drop: <%= @activity.title %></h2>
-<!-- want to click and see all user activities by category -->
-<h4> Category: <%= @activity.category_name %>
-
-<h3>Description</h3><%= @activity.description %>
-
-<hr>
-<p> Due Date: <%= @activity.formatted_date %> </p>
-
-<!-- if past due -->
-<h3><%= past_due(@activity) %></h3>
-
-<hr>
-<!-- mark activity complete -->
-<%= form_for @activity do |f| %>
-  <%= f.check_box :complete, value: @activity.complete %> Mark Complete
-  <%= f.submit 'Update' %>
-<% end %>
-
-<!-- if activity has to-do lists -->
-<% if @activity.any_lists? %>
-  <% display_activity_lists(@activity).each do |html| %>
-    <%= raw(html) %>
+<div id="bounding-box">
+  <h2>Your Drop: <%= @activity.title %></h2>
+  <!-- mark activity complete -->
+  <%= form_for @activity do |f| %>
+    <%= f.check_box :complete, value: @activity.complete %> Mark Complete
+    <%= f.submit 'Update' %>
   <% end %>
-<% end %>
+  <hr>
 
-<!-- add to-do list -->
-<h4>Add A New To-Do List!</h4>
+  <p> Due Date: <%= @activity.formatted_date %> </p>
 
-<%= form_for @activity do |f| %>
-  <%= fields_for :lists do |ff| %>
-    <p><%= ff.label "List Name" %></p>
-    <%= ff.text_field :name %>
-  <% end %>
-  <p><%= f.submit "Create To-Do List" %></p>
-<% end %>
+  <!-- if past due -->
+  <h3><%= past_due(@activity) %></h3>
+  <hr>
+  <!-- want to click and see all user activities by category -->
+  <h4> Category</h4><%= @activity.category_name.upcase %>
 
-<hr>
-<p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
-<p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %></p>
-<p><%= link_to 'View All of My Drops', user_activities_path(@activity.user) %></p>
-<p><%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
+  <h4>Description</h4><%= @activity.description %>
+  <hr>
+
+  <div id="container">
+      <!-- left column -->
+    <div id="left">
+      <%= button_tag "Edit This Drop", id: "edit-drop-button" %>
+      <br><br>
+    </div>
+
+    <!-- right column -->
+    <div id="right">
+
+      <div id="right-column-content">
+        <h3>Drop To-Dos</h3>
+        <!-- if activity has to-do lists -->
+        <% if @activity.any_lists? %>
+          <% display_activity_lists(@activity).each do |html| %>
+            <%= raw(html) %>
+          <% end %>
+        <% end %>
+
+        <!-- add to-do list -->
+        <h4>Add A New To-Do List!</h4>
+
+        <%= form_for @activity do |f| %>
+          <%= fields_for :lists do |ff| %>
+            <p><%= ff.label "List Name" %></p>
+            <%= ff.text_field :name %>
+          <% end %>
+          <p><%= f.submit "Create To-Do List" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <p><%= link_to 'Edit This Drop', edit_activity_path(@activity) %></p>
+  <p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %></p>
+  <p><%= link_to 'View All of My Drops', user_activities_path(@activity.user) %></p>
+  <p><%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
+</div>

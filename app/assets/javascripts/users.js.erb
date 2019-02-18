@@ -62,8 +62,6 @@ $(function() {
 
 // Show To Do Lists //
 $(function() {
-
-  // CONDITIONAL: IF user has any to do lists! If not, what then?
   $("#to-do-button").on('click', function() {
     const userID = this.dataset.userId
 
@@ -79,6 +77,7 @@ $(function() {
 
         lists.forEach(function(list) {
           rightColumnDiv.append(
+            // NEED TO ADD ASSOCIATED ACTIVITY
           `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
           )
         })
