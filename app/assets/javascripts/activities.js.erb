@@ -25,10 +25,12 @@ $(function () {
 
     $.get("/activities/" + nextId + ".json", function(data) {
       const activity = data
-
+      console.log(activity)
       $(".activityTitle").text(activity["activity"]["title"])
+      $(".categoryName").text(activity["activity_category"])
+      $(".description").text(activity["activity"]["description"])
       // set the data id to current activity
-      $(".js-next").attr("data-id", activity["id"])
+      $(".js-next").attr("data-id", activity["activity"]["id"])
     })
   })
 })
