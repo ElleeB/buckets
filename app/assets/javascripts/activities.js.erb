@@ -76,3 +76,11 @@ $(function() {
 })
 
 // To do list submit with 'enter'/'return' instead of button //
+
+// Submit and display to-do
+$(function() {
+  $("#new-list-form").submit(function(e) {
+    e.preventDefault()
+    console.log("pow!")
+  })
+})
