@@ -34,27 +34,35 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-      # params.has_key?(:complete) => checked "mark complete"
-    if params[:activity] && params[:activity].has_key?(:complete)
+    #  if creating a new list associated with this activity
+    if params[:lists]
+      @list = List.new(name: params[:lists][:name])
+      @list.activity_id = @activity.id
+      @list.user_id = current_user.id
+      if @list.save
+
+        respond_to do |format|
+          # format.html { render :show }
+          format.json { render json: {
+            "activity": @activity,
+            "list": @list
+            }
+          }
+        end
+      else
+        @messages = @list.define_error_messages
+        # redirect_to activity_path(@activity)
+        render :show
+      end
+    # params.has_key?(:complete) => checked "mark complete"
+    elsif params[:activity] && params[:activity].has_key?(:complete)
       if params[:activity][:complete] == '1'
         @activity.mark_complete
         @user = current_user
 
         redirect_to user_path(@user)
       end
-    #  if creating a new list associated with this activity
-    elsif params[:lists]
-      @list = List.new(name: params[:lists][:name])
-      @list.activity_id = @activity.id
-      @list.user_id = current_user.id
-      if @list.save
-
-        redirect_to list_path(@list)
-      else
-        @messages = @list.define_error_messages
-        # redirect_to activity_path(@activity)
-        render :show
-      end
+      
     # standard update from activity/edit form
     elsif @activity.update(activity_params)###ERROR this also has :activity key
 

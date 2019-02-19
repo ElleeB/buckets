@@ -56,13 +56,15 @@
       </div>
 
     <!-- add to-do list -->
-      <div id="new-list-form" style="display:none">
+      <div id="new-list-form" data-id="<%= @activity.id %>" style="display:none">
       <!-- <h4>Add A New To-Do List!</h4> -->
         <%= form_for @activity do |f| %>
+          <%= hidden_field(:activity, :user_id) %>
           <%= fields_for :lists do |ff| %>
             <p><%= ff.label "List Name" %></p>
             <%= ff.text_field :name %>
           <% end %>
+          <p><%= f.submit "Create To-Do List", id: "submit-new-list-button"  %></p>
         <% end %>
       </div>
     </div>

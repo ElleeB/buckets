@@ -42,4 +42,6 @@ Rails.application.routes.draw do
   get '/admin/category_users', to: 'admin#category_users'
 
   get '/admin/category_by_name', to: 'admin#order_by_name'
+
+  # get '/activities/4/add_list', to: 'lists#create'
 end

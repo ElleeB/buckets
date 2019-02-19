@@ -19,8 +19,16 @@ class ListsController < ApplicationController
   def create
     # secure via activities#edit
     @list = List.create(list_params)
-
-    redirect_to activity_list_path(@list.activity_id, @list)
+    respond_to do |format|
+      format.html { redirect_to list_path(@list) }
+      format.json { render json: {
+        "activity": current_activity,
+        "list": @list,
+        }
+      }
+    end
+    # render
+    # redirect_to activity_list_path(@list.activity_id, @list)
   end
 
   def show

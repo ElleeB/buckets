@@ -75,12 +75,21 @@ $(function() {
   })
 })
 
-// To do list submit with 'enter'/'return' instead of button //
-
-// Submit and display to-do
+// Post Request New List
 $(function() {
-  $("#new-list-form").submit(function(e) {
+  $("input#submit-new-list-button").on("click", function(e) {
     e.preventDefault()
-    console.log("pow!")
+
+    const activityId = parseInt($("#new-list-form").attr("data-id"))
+
+    const values = $(`form#edit_activity_${activityId}`).serialize()
+    const posting = $.ajax({
+      url: `/activities/${activityId}`,
+      data: values,
+      type: 'PATCH',
+      success: function(data) {
+        console.log(data)
+      }
+    })
   })
 })
