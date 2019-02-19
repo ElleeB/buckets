@@ -25,6 +25,8 @@
   <div id="container">
     <!-- left column -->
     <div id="left">
+      <%= button_tag "View Drop To-Dos", id: "view-todo-button" %>
+      <br><br>
       <%= button_tag "Add A To-Do list", id: "add-todo-button" %>
       <br><br>
       <%= button_tag "Edit This Drop", id: "edit-drop-button" %>
@@ -48,11 +50,14 @@
           <% display_activity_lists(@activity).each do |html| %>
             <%= raw(html) %>
           <% end %>
+        <% else %>
+          You have no to-do lists!
         <% end %>
+      </div>
 
-        <!-- add to-do list -->
-        <h4>Add A New To-Do List!</h4>
-
+    <!-- add to-do list -->
+      <div id="new-list-form" style="display:none">
+      <!-- <h4>Add A New To-Do List!</h4> -->
         <%= form_for @activity do |f| %>
           <%= fields_for :lists do |ff| %>
             <p><%= ff.label "List Name" %></p>
@@ -62,7 +67,6 @@
         <% end %>
       </div>
     </div>
-  </div>
 
   <hr>
   <p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %>  |  <%= link_to 'View All of My Drops', user_activities_path(@activity.user) %>  |  <%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>

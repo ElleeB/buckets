@@ -49,7 +49,7 @@ $(function () {
     $.get("/activities/" + previousId + ".json", function(data) {
       const activity = data
       const newActivity = new Activity(activity["activity"]["due_date"])
-      
+
       $("#activityTitle").text(activity["activity"]["title"])
       $("#categoryName").text(activity["activity_category"])
       $("#description").text(activity["activity"]["description"])
@@ -61,3 +61,18 @@ $(function () {
     })
   })
 })
+
+// Add to do list //
+$(function() {
+  $("#add-todo-button").on("click", function() {
+    // $("#right-column-content").empty()
+
+    const rightColumnDiv = $("#right-column-content")
+    rightColumnDiv.html("<h2>Add A To Do List</h2>")
+    // rightColumnDiv.append($("#new-list-form").show())
+
+    $("#new-list-form").show()
+  })
+})
+
+// To do list submit with 'enter'/'return' instead of button //
