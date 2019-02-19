@@ -17,7 +17,7 @@ function Activity(dueDate) {
 	}
 }
 
-// Next Link //
+// Next Activity //
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault()
@@ -26,15 +26,37 @@ $(function () {
     $.get("/activities/" + nextId + ".json", function(data) {
       const activity = data
       const newActivity = new Activity(activity["activity"]["due_date"])
-      console.log(activity)
-      console.log(newActivity)
-      $(".activityTitle").text(activity["activity"]["title"])
-      $(".categoryName").text(activity["activity_category"])
-      $(".description").text(activity["activity"]["description"])
-      $(".dueDate").text(newActivity.formatDate)
+
+      $("#activityTitle").text(activity["activity"]["title"])
+      $("#categoryName").text(activity["activity_category"])
+      $("#description").text(activity["activity"]["description"])
+      $("#dueDate").text(newActivity.formatDate)
 
 
       // set the data id to current activity
+      $(".js-next").attr("data-id", activity["activity"]["id"])
+      $(".js-previous").attr("data-id", activity["activity"]["id"])
+    })
+  })
+})
+
+// Previous Activity //
+$(function () {
+  $(".js-previous").on("click", function(e) {
+    e.preventDefault()
+    const previousId = parseInt($(".js-previous").attr("data-id")) - 1
+
+    $.get("/activities/" + previousId + ".json", function(data) {
+      const activity = data
+      const newActivity = new Activity(activity["activity"]["due_date"])
+      
+      $("#activityTitle").text(activity["activity"]["title"])
+      $("#categoryName").text(activity["activity_category"])
+      $("#description").text(activity["activity"]["description"])
+      $("#dueDate").text(newActivity.formatDate)
+
+      // set the data id to current activity
+      $(".js-previous").attr("data-id", activity["activity"]["id"])
       $(".js-next").attr("data-id", activity["activity"]["id"])
     })
   })

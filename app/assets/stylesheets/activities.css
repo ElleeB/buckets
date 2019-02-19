@@ -3,3 +3,7 @@
   max-height: 35px;
   margin-right: 30px;
 }
+
+div.no-break {
+  white-space: nowrap;
+}
