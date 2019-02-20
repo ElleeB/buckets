@@ -90,6 +90,7 @@ $(function() {
       success: function(data) {
         const activity = data
         const lists = data["activity_lists"]
+        $("#far-right").show()
 
         const farRightDiv = $("#far-right-column-content")
         farRightDiv.empty()

@@ -44,7 +44,7 @@
     <div id="right">
 
       <div id="right-column-content">
-        <h3>Drop To-Dos</h3>
+        <h3>To Do Lists</h3>
         <!-- if activity has to-do lists -->
         <% if @activity.any_lists? %>
           <% display_activity_lists(@activity).each do |html| %>
@@ -70,9 +70,8 @@
     </div>
 
     <!-- far right column -->
-    <div id="far-right">
+    <div id="far-right" style="display:none">
       <div id="far-right-column-content">
-        Far Right Column
       </div>
     </div>
   </div>
