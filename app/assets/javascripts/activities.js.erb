@@ -120,6 +120,18 @@ $(function() {
 $(function() {
   $("#edit-activity-button").on("click", function(e) {
     e.preventDefault()
-    console.log("pow!")
+
+    const activityId = parseInt($("#edit-activity").attr("data-id"))
+    const values = $(`form#edit_activity_${activityId}`).serialize()
+
+    const posting = $.ajax({
+      url: `/activities/${activityId}`,
+      data: values,
+      type: 'PATCH',
+      success: function(data) {
+        const activity = data
+        console.log(data)
+      }
+    })
   })
 })
