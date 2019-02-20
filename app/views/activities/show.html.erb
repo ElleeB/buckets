@@ -61,7 +61,7 @@
       </div>
 
 
-      <div id="show-lists" style="display:none">
+      <div id="show-lists">
         <h2> Drop To Dos </h2>
         <!-- if activity has to-do lists -->
         <% if @activity.any_lists? %>
@@ -71,6 +71,10 @@
         <% else %>
           You have no to-do lists!
         <% end %>
+      </div>
+
+      <div id="edit-activity">
+        <%= render partial: "form" %>
       </div>
     </div>
 
