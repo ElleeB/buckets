@@ -50,7 +50,7 @@ a:link {
 
   #container {
     width: 1200px;
-    width: 80%;
+    /* width: 80%; */
   }
 
   #left {
@@ -58,14 +58,28 @@ a:link {
     width: 200px;
     float: left;
   }
+
   #right {
-    margin-left: 240px;
+    display: inline-block;
+    /* margin-left: 240px; */
     padding: 10px;
-    width: 90%;
+    width: 396px;
     max-height: 600px;
     min-height: 320px;
     border-left: 1px solid black;
   }
+
+  #far-right {
+    display: inline-block;
+    /* margin-left: 792px; */
+    padding: 10px;
+    /* width: 33%; */
+    max-height: 600px;
+    min-height: 320px;
+    border-left: 1px solid black;
+    vertical-align: top;
+  }
+
   .clear {
     clear: both;
   }
