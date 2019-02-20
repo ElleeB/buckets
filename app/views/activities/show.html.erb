@@ -55,8 +55,8 @@
         <% end %>
       </div>
 
-    <!-- add to-do list -->
-      <div id="new-list-form" data-lists="<%= @activity.lists %>" data-id="<%= @activity.id %>" style="display:none">
+      <!-- add to-do list -->
+      <div id="new-list-form" data-lists="<%= @lists %>" data-id="<%= @activity.id %>" style="display:none">
       <!-- <h4>Add A New To-Do List!</h4> -->
         <%= form_for @activity do |f| %>
           <%= hidden_field(:activity, :user_id) %>
@@ -72,7 +72,7 @@
     <!-- far right column -->
     <div id="far-right">
       <div id="far-right-column-content">
-        yo yo yo
+        Far Right Column
       </div>
     </div>
   </div>

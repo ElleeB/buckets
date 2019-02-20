@@ -45,6 +45,7 @@ class ActivitiesController < ApplicationController
           # format.html { render :show }
           format.json { render json: {
             "activity": @activity,
+            "activity_lists": @activity.lists,
             "list": @list
             }
           }
@@ -62,7 +63,7 @@ class ActivitiesController < ApplicationController
 
         redirect_to user_path(@user)
       end
-      
+
     # standard update from activity/edit form
     elsif @activity.update(activity_params)###ERROR this also has :activity key
 

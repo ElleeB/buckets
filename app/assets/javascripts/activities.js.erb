@@ -81,17 +81,24 @@ $(function() {
     e.preventDefault()
 
     const activityId = parseInt($("#new-list-form").attr("data-id"))
-    const activityLists = $("#new-list-form").attr("data-lists")
     const values = $(`form#edit_activity_${activityId}`).serialize()
-
+    // debugger
     const posting = $.ajax({
       url: `/activities/${activityId}`,
       data: values,
       type: 'PATCH',
       success: function(data) {
         const activity = data
-        console.log(activityLists)
+        const lists = data["activity_lists"]
+
+        const farRightDiv = $("#far-right-column-content")
+        farRightDiv.empty()
+
+        lists.forEach(function(list) {
+          farRightDiv.append(`<input type="checkbox" name="list_name" value="${list.name}"> ${list.name} <br>`)
+        })
       }
     })
+    $("#lists_name").val("")
   })
 })
