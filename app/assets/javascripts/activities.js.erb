@@ -32,7 +32,6 @@ $(function () {
       $("#description").text(activity["activity"]["description"])
       $("#dueDate").text(newActivity.formatDate)
 
-
       // set the data id to current activity
       $(".js-next").attr("data-id", activity["activity"]["id"])
       $(".js-previous").attr("data-id", activity["activity"]["id"])
@@ -98,7 +97,6 @@ $(function() {
         $("#far-right").show()
 
         const farRightDiv = $("#far-right-column-content")
-        // farRightDiv.empty()
 
         lists.forEach(function(list) {
           farRightDiv.append(`<input type="checkbox" name="list_name" value="${list.name}"> ${list.name} <br>`)

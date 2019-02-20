@@ -35,7 +35,6 @@ class ActivitiesController < ApplicationController
 
   def update
     #  if creating a new list associated with this activity
-    # raise params.inspect
     if params[:lists][:name] != ""
       @list = List.new(name: params[:lists][:name])
       @list.activity_id = @activity.id
@@ -43,7 +42,6 @@ class ActivitiesController < ApplicationController
       if @list.save
 
         respond_to do |format|
-          # format.html { render :show }
           format.json { render json: {
             "activity": @activity,
             "activity_lists": @activity.lists,
@@ -53,7 +51,7 @@ class ActivitiesController < ApplicationController
         end
       else
         @messages = @list.define_error_messages
-        # redirect_to activity_path(@activity)
+
         render :show
       end
     # # params.has_key?(:complete) => checked "mark complete"
@@ -70,7 +68,6 @@ class ActivitiesController < ApplicationController
 
       render json: @activity
 
-      # redirect_to activity_path(@activity)
     else
       @messages = @activity.define_error_messages
       render :edit
@@ -78,7 +75,6 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    # @list = List.find_by(activity_id: params[:id])
     @activity = current_activity
     category = @activity.category
 
