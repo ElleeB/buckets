@@ -130,7 +130,8 @@ $(function() {
       type: 'PATCH',
       success: function(data) {
         const activity = data
-        console.log(data)
+        const farRightDiv = $("#far-right-column-content")
+        location.reload()
       }
     })
   })
