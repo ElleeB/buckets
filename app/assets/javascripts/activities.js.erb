@@ -62,15 +62,19 @@ $(function () {
   })
 })
 
+// View Drop To-Dos //
+$(function() {
+  $("#view-todo-button").on("click", function() {
+    $("#new-list-form").hide()
+    $("#show-lists").show()
+  })
+})
+
+
 // Add to do list //
 $(function() {
   $("#add-todo-button").on("click", function() {
-    // $("#right-column-content").empty()
-
-    const rightColumnDiv = $("#right-column-content")
-    rightColumnDiv.html("<h2>Add A To Do List</h2>")
-    // centerColumnDiv.append($("#new-list-form").show())
-
+    $("#show-lists").hide()
     $("#new-list-form").show()
   })
 })
@@ -82,7 +86,6 @@ $(function() {
 
     const activityId = parseInt($("#new-list-form").attr("data-id"))
     const values = $(`form#edit_activity_${activityId}`).serialize()
-    // debugger
     const posting = $.ajax({
       url: `/activities/${activityId}`,
       data: values,
