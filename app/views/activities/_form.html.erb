@@ -1,4 +1,4 @@
-<hr>
+<!-- <hr> -->
 <%= form_for @activity do |f| %>
 
 <% if @activity.errors.any? %>
@@ -14,8 +14,8 @@
   <%= f.text_area :description %>
   <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
   <%= f.date_field :due_date %>
-  <p><%= f.submit %></p>
+  <p><%= f.submit id: "edit-activity-button"  %></p>
 <% end %>
 
-<hr>
-<%= link_to "Back", :back %>
+<!-- <hr> -->
+<%# link_to "Back", :back %>

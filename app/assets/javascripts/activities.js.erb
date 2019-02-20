@@ -107,11 +107,19 @@ $(function() {
   })
 })
 
-// Edit Button //
+// Edit Form Show //
 $(function() {
   $("#edit-drop-button").on("click", function() {
     $("#new-list-form").hide()
     $("#show-lists").hide()
+    $("#edit-activity").show()
   })
+})
 
+// Edit Form Submit //
+$(function() {
+  $("#edit-activity-button").on("click", function(e) {
+    e.preventDefault()
+    console.log("pow!")
+  })
 })
