@@ -66,6 +66,7 @@ $(function () {
 $(function() {
   $("#view-todo-button").on("click", function() {
     $("#new-list-form").hide()
+    $("#edit-activity").hide()
     $("#show-lists").show()
   })
 })
@@ -75,6 +76,7 @@ $(function() {
 $(function() {
   $("#add-todo-button").on("click", function() {
     $("#show-lists").hide()
+    $("#edit-activity").hide()
     $("#new-list-form").show()
   })
 })
