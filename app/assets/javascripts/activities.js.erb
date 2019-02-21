@@ -24,7 +24,8 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    $("#show-lists-content").empty()
+    $("#show-lists").empty()
+
 
     const nextId = parseInt($(".js-next").attr("data-id")) + 1
 
@@ -34,7 +35,7 @@ $(function () {
       const activityLists = activity["activity_lists"]
 
       activityLists.forEach(function(list) {
-        $("#show-lists").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+        $("#show-lists").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
       })
 
       $("#activityTitle").text(activity["activity"]["title"])
@@ -46,6 +47,9 @@ $(function () {
       // set the data id to current activity
       $(".js-next").attr("data-id", activity["activity"]["id"])
       $(".js-previous").attr("data-id", activity["activity"]["id"])
+      $("#new-list-form").attr("data-id", activity["activity"]["id"])
+      console.log($("#new-list-form").attr("data-id"))
+      viewDrops()
     })
   })
 })
@@ -57,7 +61,7 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    $("#show-lists-content").empty()
+    $("#show-lists").empty()
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
@@ -79,12 +83,14 @@ $(function () {
       // set the data id to current activity
       $(".js-previous").attr("data-id", activity["activity"]["id"])
       $(".js-next").attr("data-id", activity["activity"]["id"])
+      $("#new-list-form").attr("data-id", activity["activity"]["id"])
+      console.log($("#new-list-form").attr("data-id"))
     })
   })
 })
 
 // View Drop To-Dos //
-$(function() {
+$(function viewDrops() {
   $("#view-todo-button").on("click", function() {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
@@ -104,6 +110,7 @@ $(function() {
 
 // Post Request New List
 $(function() {
+  // NEED TO BE SURE THE PATCH IS POSTING TO CORRECT ACTIVITY
   $("input#submit-new-list-button").on("click", function(e) {
     e.preventDefault()
 
@@ -122,7 +129,7 @@ $(function() {
         farRightDiv.empty()
         lists.forEach(function(list) {
           console.log(list)
-          farRightDiv.append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+          farRightDiv.append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       }
     })
