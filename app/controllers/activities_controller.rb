@@ -3,7 +3,10 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = current_user_activities
-    render json: @activities
+    respond_to do |format|
+      format.json { render json: @activities }
+      format.html { render :index }
+    end
   end
 
   def new
@@ -17,10 +20,14 @@ class ActivitiesController < ApplicationController
 
       if @activity.save
         category = Category.find(params[:activity][:category_id])
-        render json: {
-          "activity": @activity,
-          "activity_category": category.name
-        }
+        respond_to do |format|
+          format.html { render :show}
+          format.json { render json: {
+            "activity": @activity,
+            "activity_category": category.name
+            }
+          }
+        end
       else
         @messages = @activity.define_error_messages
         render :new
@@ -40,7 +47,6 @@ class ActivitiesController < ApplicationController
       @list.activity_id = @activity.id
       @list.user_id = current_user.id
       if @list.save
-
         respond_to do |format|
           format.json { render json: {
             "activity": @activity,
@@ -48,6 +54,7 @@ class ActivitiesController < ApplicationController
             "list": @list
             }
           }
+          format.html { render :show}
         end
       else
         @messages = @list.define_error_messages

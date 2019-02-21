@@ -119,8 +119,9 @@ $(function() {
         $("#far-right").show()
 
         const farRightDiv = $("#far-right-column-content")
-
+        farRightDiv.empty()
         lists.forEach(function(list) {
+          console.log(list)
           farRightDiv.append(`<input type="checkbox" name="list_name" value="${list.name}"> ${list.name} <br>`)
         })
       }
