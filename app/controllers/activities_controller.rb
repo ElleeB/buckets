@@ -86,7 +86,7 @@ class ActivitiesController < ApplicationController
         "activity": @activity,
         "activity_category": category.name,
         "countdown": past_due_response,
-        "lists": @activity.lists
+        "activity_lists": @activity.lists
         }
       }
     end

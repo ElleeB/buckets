@@ -62,8 +62,8 @@
 
       <div id="show-lists">
         <h2> Drop To Dos </h2>
-        <!-- if activity has to-do lists -->
-        <div id="list-content">
+        <div id="show-lists-content">
+          <!-- if activity has to-do lists -->
           <% if @activity.any_lists? %>
             <% display_activity_lists(@activity).each do |html| %>
               <%= raw(html) %>
