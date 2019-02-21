@@ -78,11 +78,14 @@ class ActivitiesController < ApplicationController
     @activity = current_activity
     category = @activity.category
 
+    past_due_response = @activity.past_due
+
     respond_to do |format|
       format.html { render :show }
       format.json { render json: {
         "activity": @activity,
-        "activity_category": category.name
+        "activity_category": category.name,
+        "countdown": past_due_response
         }
       }
     end

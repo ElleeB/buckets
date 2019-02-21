@@ -12,7 +12,7 @@
     <p id="dueDate"> <%= @activity.formatted_date %> </p>
   </div>
   <!-- if past due -->
-  <h3 id="pastDue"><%= past_due(@activity) %></h3>
+  <h4 id="pastDue" style="color: dimgray"><%= past_due(@activity) %></h4>
   <hr>
   <!-- want to click and see all user activities by category -->
   <h4>Category:</h4>

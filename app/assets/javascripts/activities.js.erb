@@ -1,7 +1,7 @@
 // Activity Prototype //
 function Activity(dueDate) {
   this.dueDate = dueDate,
-
+  // need to assign all possible attributes including countdown
 	this.formatDate = function() {
 		// create new date object with the current activity's due date
 		let date = new Date(dueDate).toDateString()
@@ -21,6 +21,11 @@ function Activity(dueDate) {
 $(function () {
   $(".js-next").on("click", function(e) {
     e.preventDefault()
+    $("#new-list-form").hide()
+    $("#edit-activity").hide()
+    $("#show-lists").hide()
+    $("#far-right").hide()
+
     const nextId = parseInt($(".js-next").attr("data-id")) + 1
 
     $.get("/activities/" + nextId + ".json", function(data) {
@@ -31,6 +36,7 @@ $(function () {
       $("#categoryName").text(activity["activity_category"])
       $("#description").text(activity["activity"]["description"])
       $("#dueDate").text(newActivity.formatDate)
+      $("#pastDue").text(activity["countdown"])
 
       // set the data id to current activity
       $(".js-next").attr("data-id", activity["activity"]["id"])
@@ -43,6 +49,11 @@ $(function () {
 $(function () {
   $(".js-previous").on("click", function(e) {
     e.preventDefault()
+    $("#new-list-form").hide()
+    $("#edit-activity").hide()
+    $("#show-lists").hide()
+    $("#far-right").hide()
+
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
     $.get("/activities/" + previousId + ".json", function(data) {
@@ -53,6 +64,7 @@ $(function () {
       $("#categoryName").text(activity["activity_category"])
       $("#description").text(activity["activity"]["description"])
       $("#dueDate").text(newActivity.formatDate)
+      $("#pastDue").text(activity["countdown"])
 
       // set the data id to current activity
       $(".js-previous").attr("data-id", activity["activity"]["id"])

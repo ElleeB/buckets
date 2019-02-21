@@ -36,4 +36,12 @@ class Activity < ApplicationRecord
   def category_name
     self.category.name
   end
+
+  def past_due
+    if self.countdown < 0
+      "This activity is past due!"
+    else
+    "#{self.countdown} days until this drop is due!"
+    end
+  end
 end
