@@ -70,14 +70,13 @@ $(function() {
 
       if (data.length != 0) {
         const lists = data
-
+        
         $("#activities-form").hide()
         rightColumnDiv.empty()
         rightColumnDiv.html("<h2>My To Dos</h2>")
 
         lists.forEach(function(list) {
           rightColumnDiv.append(
-            // NEED TO ADD ASSOCIATED ACTIVITY
           `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
           )
         })
