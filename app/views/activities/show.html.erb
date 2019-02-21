@@ -49,7 +49,6 @@
       <!-- add to-do list -->
       <div id="new-list-form" data-lists="<%= @lists %>" data-id="<%= @activity.id %>" style="display:none">
         <h2> Add a New To Do </h2>
-      <!-- <h4>Add A New To-Do List!</h4> -->
         <%= form_for @activity do |f| %>
           <%= hidden_field(:activity, :user_id) %>
           <%= fields_for :lists do |ff| %>
@@ -64,13 +63,15 @@
       <div id="show-lists">
         <h2> Drop To Dos </h2>
         <!-- if activity has to-do lists -->
-        <% if @activity.any_lists? %>
-          <% display_activity_lists(@activity).each do |html| %>
-            <%= raw(html) %>
+        <div id="list-content">
+          <% if @activity.any_lists? %>
+            <% display_activity_lists(@activity).each do |html| %>
+              <%= raw(html) %>
+            <% end %>
+          <% else %>
+            You have no to-do lists!
           <% end %>
-        <% else %>
-          You have no to-do lists!
-        <% end %>
+        </div>
       </div>
 
       <div id="edit-activity" data-id="<%= @activity.id %>" style="display:none">

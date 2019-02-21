@@ -23,7 +23,7 @@ $(function () {
     e.preventDefault()
     $("#new-list-form").hide()
     $("#edit-activity").hide()
-    $("#show-lists").hide()
+    // $("#show-lists").hide()
     $("#far-right").hide()
 
     const nextId = parseInt($(".js-next").attr("data-id")) + 1
@@ -31,12 +31,18 @@ $(function () {
     $.get("/activities/" + nextId + ".json", function(data) {
       const activity = data
       const newActivity = new Activity(activity["activity"]["due_date"])
+      const activityLists = activity["lists"]
+
+      activityLists.forEach(function(list) {
+        $("#list-content").text(`${list.name}`)
+      })
 
       $("#activityTitle").text(activity["activity"]["title"])
       $("#categoryName").text(activity["activity_category"])
       $("#description").text(activity["activity"]["description"])
       $("#dueDate").text(newActivity.formatDate)
       $("#pastDue").text(activity["countdown"])
+      // $("#show-lists").text(activity["lists"])
 
       // set the data id to current activity
       $(".js-next").attr("data-id", activity["activity"]["id"])
@@ -51,7 +57,7 @@ $(function () {
     e.preventDefault()
     $("#new-list-form").hide()
     $("#edit-activity").hide()
-    $("#show-lists").hide()
+    // $("#show-lists").hide()
     $("#far-right").hide()
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
@@ -59,6 +65,11 @@ $(function () {
     $.get("/activities/" + previousId + ".json", function(data) {
       const activity = data
       const newActivity = new Activity(activity["activity"]["due_date"])
+      const activityLists = activity["lists"]
+
+      activityLists.forEach(function(list) {
+        $("#list-content").text(`${list.name}`)
+      })
 
       $("#activityTitle").text(activity["activity"]["title"])
       $("#categoryName").text(activity["activity_category"])

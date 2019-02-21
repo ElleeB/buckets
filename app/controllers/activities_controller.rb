@@ -85,7 +85,8 @@ class ActivitiesController < ApplicationController
       format.json { render json: {
         "activity": @activity,
         "activity_category": category.name,
-        "countdown": past_due_response
+        "countdown": past_due_response,
+        "lists": @activity.lists
         }
       }
     end

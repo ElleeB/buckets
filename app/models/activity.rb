@@ -43,5 +43,5 @@ class Activity < ApplicationRecord
     else
     "#{self.countdown} days until this drop is due!"
     end
-  end
+  end  
 end

@@ -8,6 +8,14 @@ module ActivitiesHelper
     end
   end
 
+  # <% if @activity.any_lists? %>
+  #   <% display_activity_lists(@activity).each do |html| %>
+  #     <%= raw(html) %>
+  #   <% end %>
+  # <% else %>
+  #   You have no to-do lists!
+  # <% end %>
+
   def display_activity_lists(activity)
     display = []
     tag.hr
