@@ -12,7 +12,9 @@ function Activity(dueDate) {
 
 		let dateD = dateC.split(" ")
 		dateD.splice(5, 0, ", ")
-    // fix final date format - remove the day ex. "Sat"
+    // remove the day and its comma
+    dateD.splice(0,3)
+
 		return dateD.join(" ")
 	}
 }
@@ -24,7 +26,7 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    $("#show-lists").empty()
+    // $("#show-lists").empty()
 
 
     const nextId = parseInt($(".js-next").attr("data-id")) + 1
@@ -49,7 +51,7 @@ $(function () {
       $(".js-previous").attr("data-id", activity["activity"]["id"])
       $("#new-list-form").attr("data-id", activity["activity"]["id"])
       console.log($("#new-list-form").attr("data-id"))
-      viewDrops()
+      // activity data-id seems to be updating appropriately
     })
   })
 })
@@ -61,7 +63,7 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    $("#show-lists").empty()
+    // $("#show-lists").empty()
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
@@ -85,6 +87,7 @@ $(function () {
       $(".js-next").attr("data-id", activity["activity"]["id"])
       $("#new-list-form").attr("data-id", activity["activity"]["id"])
       console.log($("#new-list-form").attr("data-id"))
+      // activity data-id seems to be updating appropriately
     })
   })
 })
