@@ -64,14 +64,15 @@ $(function() {
 $(function() {
   $("#to-do-button").on('click', function() {
     const userID = this.dataset.userId
+    $("#new_activity").hide()
 
     $.get(`/users/${userID}/lists`, function(data) {
       const rightColumnDiv = $("#right-column-content")
 
       if (data.length != 0) {
         const lists = data
-        
-        $("#activities-form").hide()
+
+
         rightColumnDiv.empty()
         rightColumnDiv.html("<h2>My To Dos</h2>")
 
