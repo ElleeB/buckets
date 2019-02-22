@@ -26,7 +26,7 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    // $("#show-lists").empty()
+    $("#show-lists-content").hide()
 
 
     const nextId = parseInt($(".js-next").attr("data-id")) + 1
@@ -37,6 +37,8 @@ $(function () {
       const activityLists = activity["activity_lists"]
 
       activityLists.forEach(function(list) {
+        $("#show-lists-content").hide()
+        $("div-right-column-content").empty()
         $("#show-lists").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
       })
 
@@ -63,7 +65,7 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    // $("#show-lists").empty()
+    $("#show-lists-content").hide()
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
@@ -73,6 +75,8 @@ $(function () {
       const activityLists = activity["activity_lists"]
 
       activityLists.forEach(function(list) {
+        $("#show-lists-content").hide()
+        $("div-right-column-content").empty()
         $("#show-lists").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
       })
 
