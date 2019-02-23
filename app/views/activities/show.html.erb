@@ -42,40 +42,39 @@
 
     <!-- right column -->
     <div id="right">
-
       <div id="right-column-content">
-      </div>
-
-      <!-- add to-do list -->
-      <div id="new-list-form" data-lists="<%= @lists %>" data-id="<%= @activity.id %>" style="display:none">
-        <h2> Add a New To Do </h2>
-        <%= form_for @activity do |f| %>
-          <%= hidden_field(:activity, :user_id) %>
-          <%= fields_for :lists do |ff| %>
-            <p><%= ff.label "List Name" %></p>
-            <%= ff.text_field :name %>
-          <% end %>
-          <p><%= f.submit "Create To-Do List", id: "submit-new-list-button"  %></p>
-        <% end %>
-      </div>
-
-
-      <div id="show-lists">
-        <h2> Drop To Dos </h2>
-        <div id="show-lists-content">
-          <!-- if activity has to-do lists -->
-          <% if @activity.any_lists? %>
-            <% display_activity_lists(@activity).each do |html| %>
-              <%= raw(html) %>
+        <!-- add to-do list -->
+        <div id="new-list-form" data-lists="<%= @lists %>" data-id="<%= @activity.id %>" style="display:none">
+          <h2> Add a New To Do </h2>
+          <%= form_for @activity do |f| %>
+            <%= hidden_field(:activity, :user_id) %>
+            <%= fields_for :lists do |ff| %>
+              <p><%= ff.label "List Name" %></p>
+              <%= ff.text_field :name %>
             <% end %>
-          <% else %>
-            You have no to-do lists!
+            <p><%= f.submit "Create To-Do List", id: "submit-new-list-button"  %></p>
           <% end %>
         </div>
-      </div>
 
-      <div id="edit-activity" data-id="<%= @activity.id %>" style="display:none">
-        <%= render partial: "form" %>
+
+        <div id="show-lists">
+          <h2> Drop To Dos </h2>
+          <div id="show-lists-content">
+            <!-- if activity has to-do lists -->
+            <% if @activity.any_lists? %>
+              <% display_activity_lists(@activity).each do |html| %>
+                <%= raw(html) %>
+              <% end %>
+            <% else %>
+              You have no to-do lists!
+            <% end %>
+          </div>
+        </div>
+
+        <div id="edit-activity" data-id="<%= @activity.id %>" style="display:none">
+          <%= render partial: "form" %>
+        </div>
+
       </div>
     </div>
 

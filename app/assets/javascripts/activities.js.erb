@@ -12,7 +12,7 @@ function Activity(dueDate) {
 
 		let dateD = dateC.split(" ")
 		dateD.splice(5, 0, ", ")
-    // remove the day and its comma
+    // removes the day and its comma
     dateD.splice(0,3)
 
 		return dateD.join(" ")
@@ -26,7 +26,7 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    // $("#show-lists").empty()
+    $("#right-column-content").empty()
 
 
     const nextId = parseInt($(".js-next").attr("data-id")) + 1
@@ -36,9 +36,12 @@ $(function () {
       const newActivity = new Activity(activity["activity"]["due_date"])
       const activityLists = activity["activity_lists"]
 
-      activityLists.forEach(function(list) {
-        $("#show-lists").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
-      })
+      if (activityLists.length != 0) {
+        $("#right-column-content").html("<h2> Drop To Dos </h2>")
+        activityLists.forEach(function(list) {
+          $("#right-column-content").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+        })
+      }
 
       $("#activityTitle").text(activity["activity"]["title"])
       $("#categoryName").text(activity["activity_category"])
@@ -63,7 +66,7 @@ $(function () {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#far-right").hide()
-    // $("#show-lists").empty()
+    $("#right-column-content").empty()
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
@@ -72,9 +75,12 @@ $(function () {
       const newActivity = new Activity(activity["activity"]["due_date"])
       const activityLists = activity["activity_lists"]
 
-      activityLists.forEach(function(list) {
-        $("#show-lists").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
-      })
+      if (activityLists.length != 0) {
+        $("#right-column-content").html("<h2> Drop To Dos </h2>")
+        activityLists.forEach(function(list) {
+          $("#right-column-content").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+        })
+      }
 
       $("#activityTitle").text(activity["activity"]["title"])
       $("#categoryName").text(activity["activity_category"])
@@ -98,6 +104,7 @@ $(function viewDrops() {
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#show-lists").show()
+    $("right-column-content").show()
   })
 })
 
@@ -105,8 +112,9 @@ $(function viewDrops() {
 // Add to do list //
 $(function() {
   $("#add-todo-button").on("click", function() {
-    $("#show-lists").hide()
+    $("right-column-content").hide()
     $("#edit-activity").hide()
+    $("#show-lists").hide()
     $("#new-list-form").show()
   })
 })
@@ -144,6 +152,7 @@ $(function() {
 $(function() {
   $("#edit-drop-button").on("click", function() {
     $("#new-list-form").hide()
+    $("right-column-content").hide()
     $("#show-lists").hide()
     $("#edit-activity").show()
   })
