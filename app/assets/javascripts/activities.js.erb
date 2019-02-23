@@ -41,6 +41,8 @@ $(function () {
         activityLists.forEach(function(list) {
           $("#right-column-content").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
+      } else {
+        $("#right-column-content").html("You have no to-dos!")
       }
 
       $("#activityTitle").text(activity["activity"]["title"])
@@ -80,6 +82,8 @@ $(function () {
         activityLists.forEach(function(list) {
           $("#right-column-content").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
+      } else {
+        $("#right-column-content").html("You have no to-dos!")
       }
 
       $("#activityTitle").text(activity["activity"]["title"])
