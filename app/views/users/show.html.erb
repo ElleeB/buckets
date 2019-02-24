@@ -33,17 +33,7 @@
       <div id="right-column-content">ADVENTURE AWAITS!!</div>
       <div id="activities-form" style="display:none">
 
-        <%= form_for Activity.new do |f| %>
-          <p><%= f.label "Title Your Drop" %></p>
-          <%= f.text_field :title %>
-          <p><%= f.label "Category" %></p>
-          <%= f.collection_select :category_id, Category.all, :id, :name %>
-          <p><%= f.label "Description" %></p>
-          <%= f.text_area :description %>
-          <p><%= f.label "Deadline" %></p>
-          <%= f.date_field :due_date %>
-          <p><%= f.submit "Add Drop To Your Bucket", id: "submit-new-drop-button" %></p>
-        <% end %>
+        <%= render 'activities/form' %>
       </div>
 
     </div>

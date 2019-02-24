@@ -1,21 +1,11 @@
-<!-- <hr> -->
-<%= form_for @activity do |f| %>
-
-<% if @activity.errors.any? %>
-  <% @activity.errors.full_messages.each do |message| %>
-    <p>Errors:</p>
-    <li> <%= message %> </li>
-  <% end %>
-<% end %>
-
+<%= form_for Activity.new do |f| %>
   <p><%= f.label "Title Your Drop" %></p>
   <%= f.text_field :title %>
-  <p><%= f.label "Drescribe Your Drop" %></p>
+  <p><%= f.label "Category" %></p>
+  <%= f.collection_select :category_id, Category.all, :id, :name %>
+  <p><%= f.label "Description" %></p>
   <%= f.text_area :description %>
-  <p><%= f.label "When Do You Hope To Complete Your Drop?" %></p>
+  <p><%= f.label "Deadline" %></p>
   <%= f.date_field :due_date %>
-  <p><%= f.submit id: "edit-activity-button"  %></p>
+  <p><%= f.submit "Add Drop To Your Bucket", id: "submit-new-drop-button" %></p>
 <% end %>
-
-<!-- <hr> -->
-<%# link_to "Back", :back %>
