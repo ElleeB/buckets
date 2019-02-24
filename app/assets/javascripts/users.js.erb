@@ -1,15 +1,18 @@
+function userID(button) {
+  button.dataset.userId
+}
+
 // View All Drops Button //
 $(function() {
   $("#all-drops-button").on('click', function() {
     $("#activities-form").hide()
     const rightColumnDiv = $("#right-column-content")
-    const userID = this.dataset.userId
 
     // clear right column and refill with new title
     rightColumnDiv.empty()
     rightColumnDiv.html("<h2>My Drops</h2>")
 
-    $.get(`/users/${userID}/activities`, function(data) {
+    $.get(`/users/${userID(this)}/activities`, function(data) {
       const activities = data
       activities.forEach(function(activity) {
         rightColumnDiv.append(
@@ -62,10 +65,11 @@ $(function() {
 // Show To Do Lists //
 $(function() {
   $("#to-do-button").on('click', function() {
-    const userID = this.dataset.userId
+    // const userID = this.dataset.userId
+
     $("#new_activity").hide()
 
-    $.get(`/users/${userID}/lists`, function(data) {
+    $.get(`/users/${userID(this)}/lists`, function(data) {
       const rightColumnDiv = $("#right-column-content")
 
       if (data.length != 0) {
