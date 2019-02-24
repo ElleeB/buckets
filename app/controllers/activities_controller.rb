@@ -21,11 +21,11 @@ class ActivitiesController < ApplicationController
       if @activity.save
         category = Category.find(params[:activity][:category_id])
         respond_to do |format|
-          format.html { render :show}
           format.json { render json: {
             "activity": @activity,
             "activity_category": category.name
             }
+            format.html { render :show}
           }
         end
       else
@@ -88,13 +88,13 @@ class ActivitiesController < ApplicationController
     past_due_response = @activity.past_due
 
     respond_to do |format|
-      format.html { render :show }
       format.json { render json: {
         "activity": @activity,
         "activity_category": category.name,
         "countdown": past_due_response,
         "activity_lists": @activity.lists
         }
+        format.html { render :show }
       }
     end
   end
@@ -120,3 +120,5 @@ class ActivitiesController < ApplicationController
                               lists: [:name])
   end
 end
+
+# "activity"=><ActionController::Parameters {"title"=>"44444", "category_id"=>"3", "description"=>"444444", "due_date"=>"2019-02-13"} permitted: false>, "controller"=>"activities", "action"=>"create"} permitted: false>):

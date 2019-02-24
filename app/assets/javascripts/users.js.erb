@@ -44,19 +44,17 @@ $(function() {
     const posting = $.post("/activities", values)
 
     posting.done(function(data) {
-      // clear form visibility from html
-      $('form').empty()
+      $('form').hide()
 
       const activity = data.activity
       const category_name = data.activity_category
-
       const date = new Date(activity.due_date)
       // activity instance in order to display formatted date
       const activityInstance = new Activity(date)
-
       const rightColumnDiv = $("#right-column-content")
 
       rightColumnDiv.html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${category_name}</p><p>${activity.description}</p><p>${activityInstance.formatDate()}</p>`)
+      $('form')[0].reset()
     })
   })
 })
