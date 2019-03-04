@@ -2,7 +2,9 @@ const userID = (button) => button.dataset.userId
 const rightColumnDiv = () => $("#right-column-content")
 
 // View All Drops Button //
-$(function() {
+$(document).on("turbolinks:load", function() {
+
+
   $("#all-drops-button").on('click', function() {
     $("#activities-form").hide()
 
@@ -22,7 +24,7 @@ $(function() {
 })
 
 // Add A Drop Form Display //
-$(function() {
+$(document).on("turbolinks:load", function() {
   $("#add-drop-button").on("click", function() {
     $("#right-column-content").empty()
     $("#new_activity").show()
@@ -35,7 +37,7 @@ $(function() {
 })
 
 // Add Drop Post Request //
-$(function() {
+$(document).on("turbolinks:load", function() {
   $('input#submit-new-drop-button').on("click", function(event){
     event.preventDefault()
 
@@ -46,20 +48,17 @@ $(function() {
     posting.done(function(data) {
       $('form').hide()
 
-      const activity = data.activity
-      const category_name = data.activity_category
-      const date = new Date(activity.due_date)
-      // activity instance in order to display formatted date
-      const activityInstance = new Activity(date)
+      const activity = new Activity(data)
 
-      rightColumnDiv().html(`<h2>Your Newest Drop!</h2><p>${activity.title}</p><p>${category_name}</p><p>${activity.description}</p><p>${activityInstance.formatDate()}</p>`)
+      rightColumnDiv().html(activity.newUserActivityHtml())
+
       $('form')[0].reset()
     })
   })
 })
 
 // Show To Do Lists //
-$(function() {
+$(document).on("turbolinks:load", function() {
   $("#to-do-button").on('click', function() {
     $("#new_activity").hide()
 
