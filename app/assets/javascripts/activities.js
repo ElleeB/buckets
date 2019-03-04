@@ -4,13 +4,13 @@
 // Research class syntax //
 // or Factory function (doesn't use the new keyword) //
 function Activity(data) {
+  this.id = data.activity.id
   this.dueDate = data.activity.due_date
   this.title = data.activity.title
   this.categoryName = data.activity_category
   this.description = data.activity.description
   this.lists = data.activity.lists
   this.countdown = data.countdown
-  // console.log(this)
 }
 
 Activity.prototype.newUserActivityHtml = function () {
@@ -43,22 +43,16 @@ $(document).on("turbolinks:load", function() {
     $("#far-right").hide()
     $("#right-column-content").empty()
 
+    const previousId = parseInt($(".js-next").attr("data-id")) + 1
 
-    const nextId = parseInt($(".js-next").attr("data-id")) + 1
-
-    $.get("/activities/" + nextId + ".json", function(data) {
+    $.get("/activities/" + previousId + ".json", function(data) {
       // console.log(data)
       const activity = new Activity(data)
-//    Activity {dueDate: "2019-11-11T00:00:00.000Z", title: "Become Queen in The North", categoryName: "Lifestyle", description: "Move out of the way, Jon!", lists: undefined}
-        // categoryName: "Lifestyle"
-        // description: "Move out of the way, Jon!"
-        // dueDate: "2019-11-11T00:00:00.000Z"
-        // lists: undefined
-        // title: "Become Queen in The North"
-      if (activity.lists) {
+
+      if (activity.lists != undefined) {
         $("#right-column-content").html("<h2> Drop To Dos </h2>")
         activity.lists.forEach(function(list) {
-          $("#right-column-content").append(`<h4><p><a href="/activities/${["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+          $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
         $("#right-column-content").html("You have no to-dos!")
@@ -68,14 +62,12 @@ $(document).on("turbolinks:load", function() {
       $("#categoryName").text(activity.categoryName)
       $("#description").text(activity.description)
       $("#dueDate").text(activity.formatDate())
-      $("#pastDue").text(activity["countdown"])
+      $("#pastDue").text(activity.countdown)
 
       // set the data id to current activity
-      $(".js-next").attr("data-id", activity["activity"]["id"])
-      $(".js-previous").attr("data-id", activity["activity"]["id"])
-      $("#new-list-form").attr("data-id", activity["activity"]["id"])
-      console.log($("#new-list-form").attr("data-id"))
-      // activity data-id seems to be updating appropriately
+      $(".js-next").attr("data-id", activity.id)
+      $(".js-previous").attr("data-id", activity.id)
+      $("div#right").attr("data-id", activity.id)
     })
   })
 })
@@ -92,33 +84,29 @@ $(document).on("turbolinks:load", function() {
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
-    $.get("/activities/" + previousId + ".json", function(data) { ////////////
-      const activity = data
-      console.log("after get previous activity = ", data)
-      const newActivity = new Activity(activity["activity"]["due_date"])
-      const activityLists = activity["activity_lists"]
+    $.get("/activities/" + previousId + ".json", function(data) {
+      // console.log(data)
+      const activity = new Activity(data)
 
-      if (activityLists.length != 0) {
+      if (activity.lists != undefined) {
         $("#right-column-content").html("<h2> Drop To Dos </h2>")
-        activityLists.forEach(function(list) {
-          $("#right-column-content").append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+        activity.lists.forEach(function(list) {
+          $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
         $("#right-column-content").html("You have no to-dos!")
       }
 
-      $("#activityTitle").text(activity["activity"]["title"])
-      $("#categoryName").text(activity["activity_category"])
-      $("#description").text(activity["activity"]["description"])
-      $("#dueDate").text(newActivity.formatDate)
-      $("#pastDue").text(activity["countdown"])
+      $("#activityTitle").text(activity.title)
+      $("#categoryName").text(activity.categoryName)
+      $("#description").text(activity.description)
+      $("#dueDate").text(activity.formatDate())
+      $("#pastDue").text(activity.countdown)
 
       // set the data id to current activity
-      $(".js-previous").attr("data-id", activity["activity"]["id"])
-      $(".js-next").attr("data-id", activity["activity"]["id"])
-      $("#new-list-form").attr("data-id", activity["activity"]["id"])
-      console.log($("#new-list-form").attr("data-id"))
-      // activity data-id seems to be updating appropriately
+      $(".js-next").attr("data-id", activity.id)
+      $(".js-previous").attr("data-id", activity.id)
+      $("div#right").attr("data-id", activity.id)
     })
   })
 })
@@ -132,7 +120,6 @@ $(document).on("turbolinks:load", function() {
     $("right-column-content").show()
   })
 })
-
 
 // Add to do list //
 $(document).on("turbolinks:load", function() {
@@ -150,7 +137,7 @@ $(document).on("turbolinks:load", function() {
   $("input#submit-new-list-button").on("click", function(e) {
     e.preventDefault()
 
-    const activityId = parseInt($("#new-list-form").attr("data-id"))
+    const activityId = parseInt($("#right").attr("data-id"))
     const values = $(`form#edit_activity_${activityId}`).serialize()
     const posting = $.ajax({
       url: `/activities/${activityId}`,
