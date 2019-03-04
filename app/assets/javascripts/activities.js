@@ -151,7 +151,6 @@ $(document).on("turbolinks:load", function() {
         const farRightDiv = $("#far-right-column-content")
         farRightDiv.empty()
         lists.forEach(function(list) {
-          console.log(list)
           farRightDiv.append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       }
