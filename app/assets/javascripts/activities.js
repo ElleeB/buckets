@@ -154,17 +154,13 @@ $(document).on("turbolinks:load", function() {
       type: 'PATCH',
       success: function(data) {
         $("#far-right").show()
-        console.log(data)
-
-        console.log(new List(data))
-
 
         const farRightDiv = $("#far-right-column-content")
-        farRightDiv.empty()
+        // farRightDiv.empty()
 
-        lists.forEach(function(list) {
-          farRightDiv.append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
-        })
+        const list = new List(data)
+
+        farRightDiv.append(`<h4><p><a href="/activities/${list.activityId}/lists/${list.id}"> ${list.name} </a></h4></p>`)
       }
     })
     $("#lists_name").val("")
