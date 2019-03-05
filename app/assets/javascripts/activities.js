@@ -124,6 +124,7 @@ $(document).on("turbolinks:load", function() {
 // View Drop To-Dos //
 $(document).on("turbolinks:load", function() {
   $("#view-todo-button").on("click", function() {
+    $("#far-right").hide()
     $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#show-lists").show()
@@ -156,7 +157,6 @@ $(document).on("turbolinks:load", function() {
         $("#far-right").show()
 
         const farRightDiv = $("#far-right-column-content")
-        // farRightDiv.empty()
 
         const list = new List(data)
 
@@ -170,6 +170,7 @@ $(document).on("turbolinks:load", function() {
 // Edit Form Show //
 $(document).on("turbolinks:load", function() {
   $("#edit-drop-button").on("click", function() {
+    $("#far-right").hide()
     $("#new-list-form").hide()
     $("right-column-content").hide()
     $("#show-lists").hide()

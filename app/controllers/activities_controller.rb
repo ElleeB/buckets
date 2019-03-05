@@ -38,7 +38,7 @@ class ActivitiesController < ApplicationController
     #  if creating a new list associated with this activity #
     if params[:lists][:name] != ""
       @list = List.create(name: params[:lists][:name], activity_id: @activity.id, user_id: params[:activity][:user_id])
-      
+
       render json: @list
 
     # if params.has_key?(:complete) => checked "mark complete" #
@@ -50,10 +50,10 @@ class ActivitiesController < ApplicationController
     #     redirect_to user_path(@user)
     #   end
 
-    # standard update from activity/edit form #
-    elsif @activity.update(activity_params)###ERROR this also has :activity key
-
-      render json: @activity
+    # # standard update from activity/edit form #
+    # elsif @activity.update(activity_params)###ERROR this also has :activity key
+    #
+    #   render json: @activity
 
     else
       @messages = @activity.define_error_messages
