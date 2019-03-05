@@ -36,6 +36,21 @@ Activity.prototype.formatDate = function() {
   return date.join(" ")
 }
 
+Activity.prototype.setDataIds = function() {
+  $(".js-next").attr("data-id", this.id)
+  $(".js-previous").attr("data-id", this.id)
+  $("div#right").attr("data-id", this.id)
+}
+
+Activity.prototype.setText = function() {
+  $("#activityTitle").text(this.title)
+  $("#categoryName").text(this.categoryName)
+  $("#description").text(this.description)
+  $("#dueDate").text(this.formatDate())
+  $("#pastDue").text(this.countdown)
+}
+
+ // Next/Previous DOM function //
 function elementsHide() {
   $("#new-list-form").hide()
   $("#edit-activity").hide()
@@ -62,17 +77,8 @@ $(document).on("turbolinks:load", function() {
       } else {
         $("#right-column-content").html("You have no to-dos!")
       }
-
-      $("#activityTitle").text(activity.title)
-      $("#categoryName").text(activity.categoryName)
-      $("#description").text(activity.description)
-      $("#dueDate").text(activity.formatDate())
-      $("#pastDue").text(activity.countdown)
-
-      // set the data id to current activity
-      $(".js-next").attr("data-id", activity.id)
-      $(".js-previous").attr("data-id", activity.id)
-      $("div#right").attr("data-id", activity.id)
+      activity.setText()
+      activity.setDataIds()
     })
   })
 })
@@ -97,17 +103,8 @@ $(document).on("turbolinks:load", function() {
       } else {
         $("#right-column-content").html("You have no to-dos!")
       }
-
-      $("#activityTitle").text(activity.title)
-      $("#categoryName").text(activity.categoryName)
-      $("#description").text(activity.description)
-      $("#dueDate").text(activity.formatDate())
-      $("#pastDue").text(activity.countdown)
-
-      // set the data id to current activity
-      $(".js-next").attr("data-id", activity.id)
-      $(".js-previous").attr("data-id", activity.id)
-      $("div#right").attr("data-id", activity.id)
+      activity.setText()
+      activity.setDataIds()
     })
   })
 })
