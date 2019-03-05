@@ -10,8 +10,23 @@ function Activity(data) {
   this.categoryName = data.category.name
   this.description = data.description
   this.lists = data.lists
-  this.countdown = data.countdown
-  console.log(data)
+  this.countdown = this.countdown()
+  console.log(this)
+}
+
+// def countdown
+//   day_in_seconds = 86400
+//   dates_difference = (self.due_date.to_time) - (Date.today.to_time)
+//   (dates_difference/day_in_seconds).to_i
+// end
+Activity.prototype.countdown = function() {
+  const t = Date.parse(this.dueDate) - Date.parse(new Date())
+  const days = Math.floor( t/(1000*60*60*24) )
+  if (days >= 0) {
+    return days
+  } else {
+    return 'Your drop is past due!'
+  }
 }
 
 Activity.prototype.newUserActivityHtml = function () {
