@@ -16,11 +16,11 @@ function Activity(data) {
 Activity.prototype.countdown = function() {
   // convert time string into milliseconds
   const t = Date.parse(this.dueDate) - Date.parse(new Date())
-  // divide/1000 = seconds, divide/60 = minutes...hours, days
+  // divide/1000 => seconds, divide/60 => minutes...hours, days
   const days = Math.floor( t/(1000*60*60*24) )
 
   if (days >= 0) {
-    return days
+    return `${days} until this drop is due!`
   } else {
     return 'Your drop is past due!'
   }
@@ -59,7 +59,6 @@ $(document).on("turbolinks:load", function() {
     const previousId = parseInt($(".js-next").attr("data-id")) + 1
 
     $.get("/activities/" + previousId + ".json", function(data) {
-      // console.log(data)
       const activity = new Activity(data)
       if (activity.lists != undefined) {
         $("#right-column-content").html("<h2> Drop To Dos </h2>")
@@ -97,7 +96,6 @@ $(document).on("turbolinks:load", function() {
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
     $.get("/activities/" + previousId + ".json", function(data) {
-      // console.log(data)
       const activity = new Activity(data)
 
       if (activity.lists != undefined) {
@@ -145,7 +143,6 @@ $(document).on("turbolinks:load", function() {
 
 // Post Request New List
 $(document).on("turbolinks:load", function() {
-  // NEED TO BE SURE THE PATCH IS POSTING TO CORRECT ACTIVITY
   $("input#submit-new-list-button").on("click", function(e) {
     e.preventDefault()
 
@@ -156,12 +153,15 @@ $(document).on("turbolinks:load", function() {
       data: values,
       type: 'PATCH',
       success: function(data) {
-        const activity = data
-        const lists = data["activity_lists"]
         $("#far-right").show()
+        console.log(data)
+
+        console.log(new List(data))
+
 
         const farRightDiv = $("#far-right-column-content")
         farRightDiv.empty()
+
         lists.forEach(function(list) {
           farRightDiv.append(`<h4><p><a href="/activities/${activity["activity"]["id"]}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })

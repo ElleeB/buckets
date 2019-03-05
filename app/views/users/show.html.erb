@@ -24,7 +24,7 @@
 
         <%= button_tag "Add A Drop", id: "add-drop-button" %>
         <br><br>
-        <%= button_tag "My To-Do-Lists", id: "to-do-button" %>
+        <button id="to-do-button" data-user-id="<%= @user.id %>">My To-Do-Lists</button>
       </div>
     </div>
 

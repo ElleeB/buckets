@@ -22,15 +22,6 @@ class ActivitiesController < ApplicationController
         category = Category.find(params[:activity][:category_id])
 
         render json: @activity, status: 200
-
-        # respond_to do |format|
-        #   format.json { render json: {
-        #     "activity": @activity,
-        #     "activity_category": category.name
-        #     }
-        #     format.html { render :show}
-        #   }
-        # end
       else
         @messages = @activity.define_error_messages
         render :new
@@ -44,27 +35,13 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    #  if creating a new list associated with this activity
+    #  if creating a new list associated with this activity #
     if params[:lists][:name] != ""
-      @list = List.new(name: params[:lists][:name])
-      @list.activity_id = @activity.id
-      @list.user_id = current_user.id
-      if @list.save
-        respond_to do |format|
-          format.json { render json: {
-            "activity": @activity,
-            "activity_lists": @activity.lists,
-            "list": @list
-            }
-          }
-          format.html { render :show}
-        end
-      else
-        @messages = @list.define_error_messages
+      @list = List.create(name: params[:lists][:name], activity_id: @activity.id, user_id: params[:activity][:user_id])
+      
+      render json: @list
 
-        render :show
-      end
-    # # params.has_key?(:complete) => checked "mark complete"
+    # if params.has_key?(:complete) => checked "mark complete" #
     # elsif params[:activity] && params[:activity].has_key?(:complete)
     #   if params[:activity][:complete] == '1'
     #     @activity.mark_complete
@@ -73,7 +50,7 @@ class ActivitiesController < ApplicationController
     #     redirect_to user_path(@user)
     #   end
 
-    # standard update from activity/edit form
+    # standard update from activity/edit form #
     elsif @activity.update(activity_params)###ERROR this also has :activity key
 
       render json: @activity
@@ -86,22 +63,10 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = current_activity
-    # category = @activity.category
-
-    past_due_response = @activity.past_due
 
     respond_to do |format|
-      format.json { render json: @activity, status: 200, "countdown": past_due_response }
+      format.json { render json: @activity, status: 200 }
       format.html { render :show }
-    # respond_to do |format|
-    #   format.html { render :show }
-    #   format.json { render json: {
-    #     "activity": @activity,
-    #     "activity_category": category.name,
-    #     "countdown": past_due_response,
-    #     "activity_lists": @activity.lists
-    #     }
-    #   }
     end
   end
 

@@ -3,6 +3,5 @@ class ActivitySerializer < ActiveModel::Serializer
   attribute :countdown
 
   has_one :category, serialize: CategorySerializer
-  # has_many :lists
-
+  has_many :lists
 end

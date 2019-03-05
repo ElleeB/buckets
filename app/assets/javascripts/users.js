@@ -3,8 +3,6 @@ const rightColumnDiv = () => $("#right-column-content")
 
 // View All Drops Button //
 $(document).on("turbolinks:load", function() {
-
-
   $("#all-drops-button").on('click', function() {
     $("#activities-form").hide()
 
@@ -64,6 +62,7 @@ $(document).on("turbolinks:load", function() {
 
     $.get(`/users/${userID(this)}/lists`, function(data) {
       if (data.length != 0) {
+        console.log(data)
         const lists = data
 
         rightColumnDiv().empty()

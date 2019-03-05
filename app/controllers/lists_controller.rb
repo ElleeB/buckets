@@ -13,22 +13,15 @@ class ListsController < ApplicationController
   def new
     # secure via activities#edit
     @list = List.new
-    @user = current_user
   end
 
   def create
     # secure via activities#edit
     @list = List.create(list_params)
     respond_to do |format|
+      format.json { render json: @list, status: 200}
       format.html { redirect_to list_path(@list) }
-      format.json { render json: {
-        "activity": current_activity,
-        "list": @list,
-        }
-      }
     end
-    # render
-    # redirect_to activity_list_path(@list.activity_id, @list)
   end
 
   def show
