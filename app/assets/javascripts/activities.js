@@ -27,14 +27,14 @@ Activity.prototype.newUserActivityHtml = function () {
 }
 
 Activity.prototype.formatDate = function() {
-    // create new date object with the current activity's due date
-    let date = new Date(this.dueDate).toDateString().split(' ')
-      // => // ["Tue", "Mar", "19", "2019"]
-    date.splice(3, 0, ", ")
-    date.shift()
+  // create new date object with the current activity's due date
+  let date = new Date(this.dueDate).toDateString().split(' ')
+    // => // ["Tue", "Mar", "19", "2019"]
+  date.splice(3, 0, ", ")
+  date.shift()
 
-    return date.join(" ")
-  }
+  return date.join(" ")
+}
 
 // Next Activity //
 $(document).on("turbolinks:load", function() {
