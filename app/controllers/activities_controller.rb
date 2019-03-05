@@ -20,14 +20,17 @@ class ActivitiesController < ApplicationController
 
       if @activity.save
         category = Category.find(params[:activity][:category_id])
-        respond_to do |format|
-          format.json { render json: {
-            "activity": @activity,
-            "activity_category": category.name
-            }
-            format.html { render :show}
-          }
-        end
+
+        render json: @activity, status: 200
+
+        # respond_to do |format|
+        #   format.json { render json: {
+        #     "activity": @activity,
+        #     "activity_category": category.name
+        #     }
+        #     format.html { render :show}
+        #   }
+        # end
       else
         @messages = @activity.define_error_messages
         render :new
@@ -83,19 +86,22 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = current_activity
-    category = @activity.category
+    # category = @activity.category
 
     past_due_response = @activity.past_due
 
     respond_to do |format|
+      format.json { render json: @activity, status: 200, "countdown": past_due_response }
       format.html { render :show }
-      format.json { render json: {
-        "activity": @activity,
-        "activity_category": category.name,
-        "countdown": past_due_response,
-        "activity_lists": @activity.lists
-        }
-      }
+    # respond_to do |format|
+    #   format.html { render :show }
+    #   format.json { render json: {
+    #     "activity": @activity,
+    #     "activity_category": category.name,
+    #     "countdown": past_due_response,
+    #     "activity_lists": @activity.lists
+    #     }
+    #   }
     end
   end
 

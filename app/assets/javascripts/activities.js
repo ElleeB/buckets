@@ -4,13 +4,14 @@
 // Research class syntax //
 // or Factory function (doesn't use the new keyword) //
 function Activity(data) {
-  this.id = data.activity.id
-  this.dueDate = data.activity.due_date
-  this.title = data.activity.title
-  this.categoryName = data.activity_category
-  this.description = data.activity.description
-  this.lists = data.activity.lists
+  this.id = data.id
+  this.dueDate = data.due_date
+  this.title = data.title
+  this.categoryName = data.category.name
+  this.description = data.description
+  this.lists = data.lists
   this.countdown = data.countdown
+  console.log(data)
 }
 
 Activity.prototype.newUserActivityHtml = function () {
@@ -48,7 +49,6 @@ $(document).on("turbolinks:load", function() {
     $.get("/activities/" + previousId + ".json", function(data) {
       // console.log(data)
       const activity = new Activity(data)
-
       if (activity.lists != undefined) {
         $("#right-column-content").html("<h2> Drop To Dos </h2>")
         activity.lists.forEach(function(list) {
