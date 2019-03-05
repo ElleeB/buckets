@@ -36,15 +36,19 @@ Activity.prototype.formatDate = function() {
   return date.join(" ")
 }
 
+function elementsHide() {
+  $("#new-list-form").hide()
+  $("#edit-activity").hide()
+  $("#far-right").hide()
+  $("#right-column-content").empty()
+}
+
 // Next Activity //
 $(document).on("turbolinks:load", function() {
   $(".js-next").on("click", function(e) {
     e.preventDefault()
 
-    $("#new-list-form").hide()
-    $("#edit-activity").hide()
-    $("#far-right").hide()
-    $("#right-column-content").empty()
+    elementsHide()
 
     const previousId = parseInt($(".js-next").attr("data-id")) + 1
 
@@ -78,10 +82,7 @@ $(document).on("turbolinks:load", function() {
   $(".js-previous").on("click", function(e) {
     e.preventDefault()
 
-    $("#new-list-form").hide()
-    $("#edit-activity").hide()
-    $("#far-right").hide()
-    $("#right-column-content").empty()
+    elementsHide()
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
 
