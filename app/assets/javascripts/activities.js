@@ -1,8 +1,4 @@
 // Activity Prototype //
-// Three 'main' possible syntax structures to define js model object //
-// Below = constructor fx syntax //
-// Research class syntax //
-// or Factory function (doesn't use the new keyword) //
 function Activity(data) {
   this.id = data.id
   this.dueDate = data.due_date
@@ -32,18 +28,12 @@ Activity.prototype.newUserActivityHtml = function () {
 
 Activity.prototype.formatDate = function() {
     // create new date object with the current activity's due date
-    let date = new Date(this.dueDate).toDateString()
-    let dateB = date.split(' ')
+    let date = new Date(this.dueDate).toDateString().split(' ')
+      // => // ["Tue", "Mar", "19", "2019"]
+    date.splice(3, 0, ", ")
+    date.shift()
 
-    dateB.splice(1, 0, ", ")
-    let dateC = dateB.join(" ")
-
-    let dateD = dateC.split(" ")
-    dateD.splice(5, 0, ", ")
-    // removes the day and its comma
-    dateD.splice(0,3)
-
-    return dateD.join(" ")
+    return date.join(" ")
   }
 
 // Next Activity //

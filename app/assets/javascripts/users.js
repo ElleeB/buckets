@@ -62,7 +62,6 @@ $(document).on("turbolinks:load", function() {
 
     $.get(`/users/${userID(this)}/lists`, function(data) {
       if (data.length != 0) {
-        console.log(data)
         const lists = data
 
         rightColumnDiv().empty()
@@ -70,7 +69,7 @@ $(document).on("turbolinks:load", function() {
 
         lists.forEach(function(list) {
           rightColumnDiv().append(
-          `<ul><li><a href="../lists/${list.id}">${list.name}</a></li></ul>`
+          `<ul><li>List: <a href="../lists/${list.id}">${list.name}</a> | Activity: ${list.activity.title}</li></ul>`
           )
         })
       } else {
