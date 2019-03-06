@@ -65,11 +65,12 @@ $(document).on("turbolinks:load", function() {
 
     elementsHide()
 
-    const previousId = parseInt($(".js-next").attr("data-id")) + 1
+    const nextId = parseInt($(".js-next").attr("data-id")) + 1
 
-    $.get("/activities/" + previousId + ".json", function(data) {
+    $.get("/activities/" + nextId + ".json", function(data) {
       const activity = new Activity(data)
-      if (activity.lists != undefined) {
+  
+      if (activity.lists.length != 0) {
         $("#right-column-content").html("<h2> Drop To Dos </h2>")
         activity.lists.forEach(function(list) {
           $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
@@ -95,7 +96,7 @@ $(document).on("turbolinks:load", function() {
     $.get("/activities/" + previousId + ".json", function(data) {
       const activity = new Activity(data)
 
-      if (activity.lists != undefined) {
+      if (activity.lists.length != 0) {
         $("#right-column-content").html("<h2> Drop To Dos </h2>")
         activity.lists.forEach(function(list) {
           $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)

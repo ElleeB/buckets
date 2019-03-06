@@ -53,8 +53,8 @@ Activity.create(
   category_id: 4,
   title: "Kill Cersei",
   description: "Kill that crazy witch",
-  due_date: DateTime.strptime('10/20/2019', '%m/%d/%Y')
-  )
+  due_date: DateTime.strptime('10/20/2020', '%m/%d/%Y')
+)
 
 
 Activity.create(
@@ -62,8 +62,8 @@ Activity.create(
   category_id: 3,
   title: "Become No One",
   description: "Become a badass nobody",
-  due_date: DateTime.strptime('03/2/2019', '%m/%d/%Y')
-  )
+  due_date: DateTime.strptime('05/2/2020', '%m/%d/%Y')
+)
 
 
 Activity.create(
@@ -71,8 +71,8 @@ Activity.create(
   category_id: 2,
   title: "Give It To Jon",
   description: "Make sweets in the caves",
-  due_date: DateTime.strptime('1/1/2019', '%m/%d/%Y')
-  )
+  due_date: DateTime.strptime('1/1/2020', '%m/%d/%Y')
+)
 
 
 Activity.create(
@@ -80,8 +80,8 @@ Activity.create(
   category_id: 1,
   title: "Destroy The Watch",
   description: "Welp, that didn't really work out with Jon",
-  due_date: DateTime.strptime('09/30/2019', '%m/%d/%Y')
-  )
+  due_date: DateTime.strptime('09/30/2020', '%m/%d/%Y')
+)
 
 
 Activity.create(
@@ -90,7 +90,7 @@ Activity.create(
   title: "Become a Princess",
   description: "Marry Geoffrey and be a princess",
   due_date: DateTime.strptime('12/28/2020', '%m/%d/%Y')
-  )
+)
 
 
 Activity.create(
@@ -99,7 +99,7 @@ Activity.create(
   title: "Divorce Tyrion",
   description: "This wasn't how it was supposed to happen. Now I need to find a way out of this shit",
   due_date: DateTime.strptime('10/31/2021', '%m/%d/%Y')
-  )
+)
 
 
 Activity.create(
@@ -107,8 +107,8 @@ Activity.create(
   category_id: 1,
   title: "Dye Hair Dark",
   description: "This auburn's gotta go",
-  due_date: DateTime.strptime('3/1/2019', '%m/%d/%Y')
-  )
+  due_date: DateTime.strptime('3/1/2020', '%m/%d/%Y')
+)
 
 
 Activity.create(
@@ -116,58 +116,10 @@ Activity.create(
   category_id: 3,
   title: "Become Queen in The North",
   description: "Move out of the way, Jon!",
-  due_date: DateTime.strptime('11/11/2019', '%m/%d/%Y')
-  )
-
-
-List.create(
-  name: "to-do list 1",
-  activity_id: 1,
-  user_id: 2
+  due_date: DateTime.strptime('11/11/2020', '%m/%d/%Y')
 )
 
-List.create(
-  name: "to-do list 2",
-  activity_id: 1,
-  user_id: 2
-)
-
-List.create(
-  name: "to-do list 1",
-  activity_id: 2,
-  user_id: 2
-)
-
-List.create(
-  name: "to-do list 2",
-  activity_id: 2,
-  user_id: 2
-)
-
-List.create(
-  name: "to-do list 1",
-  activity_id: 3,
-  user_id: 3
-)
-
-List.create(
-  name: "to-do list 2",
-  activity_id: 3,
-  user_id: 3
-)
-
-List.create(
-  name: "to-do list 1",
-  activity_id: 4,
-  user_id: 3
-)
-
-List.create(
-  name: "to-do list 2",
-  activity_id: 4,
-  user_id: 3
-)
-
+# Sansa's to-dos #
 List.create(
   name: "to-do list 1",
   activity_id: 5,
@@ -181,15 +133,83 @@ List.create(
 )
 
 List.create(
-  name: "to-do list 1",
+  name: "to-do list 3",
   activity_id: 6,
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 2",
+  name: "to-do list 4",
   activity_id: 6,
   user_id: 1
+)
+
+List.create(
+  name: "to-do list 5",
+  activity_id: 7,
+  user_id: 1
+)
+
+List.create(
+  name: "to-do list 6",
+  activity_id: 8,
+  user_id: 1
+)
+
+List.create(
+  name: "to-do list 7",
+  activity_id: 8,
+  user_id: 1
+)
+
+# Arya's to dos #
+List.create(
+  name: "to-do list 1",
+  activity_id: 1,
+  user_id: 2
+)
+
+List.create(
+  name: "to-do list 2",
+  activity_id: 1,
+  user_id: 2
+)
+
+List.create(
+  name: "to-do list 3",
+  activity_id: 2,
+  user_id: 2
+)
+
+List.create(
+  name: "to-do list 4",
+  activity_id: 2,
+  user_id: 2
+)
+
+# Ygrittes's to-dos #
+List.create(
+  name: "to-do list 1",
+  activity_id: 3,
+  user_id: 3
+)
+
+List.create(
+  name: "to-do list 2",
+  activity_id: 3,
+  user_id: 3
+)
+
+List.create(
+  name: "to-do list 3",
+  activity_id: 3,
+  user_id: 3
+)
+
+List.create(
+  name: "to-do list 4",
+  activity_id: 4,
+  user_id: 3
 )
 
 Item.create(
