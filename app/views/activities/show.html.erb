@@ -72,7 +72,7 @@
         </div>
 
         <div id="edit-activity" data-id="<%= @activity.id %>" style="display:none">
-          <%= render partial: "form" %>
+          <%= render partial: "form", locals: {activity: @activity} %>
         </div>
 
       </div>

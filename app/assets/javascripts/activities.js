@@ -113,9 +113,9 @@ $(document).on("turbolinks:load", function() {
 $(document).on("turbolinks:load", function() {
   $("#view-todo-button").on("click", function() {
     $("#far-right").hide()
-    $("#new-list-form").hide()
     $("#edit-activity").hide()
     $("#show-lists").show()
+    $("#new-list-form").hide()
     $("right-column-content").show()
   })
 })
@@ -123,10 +123,10 @@ $(document).on("turbolinks:load", function() {
 // Add to do list //
 $(document).on("turbolinks:load", function() {
   $("#add-todo-button").on("click", function() {
-    $("right-column-content").hide()
     $("#edit-activity").hide()
     $("#show-lists").hide()
     $("#new-list-form").show()
+    $("right-column-content").hide()
   })
 })
 
@@ -137,6 +137,7 @@ $(document).on("turbolinks:load", function() {
 
     const activityId = parseInt($("#right").attr("data-id"))
     const values = $(`form#edit_activity_${activityId}`).serialize()
+
     const posting = $.ajax({
       url: `/activities/${activityId}`,
       data: values,
@@ -145,9 +146,7 @@ $(document).on("turbolinks:load", function() {
         $("#far-right").show()
 
         const farRightDiv = $("#far-right-column-content")
-
         const list = new List(data)
-
         farRightDiv.append(`<h4><p><a href="/activities/${list.activityId}/lists/${list.id}"> ${list.name} </a></h4></p>`)
       }
     })
@@ -179,8 +178,8 @@ $(document).on("turbolinks:load", function() {
       data: values,
       type: 'PATCH',
       success: function(data) {
-        const activity = data
-        const farRightDiv = $("#far-right-column-content")
+        // const activity = data
+        // const farRightDiv = $("#far-right-column-content")
         location.reload()
       }
     })
