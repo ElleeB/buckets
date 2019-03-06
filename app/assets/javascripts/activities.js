@@ -69,7 +69,7 @@ $(document).on("turbolinks:load", function() {
 
     $.get("/activities/" + nextId + ".json", function(data) {
       const activity = new Activity(data)
-  
+
       if (activity.lists.length != 0) {
         $("#right-column-content").html("<h2> Drop To Dos </h2>")
         activity.lists.forEach(function(list) {
@@ -92,8 +92,8 @@ $(document).on("turbolinks:load", function() {
     elementsHide()
 
     const previousId = parseInt($(".js-previous").attr("data-id")) - 1
-
     $.get("/activities/" + previousId + ".json", function(data) {
+
       const activity = new Activity(data)
 
       if (activity.lists.length != 0) {
