@@ -57,8 +57,10 @@ function elementsHide() {
   $("#far-right").hide()
   // $("#right-column-content").hide()
   $("#show-add-to-do").hide()
-  $("#show-to-dos").hide()
+  // $("#show-to-dos").hide()
   $("#show-edit-activity").hide()
+  // $("#show-lists-content").hide()
+
 }
 
 // Next Activity //
@@ -74,11 +76,10 @@ $(document).on("turbolinks:load", function() {
       const activity = new Activity(data)
 
       if (activity.lists.length != 0) {
+        $("#show-lists-content").empty()
         // $("#right-column-content").html("<h2> Drop To Dos </h2>")
         activity.lists.forEach(function(list) {
-          // $("#right-column-content").show()
-          // $("#right-column-content p").hide()
-          $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+          $("#show-lists-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
         // $("#right-column-content").html("You have no to-dos!")
@@ -100,16 +101,17 @@ $(document).on("turbolinks:load", function() {
     $.get("/activities/" + previousId + ".json", function(data) {
 
       const activity = new Activity(data)
+      console.log(activity)
 
       if (activity.lists.length != 0) {
+        $("#show-lists-content").empty()
 
         activity.lists.forEach(function(list) {
-          $("#right-column-content").show()
-          $("#right-column-content p").hide()
-          $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+          // $("#right-column-content").show()
+          $("#show-lists-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
-        // $("#right-column-content").html("You have no to-dos!") /// don't replace html ///
+        // $("#show-lists-content").html("You have no to-dos!") /// don't replace html ///
       }
       activity.setText()
       activity.setDataIds()
