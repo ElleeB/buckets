@@ -11,9 +11,9 @@ function Activity(data) {
 
 Activity.prototype.countdown = function() {
   // convert time string into milliseconds
-  const t = Date.parse(this.dueDate) - Date.parse(new Date())
+  const timeRemainingInSecs = Date.parse(this.dueDate) - Date.parse(new Date())
   // divide/1000 => seconds, divide/60 => minutes...hours, days
-  const days = Math.floor( t/(1000*60*60*24) )
+  const days = Math.floor( timeRemainingInSecs/(1000*60*60*24) )
 
   if (days >= 0) {
     return `${days} until this drop is due!`
@@ -52,10 +52,13 @@ Activity.prototype.setText = function() {
 
  // Next/Previous DOM function //
 function elementsHide() {
-  $("#new-list-form").hide()
-  $("#edit-activity").hide()
+  // $("#new-list-form").hide()
+  // $("#edit-activity").hide()
   $("#far-right").hide()
-  $("#right-column-content").empty()
+  // $("#right-column-content").hide()
+  $("#show-add-to-do").hide()
+  $("#show-to-dos").hide()
+  $("#show-edit-activity").hide()
 }
 
 // Next Activity //
@@ -71,12 +74,14 @@ $(document).on("turbolinks:load", function() {
       const activity = new Activity(data)
 
       if (activity.lists.length != 0) {
-        $("#right-column-content").html("<h2> Drop To Dos </h2>")
+        // $("#right-column-content").html("<h2> Drop To Dos </h2>")
         activity.lists.forEach(function(list) {
+          // $("#right-column-content").show()
+          // $("#right-column-content p").hide()
           $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
-        $("#right-column-content").html("You have no to-dos!")
+        // $("#right-column-content").html("You have no to-dos!")
       }
       activity.setText()
       activity.setDataIds()
@@ -97,12 +102,14 @@ $(document).on("turbolinks:load", function() {
       const activity = new Activity(data)
 
       if (activity.lists.length != 0) {
-        $("#right-column-content").html("<h2> Drop To Dos </h2>")
+
         activity.lists.forEach(function(list) {
+          $("#right-column-content").show()
+          $("#right-column-content p").hide()
           $("#right-column-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
-        $("#right-column-content").html("You have no to-dos!")
+        // $("#right-column-content").html("You have no to-dos!") /// don't replace html ///
       }
       activity.setText()
       activity.setDataIds()
@@ -110,24 +117,29 @@ $(document).on("turbolinks:load", function() {
   })
 })
 
-// View Drop To-Dos //
+// Show To-Dos //
 $(document).on("turbolinks:load", function() {
   $("#view-todo-button").on("click", function() {
     $("#far-right").hide()
-    $("#edit-activity").hide()
-    $("#show-lists").show()
-    $("#new-list-form").hide()
-    $("right-column-content").show()
+    $("#show-edit-activity").hide()
+    $("#show-add-to-do").hide()
+    $("#show-to-dos").show()
+    // $("right-column-content").show()
   })
 })
 
-// Add to do list //
-$(document).on("turbolinks:load", function() {
+// Show Add To-Do //
+$(document).on("turbolinks:load", function() { ///new-list-form gone ///
   $("#add-todo-button").on("click", function() {
-    $("#edit-activity").hide()
-    $("#show-lists").hide()
+    $("#far-right").hide()
+    $("#show-edit-activity").hide()
+    $("#show-add-to-do").show()
     $("#new-list-form").show()
-    $("right-column-content").hide()
+    $("#show-to-dos").hide()
+    // $("#edit-activity").hide()
+    // $("#show-lists").hide()
+    // $("#new-list-form").show()
+    // $("right-column-content").hide()
   })
 })
 
@@ -155,14 +167,15 @@ $(document).on("turbolinks:load", function() {
   })
 })
 
-// Edit Form Show //
+// Show Edit Activity Form //
 $(document).on("turbolinks:load", function() {
   $("#edit-drop-button").on("click", function() {
     $("#far-right").hide()
-    $("#new-list-form").hide()
-    $("right-column-content").hide()
-    $("#show-lists").hide()
+    $("#show-edit-activity").show()
     $("#edit-activity").show()
+    $("#show-add-to-do").hide()
+    $("#new-list-form").hide()
+    $("#show-to-dos").hide()
   })
 })
 

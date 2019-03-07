@@ -43,38 +43,45 @@
     <!-- right column -->
     <div id="right" data-id="<%= @activity.id %>">
       <div id="right-column-content">
+
         <!-- add to-do list -->
-        <div id="new-list-form" data-lists="<%= @lists %>" data-id="<%= @activity.id %>" style="display:none">
-          <h2> Add a New To Do </h2>
-          <%= form_for @activity do |f| %>
-            <%= hidden_field(:activity, :user_id) %>
-            <%= fields_for :lists do |ff| %>
-              <p><%= ff.label "List Name" %></p>
-              <%= ff.text_field :name %>
-            <% end %>
-            <p><%= f.submit "Create To-Do List", id: "submit-new-list-button"  %></p>
-          <% end %>
-        </div>
-
-
-        <div id="show-lists">
-          <h2> Drop To Dos </h2>
-          <div id="show-lists-content">
-            <!-- if activity has to-do lists -->
-            <% if @activity.any_lists? %>
-              <% display_activity_lists(@activity).each do |html| %>
-                <%= raw(html) %>
+        <div id="show-add-to-do">
+          <div id="new-list-form" data-lists="<%= @lists %>" data-id="<%= @activity.id %>" style="display:none">
+            <h2> Add a New To Do </h2>
+            <%= form_for @activity do |f| %>
+              <%= hidden_field(:activity, :user_id) %>
+              <%= fields_for :lists do |ff| %>
+                <p><%= ff.label "List Name" %></p>
+                <%= ff.text_field :name %>
               <% end %>
-            <% else %>
-              You have no to-do lists!
+              <p><%= f.submit "Create To-Do List", id: "submit-new-list-button"  %></p>
             <% end %>
           </div>
         </div>
 
-        <div id="edit-activity" data-id="<%= @activity.id %>" style="display:none">
-          <%= render partial: "form", locals: {activity: @activity, submit_text: "Update Drop"} %>
+        <!-- show to-dos -->
+        <div id="show-to-dos">
+          <div id="show-lists">
+            <h2> Drop To Dos </h2>
+            <div id="show-lists-content">
+              <!-- if activity has to-do lists -->
+              <% if @activity.any_lists? %>
+                <% display_activity_lists(@activity).each do |html| %>
+                  <%= raw(html) %>
+                <% end %>
+              <% else %>
+                You have no to-do lists!
+              <% end %>
+            </div>
+          </div>
         </div>
 
+        <!-- edit activity -->
+        <div id="show-edit-activity">
+          <div id="edit-activity" data-id="<%= @activity.id %>" style="display:none">
+            <%= render partial: "form", locals: {activity: @activity, submit_text: "Update Drop"} %>
+          </div>
+        </div>
       </div>
     </div>
 
