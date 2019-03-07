@@ -69,7 +69,7 @@ $(document).on("turbolinks:load", function() {
 
         lists.forEach(function(list) {
           rightColumnDiv().append(
-          `<ul><li>List: <a href="../lists/${list.id}">${list.name}</a> | Activity: ${list.activity.title}</li></ul>`
+          `<ul><li>To-Do: <a href="../lists/${list.id}">${list.name}</a> (${list.activity.title})</li></ul>`
           )
         })
       } else {
