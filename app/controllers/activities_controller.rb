@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
 
   def update
     #  if creating a new list associated with this activity #
-    if params[:lists][:name] != ""
+    if params[:lists] && params[:lists][:name] != ""
       @list = List.create(name: params[:lists][:name], activity_id: @activity.id, user_id: params[:activity][:user_id])
 
       render json: @list
@@ -50,11 +50,10 @@ class ActivitiesController < ApplicationController
     #     redirect_to user_path(@user)
     #   end
 
-    # # standard update from activity/edit form #
-    # elsif @activity.update(activity_params)###ERROR this also has :activity key
-    #
-    #   render json: @activity
+    # standard update from activity/edit form #
+    elsif @activity.update(activity_params)###ERROR this also has :activity key
 
+      render json: @activity, status: 200
     else
       @messages = @activity.define_error_messages
       render :edit

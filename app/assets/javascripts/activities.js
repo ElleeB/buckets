@@ -52,15 +52,9 @@ Activity.prototype.setText = function() {
 
  // Next/Previous DOM function //
 function elementsHide() {
-  // $("#new-list-form").hide()
-  // $("#edit-activity").hide()
   $("#far-right").hide()
-  // $("#right-column-content").hide()
   $("#show-add-to-do").hide()
-  // $("#show-to-dos").hide()
   $("#show-edit-activity").hide()
-  // $("#show-lists-content").hide()
-
 }
 
 // Next Activity //
@@ -77,12 +71,13 @@ $(document).on("turbolinks:load", function() {
 
       if (activity.lists.length != 0) {
         $("#show-lists-content").empty()
-        // $("#right-column-content").html("<h2> Drop To Dos </h2>")
+
         activity.lists.forEach(function(list) {
           $("#show-lists-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
-        // $("#right-column-content").html("You have no to-dos!")
+        $("#show-lists-content").empty()
+        $("#right-column-content").html("You have no to-dos!")
       }
       activity.setText()
       activity.setDataIds()
@@ -101,17 +96,16 @@ $(document).on("turbolinks:load", function() {
     $.get("/activities/" + previousId + ".json", function(data) {
 
       const activity = new Activity(data)
-      console.log(activity)
 
       if (activity.lists.length != 0) {
         $("#show-lists-content").empty()
 
         activity.lists.forEach(function(list) {
-          // $("#right-column-content").show()
           $("#show-lists-content").append(`<h4><p><a href="/activities/${activity.id}/lists/${list.id}"> ${list.name} </a></h4></p>`)
         })
       } else {
-        // $("#show-lists-content").html("You have no to-dos!") /// don't replace html ///
+        $("#show-lists-content").empty()
+        $("#show-lists-content").html("You have no to-dos!")
       }
       activity.setText()
       activity.setDataIds()
@@ -126,22 +120,17 @@ $(document).on("turbolinks:load", function() {
     $("#show-edit-activity").hide()
     $("#show-add-to-do").hide()
     $("#show-to-dos").show()
-    // $("right-column-content").show()
   })
 })
 
 // Show Add To-Do //
-$(document).on("turbolinks:load", function() { ///new-list-form gone ///
+$(document).on("turbolinks:load", function() {
   $("#add-todo-button").on("click", function() {
     $("#far-right").hide()
     $("#show-edit-activity").hide()
     $("#show-add-to-do").show()
     $("#new-list-form").show()
     $("#show-to-dos").hide()
-    // $("#edit-activity").hide()
-    // $("#show-lists").hide()
-    // $("#new-list-form").show()
-    // $("right-column-content").hide()
   })
 })
 
@@ -153,18 +142,16 @@ $(document).on("turbolinks:load", function() {
     const activityId = parseInt($("#right").attr("data-id"))
     const values = $(`form#edit_activity_${activityId}`).serialize()
 
-    const posting = $.ajax({
+    $.ajax({
       url: `/activities/${activityId}`,
       data: values,
       type: 'PATCH',
       success: function(data) {
-        $("#far-right").show()
-
-        const farRightDiv = $("#far-right-column-content")
-        const list = new List(data)
-        farRightDiv.append(`<h4><p><a href="/activities/${list.activityId}/lists/${list.id}"> ${list.name} </a></h4></p>`)
+        $("#new-list-form").hide()
+        $("#show-to-dos").show()
       }
     })
+    location.reload()
     $("#lists_name").val("")
   })
 })
@@ -183,19 +170,17 @@ $(document).on("turbolinks:load", function() {
 
 // Edit Form Submit //
 $(document).on("turbolinks:load", function() {
-  $("#edit-activity-button").on("click", function(e) {
+  $("#edit-click").on("click", function(e) {
     e.preventDefault()
 
     const activityId = parseInt($("#edit-activity").attr("data-id"))
     const values = $(`form#edit_activity_${activityId}`).serialize()
 
-    const posting = $.ajax({
+    $.ajax({
       url: `/activities/${activityId}`,
       data: values,
       type: 'PATCH',
       success: function(data) {
-        // const activity = data
-        // const farRightDiv = $("#far-right-column-content")
         location.reload()
       }
     })

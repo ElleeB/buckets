@@ -79,18 +79,21 @@
         <!-- edit activity -->
         <div id="show-edit-activity">
           <div id="edit-activity" data-id="<%= @activity.id %>" style="display:none">
-            <%= render partial: "form", locals: {activity: @activity, submit_text: "Update Drop"} %>
+            <%= form_for @activity do |f| %>
+              <p><%= f.label "Title Your Drop" %></p>
+              <%= f.text_field :title %>
+              <p><%= f.label "Category" %></p>
+              <%= f.collection_select :category_id, Category.all, :id, :name %>
+              <p><%= f.label "Description" %></p>
+              <%= f.text_area :description %>
+              <p><%= f.label "Deadline" %></p>
+              <%= f.date_field :due_date %>
+              <p><%= f.submit id: "edit-click" %></p>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- far right column -->
-    <div id="far-right" style="display:none">
-      <div id="far-right-column-content">
-      </div>
-    </div>
-  </div>
   <hr>
 
   <p><%= link_to 'Add A Drop to My Bucket', new_activity_path(@activity) %>  |  <%= link_to 'View All of My Drops', user_activities_path(@activity.user) %>  |  <%= link_to 'Go Back to My User Page', user_path(@activity.user) %></p>
