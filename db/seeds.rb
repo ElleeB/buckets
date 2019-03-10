@@ -121,69 +121,69 @@ Activity.create(
 
 # Sansa's to-dos #
 List.create(
-  name: "to-do list 1",
-  activity_id: 5,
+  name: "Whine, a lot",
+  activity_id: 5, # Become a Princess
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 2",
-  activity_id: 5,
+  name: "Prepare gleefully to move to King's Landing",
+  activity_id: 5, # Become a Princess
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 3",
+  name: "Talk to Marge about her brother", # Divorce Tyrion
   activity_id: 6,
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 4",
+  name: "Try to catch a boat out of town", # Divorce Tyrion
   activity_id: 6,
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 5",
-  activity_id: 7,
+  name: "Find the best salon in the North",
+  activity_id: 7, # Dye Hair Dark
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 6",
-  activity_id: 8,
+  name: "Find a way to look like I care",
+  activity_id: 8, # Become Queen In The North
   user_id: 1
 )
 
 List.create(
-  name: "to-do list 7",
-  activity_id: 8,
+  name: "Find a way to betray Jon?",
+  activity_id: 8, # Become Queen In The North
   user_id: 1
 )
 
 # Arya's to dos #
 List.create(
-  name: "to-do list 1",
-  activity_id: 1,
+  name: "Train daily, especially catching cats",
+  activity_id: 1, # "Kill Cersei"
   user_id: 2
 )
 
 List.create(
-  name: "to-do list 2",
-  activity_id: 1,
+  name: "Become more badass by the day",
+  activity_id: 1, # "Kill Cersei"
   user_id: 2
 )
 
 List.create(
-  name: "to-do list 3",
-  activity_id: 2,
+  name: "Valar Morghulis",
+  activity_id: 2, # "Become No One"
   user_id: 2
 )
 
 List.create(
-  name: "to-do list 4",
-  activity_id: 2,
+  name: "Go blind",
+  activity_id: 2, # "Become No One"
   user_id: 2
 )
 

@@ -3,9 +3,17 @@ Create, plan for, and accomplish your bucket list
 
 Fork and clone this repo
 
-Run bundle install
+---
 
-Run rails s
+Run:
+
+bundle install
+
+rails db:migrate
+
+rails db:seed
+
+rails s
 
 ---
 
