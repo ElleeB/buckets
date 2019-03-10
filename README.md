@@ -1,6 +1,8 @@
 # buckets
 Create, plan for, and accomplish your bucket list
 
+---
+
 Fork and clone this repo
 
 ---
@@ -25,5 +27,6 @@ OR
 
 username: needle@gmail.com | password: nymeria
 
+---
 
 The gem is available as open source under the terms of the MIT License.
