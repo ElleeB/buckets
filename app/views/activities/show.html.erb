@@ -34,7 +34,7 @@
 
       <hr>
       <!-- mark activity complete -->
-      <%= form_for @activity do |f| %>
+      <%= form_for @activity, id: "mark-complete-form" do |f| %>
         <%= f.check_box :complete, value: @activity.complete %> Mark This Drop Complete
         <%= f.submit 'Update' %>
       <% end %>
@@ -48,7 +48,7 @@
         <div id="show-add-to-do">
           <div id="new-list-form" data-lists="<%= @lists %>" data-id="<%= @activity.id %>" style="display:none">
             <h2> Add a New To Do </h2>
-            <%= form_for @activity do |f| %>
+            <%= form_for @activity, id: "add-to-do-form" do |f| %>
               <%= hidden_field(:activity, :user_id) %>
               <%= fields_for :lists do |ff| %>
                 <p><%= ff.label "List Name" %></p>

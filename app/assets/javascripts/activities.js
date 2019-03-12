@@ -3,7 +3,8 @@ function Activity(data) {
   this.id = data.id
   this.dueDate = data.due_date
   this.title = data.title
-  this.categoryName = data.category.name
+  this.categoryName = data.category_name
+  this.categoryId = data.category.id
   this.description = data.description
   this.lists = data.lists
   this.countdown = this.countdown()
@@ -48,6 +49,12 @@ Activity.prototype.setText = function() {
   $("#description").text(this.description)
   $("#dueDate").text(this.formatDate())
   $("#pastDue").text(this.countdown)
+  $("#activity_title").val(this.title)
+  $("#activity_category_id").val(this.categoryId)
+  $("#activity_description").val(this.description)
+  $("#activity_due_date").val(this.dueDate)//not updating  the  calendar
+  $("#show-edit-activity form")[0]["attributes"]["action"]["nodeValue"] = `/activities/${this.id}`
+  // console.log($("#show-edit-activity form")[0]["attributes"]["action"]["nodeValue"])
 }
 
  // Next/Previous DOM function //
@@ -156,6 +163,10 @@ $(document).on("turbolinks:load", function() {
   })
 })
 
+// When we click 'edit this drop', it should load the form with the correct data .. .
+// and the form's action should also be updated accordingly...
+// 1.  put an id on each input
+// 2.  every time we click next or previous, the action and all the input values need to change...
 // Show Edit Activity Form //
 $(document).on("turbolinks:load", function() {
   $("#edit-drop-button").on("click", function() {
@@ -173,11 +184,13 @@ $(document).on("turbolinks:load", function() {
   $("#edit-click").on("click", function(e) {
     e.preventDefault()
 
-    const activityId = parseInt($("#edit-activity").attr("data-id"))
-    const values = $(`form#edit_activity_${activityId}`).serialize()
+    const url = $("#show-edit-activity form")[0].action
+    const activityId = parseInt($("div#right").attr("data-id"))
+    // console.log($("#show-edit-activity form"))
+    const values = $("#show-edit-activity form").serialize()
 
     $.ajax({
-      url: `/activities/${activityId}`,
+      url: url,
       data: values,
       type: 'PATCH',
       success: function(data) {

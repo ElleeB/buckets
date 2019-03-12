@@ -51,12 +51,12 @@ class ActivitiesController < ApplicationController
     #   end
 
     # standard update from activity/edit form #
-    elsif @activity.update(activity_params)###ERROR this also has :activity key
-
+    else @activity.update(activity_params)###ERROR this also has :activity key
+      raise params.inspect
       render json: @activity, status: 200
-    else
-      @messages = @activity.define_error_messages
-      render :edit
+    # else
+    #   @messages = @activity.define_error_messages
+    #   render :edit
     end
   end
 
